@@ -129,15 +129,22 @@ dmypy.json
 .pyre/
 
 # data
-data/
+All_Data/
 
-# seTransformer: original/44만개/sbtcode
-data_isbtcode/ 
+# Model_Original
+data_isbtcode/
 
-# seQubic: 우리모델/44만개/encoder1개/simsbtcode/sbt시퀀스맞춘거/1번모델
+# Model1
+Model1/data/
 
-# seQubic: 우리모델/44만개/encoder1개/simsbtcode/코드시퀀스맞춘거/2번모델
+# Model2
+Model2/data/
 
-# seQubic: 우리모델/44만개/encoder2개/simsbt와 code/코드시퀀스맞춘거/3번모델
+# Model3
+Model3/data/
 
-# seQubic: 우리모델/44만개/encoder2개/simsbt와 code/sbt시퀀스맞춘거/4번모델
+# Model4
+Model4/data_code_simsbt_codeseq/
+
+# Model5
+Model5/data

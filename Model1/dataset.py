@@ -16,7 +16,7 @@ def get_Data(bath, path):
     inputNL = []
     outputNL = []
     nlopuputLeng = []
-    f = open('data/' + path + '/sbt', 'r', encoding='utf-8')
+    f = open('data_isbtcode/' + path + '/sbt', 'r', encoding='utf-8')
     SBTs = f.readlines()
     f.close()
     for temp in SBTs:
@@ -34,7 +34,7 @@ def get_Data(bath, path):
             sbt.append(0)
         sbts.append(sbt)
 
-    f = open('data/' + path + '/ids', 'r', encoding='utf-8')
+    f = open('data_isbtcode/' + path + '/ids', 'r', encoding='utf-8')
     SBTs = f.readlines()
     f.close()
     for temp in SBTs:
@@ -46,7 +46,7 @@ def get_Data(bath, path):
             sbt.append(0)
         sbtposs.append(sbt)
 
-    f = open('data/' + path + '/code', 'r', encoding='utf-8')
+    f = open('data_isbtcode/' + path + '/code', 'r', encoding='utf-8')
     CODEs = f.readlines()
     f.close()
     for temp in CODEs:
@@ -65,7 +65,7 @@ def get_Data(bath, path):
         codes.append(code)
 
     if path == 'train':
-        f = open('data/' + path + '/nl', 'r', encoding='utf-8')
+        f = open('data_isbtcode/' + path + '/nl', 'r', encoding='utf-8')
         NLs = f.readlines()
         f.close()
         for temp in NLs:
@@ -83,7 +83,7 @@ def get_Data(bath, path):
             inputNL.append(inp)
             outputNL.append(outp)
     else:
-        f = open('data/' + path + '/nl.char', 'r', encoding='utf-8')
+        f = open('data_isbtcode/' + path + '/nl.char', 'r', encoding='utf-8')
         NLs = f.readlines()
         f.close()
         for temp in NLs:

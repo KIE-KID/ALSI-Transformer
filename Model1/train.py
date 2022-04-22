@@ -8,7 +8,7 @@ import time
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
 
@@ -64,10 +64,11 @@ def train():
                                                 })
 
                 if gstep % 100 == 0:
-                    f = open('out.txt', 'w')
+                    f = open('out.txt', 'a')
                     s = 'After %d steps, rate is %.5f.  cost is %.5f, In iterator: %d. nowCBleu: %.5f, maxCBlue: %.5f. nowSBleu: %.5f, maxSBlue: %.5f.' % (
                         gstep, rate, cost, gstep // bacth_num, nowCBleu, maxCBleu, nowSBleu, maxSBleu)
                     f.write(s)
+                    f.write('\n')
                     f.close()
                 if gstep % 5000 == 0:
                     nowCBleu, nowSBleu = val(sess, model, validData)
@@ -80,8 +81,9 @@ def train():
                 time_end = time.time()
                 print('time cost', time_end - time_start, 's')
 
-                f = open('out2.txt', 'w')
+                f = open('out2.txt', 'a')
                 f.write(str(time_end - time_start))
+                f.write('\n')
                 f.close()
                 return
 
@@ -133,7 +135,7 @@ def val(sess, model, data):
     return cbleu, sbleu
 
 
-f = open('data/vocabulary/nl', 'r', encoding='utf-8')
+f = open('data_isbtcode/vocabulary/nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}

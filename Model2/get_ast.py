@@ -59,12 +59,12 @@ def get_path(path):
     SBT = f.readlines()
     f.close()
 
-    f = open('temp2/' + path + '/ids', 'r', encoding='utf-8')
+    f = open('temp2/' + path + '/pos', 'r', encoding='utf-8')
     POS = f.readlines()
     f.close()
 
-    f1 = open('temp_data/' + path + '/ast', 'w', encoding='utf-8')
-    f2 = open('temp_data/' + path + '/father', 'w', encoding='utf-8')
+    f1 = open('data/' + path + '/ast', 'w', encoding='utf-8')
+    f2 = open('data/' + path + '/father', 'w', encoding='utf-8')
 
     for sbt, pos in zip(SBT, POS):
         ast, fathr = getast(sbt.split(), pos.split())
@@ -73,4 +73,6 @@ def get_path(path):
     f1.close()
     f2.close()
 
-get_path('test')
+# get_path('test')
+# get_path('train')
+# get_path('valid')
