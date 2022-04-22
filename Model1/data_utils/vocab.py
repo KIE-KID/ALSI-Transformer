@@ -38,11 +38,13 @@ def make_vocab(lines, dic_type, VOCAB_SIZE):
         word_to_index[SOS] = SOS_ID
         word_to_index[EOS] = EOS_ID
     else:
-        vocab = t.vocab().most_common(VOCAB_SIZE - 2) # 상위 vocab_size개의 단어만 보존 
-        word_to_index = {word[0] : index + 2 for index, word in enumerate(vocab)} # 각 단어에 대해 고유한 정수 부여하기(indexing)
+        vocab = t.vocab().most_common(VOCAB_SIZE - 4) # 상위 vocab_size개의 단어만 보존 
+        word_to_index = {word[0] : index + 4 for index, word in enumerate(vocab)} # 각 단어에 대해 고유한 정수 부여하기(indexing)
 
-        word_to_index[PAD] = 0
-        word_to_index[UNK] = 1
+        word_to_index[PAD] = PAD_ID
+        word_to_index[UNK] = UNK_ID
+        word_to_index[SOS] = SOS_ID
+        word_to_index[EOS] = EOS_ID
 
     # sorted_nl_dic = sorted(word_to_index.items(), key=lambda x:x[1]) 
     vocab_list = [x[0] for x in sorted(word_to_index.items(), key=lambda x:x[1])] # value 기준으로 정렬하고 키값(토큰)만 추출
