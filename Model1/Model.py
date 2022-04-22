@@ -3,9 +3,10 @@ from modules import get_token_embeddings, ff, positional_encoding, multihead_att
 import numpy as np
 import bert
 
-CODE_VOCAB_SIZE = 30000 #30002
-SBT_VOCAB_SIZE = 30000 #40000
-NL_VOCAB_SIZE = 30000 #23428
+VOCAB_SIZE = 40000
+CODE_VOCAB_SIZE = VOCAB_SIZE #30002
+SBT_VOCAB_SIZE = VOCAB_SIZE #40000
+NL_VOCAB_SIZE = VOCAB_SIZE #23428
 HIDDEN_SIZE = 768
 NUM_LAYERS = 1
 SHARE_EMB_AND_SOFTMAX = True
