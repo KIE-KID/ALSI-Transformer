@@ -5,10 +5,11 @@ import os
 import nltk
 import random
 import time
+import datetime
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
 
@@ -17,6 +18,10 @@ MODEL_NAME = "nl"
 
 
 def train():
+    output_dir = os.path.join(
+        './result/', datetime.datetime.now().strftime('%Y-%m-%d'))  # _%H-%M-%S
+    if not os.path.isdir(output_dir):
+        os.makedirs(output_dir)
     print('load data......')
     trainData = dataset.get_Data(BATCH_SIZE, "train")
     validData = dataset.get_Data(BATCH_SIZE, "valid")
@@ -50,47 +55,46 @@ def train():
                                                     model.father: trainData[1][j],
                                                     model.ast_size: trainData[2][j],
                                                     model.ast_mask: trainData[3][j],
-                                                    model.code_input: trainData[4][j],
-                                                    model.code_size: trainData[5][j],
-                                                    model.code_mask: trainData[6][j],
-                                                    model.nl_input: trainData[7][j],
-                                                    model.nl_output: trainData[8][j],
-                                                    model.mask_size: trainData[9][j],
-                                                    model.index: [list(range(1, 201))] * batch,
+                                                    # model.code_input: trainData[4][j],
+                                                    # model.code_size: trainData[5][j],
+                                                    # model.code_mask: trainData[6][j],
+                                                    model.nl_input: trainData[4][j],
+                                                    model.nl_output: trainData[5][j],
+                                                    model.mask_size: trainData[6][j],
+                                                    # model.index: [list(range(1, 201))] * batch,
                                                     model.index1: [list(range(1, 31))] * batch,
                                                     model.index3: [list(range(1, 301))] * batch,
                                                     model.nlsize: [30]*batch,
                                                     model.training: True
-                                                })
+                })
 
                 if gstep % 100 == 0:
-                    f = open('out.txt', 'a')
+                    f = open(output_dir+'/out.txt', 'w')
                     s = 'After %d steps, rate is %.5f.  cost is %.5f, In iterator: %d. nowCBleu: %.5f, maxCBlue: %.5f. nowSBleu: %.5f, maxSBlue: %.5f.' % (
                         gstep, rate, cost, gstep // bacth_num, nowCBleu, maxCBleu, nowSBleu, maxSBleu)
                     f.write(s)
-                    f.write('\n')
                     f.close()
                 if gstep % 5000 == 0:
                     nowCBleu, nowSBleu = val(sess, model, validData)
                     if nowCBleu > maxCBleu:
                         maxCBleu = nowCBleu
-                        saver.save(sess, os.path.join(MODEL_SAVE_PATH, MODEL_NAME), global_step=gstep)
+                        saver.save(sess, os.path.join(
+                            MODEL_SAVE_PATH, MODEL_NAME), global_step=gstep)
                     if nowSBleu > maxSBleu:
                         maxSBleu = nowSBleu
             if gstep >= 500000:
                 time_end = time.time()
                 print('time cost', time_end - time_start, 's')
 
-                f = open('out2.txt', 'a')
+                f = open('./result/'+output_dir+'out2.txt', 'w')
                 f.write(str(time_end - time_start))
-                f.write('\n')
                 f.close()
                 return
 
 
 def val(sess, model, data):
     smooth = SmoothingFunction()
-    NL = data[8]
+    NL = data[5]  # data[8]
     cbleu = 0
     count = 0
     refs = []
@@ -103,11 +107,11 @@ def val(sess, model, data):
                               model.father: data[1][i],
                               model.ast_size: data[2][i],
                               model.ast_mask: data[3][i],
-                              model.code_input: data[4][i],
-                              model.code_size: data[5][i],
-                              model.code_mask: data[6][i],
-                              model.nl_input: data[7][i],
-                              model.index: [list(range(1, 201))] * batch,
+                              # model.code_input: data[4][i],
+                              # model.code_size: data[5][i],
+                              # model.code_mask: data[6][i],
+                              model.nl_input: data[4][i],
+                              # model.index: [list(range(1, 201))] * batch,
                               model.index1: [list(range(1, 31))] * batch,
                               model.index3: [list(range(1, 301))] * batch,
                               model.nlsize: [30] * batch,
@@ -120,7 +124,8 @@ def val(sess, model, data):
                     break
                 hpy.append(dic_word[k])
             if len(hpy) > 2:
-                cbleu += nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4)
+                cbleu += nltk.translate.bleu([NL[i][j]],
+                                             hpy, smoothing_function=smooth.method4)
                 count += 1
             hpys.append(hpy)
             refs.append([NL[i][j]])
@@ -135,7 +140,7 @@ def val(sess, model, data):
     return cbleu, sbleu
 
 
-f = open('data_isbtcode/vocabulary/nl', 'r', encoding='utf-8')
+f = open('data/vocabulary/nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}

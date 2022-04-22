@@ -73,6 +73,6 @@ def get_path(path):
     f1.close()
     f2.close()
 
-# get_path('test')
-# get_path('train')
-# get_path('valid')
+get_path('test')
+get_path('train')
+get_path('valid')
