@@ -34,7 +34,7 @@ def get_Data(bath, path):
             sbt.append(0)
         sbts.append(sbt)
 
-    f = open('data_RQ1/40000_idxdata_park/' + path + '/simids', 'r', encoding='utf-8')
+    f = open('data_RQ1/40000_idxdata_park/' + path + '/sim_ids', 'r', encoding='utf-8')
     SBTs = f.readlines()
     f.close()
     for temp in SBTs:

@@ -137,6 +137,7 @@ data_isbtcode/
 # Model1
 Model1/data/
 Model1/data_RQ1/
+Model1/nohup.out
 
 # Model2
 Model2/data/
