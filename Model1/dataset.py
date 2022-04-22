@@ -16,14 +16,14 @@ def get_Data(bath, path):
     inputNL = []
     outputNL = []
     nlopuputLeng = []
-    f = open('data/' + path + '/simsbtcode', 'r', encoding='utf-8')
+    f = open('data_RQ1/40000_idxdata_park/' + path + '/simsbtcode', 'r', encoding='utf-8')
     SBTs = f.readlines()
     f.close()
     for temp in SBTs:
         sbt = [int(w) for w in temp.strip().split()]
-        sbt = [2] + sbt + [3]
+        sbt = [2] + sbt + [3] # add <start>, <end> special tokens
         if len(sbt) > sbt_leng:
-            sbt = sbt[0:sbt_leng]
+            sbt = sbt[0:sbt_leng] # truncate
         if len(sbt) % 2 == 0:
             ls = len(sbt) // 2
         else:
@@ -34,7 +34,7 @@ def get_Data(bath, path):
             sbt.append(0)
         sbts.append(sbt)
 
-    f = open('data/' + path + '/ids', 'r', encoding='utf-8')
+    f = open('data_RQ1/40000_idxdata_park/' + path + '/simids', 'r', encoding='utf-8')
     SBTs = f.readlines()
     f.close()
     for temp in SBTs:
@@ -65,12 +65,12 @@ def get_Data(bath, path):
     #     codes.append(code)
 
     if path == 'train':
-        f = open('data/' + path + '/nl', 'r', encoding='utf-8')
+        f = open('data_RQ1/40000_idxdata_park/' + path + '/nl', 'r', encoding='utf-8')
         NLs = f.readlines()
         f.close()
         for temp in NLs:
             nl = [int(w) for w in temp.strip().split()]
-            nl = [2] + nl + [3]
+            nl = [2] + nl + [3]  # add <start>, <end> special tokens
             inp = nl[0:-1]
             outp = nl[1:len(nl)]
             if len(inp) > nl_leng:
@@ -83,7 +83,7 @@ def get_Data(bath, path):
             inputNL.append(inp)
             outputNL.append(outp)
     else:
-        f = open('data/' + path + '/nl.char', 'r', encoding='utf-8')
+        f = open('data_RQ1/40000_idxdata_park/' + path + '/nl.char', 'r', encoding='utf-8')
         NLs = f.readlines()
         f.close()
         for temp in NLs:
