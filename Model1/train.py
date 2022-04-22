@@ -9,19 +9,25 @@ import datetime
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
+
+output_dir = os.path.join(
+        './result/train/', datetime.datetime.now().strftime('%Y-%m-%d'))  # _%H-%M-%S
+if not os.path.isdir(output_dir):
+    os.makedirs(output_dir)
+
+#model_out_dir = os.path.join(
+#        './model/', datetime.datetime.now().strftime('%Y-%m-%d'))  # _%H-%M-%S
+#if not os.path.isdir(model_out_dir):
+#    os.makedirs(model_out_dir)
 
 MODEL_SAVE_PATH = "model"
 MODEL_NAME = "nl"
 
 
 def train():
-    output_dir = os.path.join(
-        './result/', datetime.datetime.now().strftime('%Y-%m-%d'))  # _%H-%M-%S
-    if not os.path.isdir(output_dir):
-        os.makedirs(output_dir)
     print('load data......')
     trainData = dataset.get_Data(BATCH_SIZE, "train")
     validData = dataset.get_Data(BATCH_SIZE, "valid")
@@ -69,7 +75,7 @@ def train():
                 })
 
                 if gstep % 100 == 0:
-                    f = open(output_dir+'/out.txt', 'w')
+                    f = open(output_dir+'/out.txt', 'a')
                     s = 'After %d steps, rate is %.5f.  cost is %.5f, In iterator: %d. nowCBleu: %.5f, maxCBlue: %.5f. nowSBleu: %.5f, maxSBlue: %.5f.' % (
                         gstep, rate, cost, gstep // bacth_num, nowCBleu, maxCBleu, nowSBleu, maxSBleu)
                     f.write(s)

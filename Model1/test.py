@@ -9,10 +9,23 @@ import datetime
 import json
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
+#import argparse
+
+#parser = argparse.ArgumentParser(description='parser') # 인자값을 받을 수 있는 인스턴스 생성
+
+#parser.add_argument('--cuda', required=False, default='0', elp='cuda device')
+#parser.add_argument('--model', required=True, help='model path')
+
+#args = parser.parse_args() # 입력받은 인자값을 args에 저장 (type: namespace)
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
+
+output_dir = os.path.join(
+        './result/test/', datetime.datetime.now().strftime('%Y-%m-%d'))  # _%H-%M-%S
+if not os.path.isdir(output_dir):
+    os.makedirs(output_dir)
 
 MODEL_SAVE_PATH = "model"
 MODEL_NAME = "nl"
@@ -40,11 +53,6 @@ def train():
 
 
 def val(sess, model, data):
-    output_dir = os.path.join(
-        './result/', datetime.datetime.now().strftime('%Y-%m-%d'))  # _%H-%M-%S
-    if not os.path.isdir(output_dir):
-        os.makedirs(output_dir)
-
     smooth = SmoothingFunction()
     NL = data[5]  # data[8]
     cbleu = 0
@@ -104,14 +112,14 @@ def val(sess, model, data):
     sbleu = corpus_bleu(refs, hpys, smoothing_function=smooth.method4)
     print(cbleu, sbleu)
 
-    f = open(output_dir + 'out3.txt', 'r')
+    f = open(output_dir + 'out3.txt', 'a')
     f.write(str(cbleu)+'\n')
     f.write(str(sbleu)+'\n')
     f.close()
 
-    with open(output_dir + "refs.json", "w", encoding='utf-8') as f:
+    with open(output_dir + "refs.json", "a", encoding='utf-8') as f:
         json.dump(refsjson, f)
-    with open(output_dir + "hpy.json", "w", encoding='utf-8') as f:
+    with open(output_dir + "hpy.json", "a", encoding='utf-8') as f:
         json.dump(hpyjson, f)
 
 
