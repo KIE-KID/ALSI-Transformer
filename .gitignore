@@ -130,4 +130,14 @@ dmypy.json
 
 # data
 data/
-data_isbtcode/
+
+# seTransformer: original/44만개/sbtcode
+data_isbtcode/ 
+
+# seQubic: 우리모델/44만개/encoder1개/simsbtcode/sbt시퀀스맞춘거/1번모델
+
+# seQubic: 우리모델/44만개/encoder1개/simsbtcode/코드시퀀스맞춘거/2번모델
+
+# seQubic: 우리모델/44만개/encoder2개/simsbt와 code/코드시퀀스맞춘거/3번모델
+
+# seQubic: 우리모델/44만개/encoder2개/simsbt와 code/sbt시퀀스맞춘거/4번모델
