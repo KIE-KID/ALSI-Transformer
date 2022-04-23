@@ -76,7 +76,7 @@ def train():
 
                 if gstep % 100 == 0:
                     f = open(output_dir+'/out.txt', 'a')
-                    s = 'After %d steps, rate is %.5f.  cost is %.5f, In iterator: %d. nowCBleu: %.5f, maxCBlue: %.5f. nowSBleu: %.5f, maxSBlue: %.5f.' % (
+                    s = 'After %d steps, rate is %.5f.  cost is %.5f, In iterator: %d. nowCBleu: %.5f, maxCBlue: %.5f. nowSBleu: %.5f, maxSBlue: %.5f.\n' % (
                         gstep, rate, cost, gstep // bacth_num, nowCBleu, maxCBleu, nowSBleu, maxSBleu)
                     f.write(s)
                     f.close()
