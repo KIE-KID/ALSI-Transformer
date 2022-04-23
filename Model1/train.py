@@ -72,7 +72,7 @@ def train():
                                                     model.index3: [list(range(1, 301))] * batch,
                                                     model.nlsize: [30]*batch,
                                                     model.training: True
-                })
+                                                    })
 
                 if gstep % 100 == 0:
                     f = open(output_dir+'/out.txt', 'a')
@@ -92,7 +92,7 @@ def train():
                 time_end = time.time()
                 print('time cost', time_end - time_start, 's')
 
-                f = open('./result/'+output_dir+'out2.txt', 'w')
+                f = open(output_dir+'/out2.txt', 'a')
                 f.write(str(time_end - time_start))
                 f.close()
                 return
@@ -146,7 +146,7 @@ def val(sess, model, data):
     return cbleu, sbleu
 
 
-f = open('data/vocabulary/nl', 'r', encoding='utf-8')
+f = open('data_RQ1/40000_vocab_park/vocab.nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}
