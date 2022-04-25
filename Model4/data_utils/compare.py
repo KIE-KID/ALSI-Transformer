@@ -1,3 +1,4 @@
+# sbt 길이와 ids 길이 비교
 def compare(sbt, ids):
     sbt_list = []
     ids_list = []
