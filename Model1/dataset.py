@@ -1,5 +1,5 @@
 sbt_leng = 300
-code_leng = 200
+# code_leng = 200
 nl_leng = 30
 
 
@@ -9,21 +9,21 @@ def get_Data(bath, path):
     sbtsizes = []
     sbtmasks = []
 
-    codes = []
-    codesizes = []
-    codemasks = []
+ #   codes = []
+ #   codesizes = []
+ #   codemasks = []
 
     inputNL = []
     outputNL = []
     nlopuputLeng = []
-    f = open('data_isbtcode/' + path + '/sbt', 'r', encoding='utf-8')
+    f = open('data_RQ1/40000_idxdata_park/' + path + '/simsbtcode', 'r', encoding='utf-8')
     SBTs = f.readlines()
     f.close()
     for temp in SBTs:
         sbt = [int(w) for w in temp.strip().split()]
-        sbt = [2] + sbt + [3]
+        sbt = [2] + sbt + [3] # add <start>, <end> special tokens
         if len(sbt) > sbt_leng:
-            sbt = sbt[0:sbt_leng]
+            sbt = sbt[0:sbt_leng] # truncate
         if len(sbt) % 2 == 0:
             ls = len(sbt) // 2
         else:
@@ -34,7 +34,7 @@ def get_Data(bath, path):
             sbt.append(0)
         sbts.append(sbt)
 
-    f = open('data_isbtcode/' + path + '/ids', 'r', encoding='utf-8')
+    f = open('data_RQ1/40000_idxdata_park/' + path + '/sim_ids', 'r', encoding='utf-8')
     SBTs = f.readlines()
     f.close()
     for temp in SBTs:
@@ -46,31 +46,31 @@ def get_Data(bath, path):
             sbt.append(0)
         sbtposs.append(sbt)
 
-    f = open('data_isbtcode/' + path + '/code', 'r', encoding='utf-8')
-    CODEs = f.readlines()
-    f.close()
-    for temp in CODEs:
-        code = [int(w) for w in temp.strip().split()]
-        code = [30001] + code + [30002]
-        if len(code) > code_leng:
-            code = code[0:code_leng]
-        if len(code) % 2 == 0:
-            lc = len(code) // 2
-        else:
-            lc = len(code) // 2 + 1
-        codesizes.append(lc)
-        codemasks.append([1] * lc + [0] * (code_leng//2 - lc))
-        while len(code) < code_leng:
-            code.append(0)
-        codes.append(code)
+    # f = open('data/' + path + '/code', 'r', encoding='utf-8')
+    # CODEs = f.readlines()
+    # f.close()
+    # for temp in CODEs:
+    #     code = [int(w) for w in temp.strip().split()]
+    #     code = [30001] + code + [30002]
+    #     if len(code) > code_leng:
+    #         code = code[0:code_leng]
+    #     if len(code) % 2 == 0:
+    #         lc = len(code) // 2
+    #     else:
+    #         lc = len(code) // 2 + 1
+    #     codesizes.append(lc)
+    #     codemasks.append([1] * lc + [0] * (code_leng//2 - lc))
+    #     while len(code) < code_leng:
+    #         code.append(0)
+    #     codes.append(code)
 
     if path == 'train':
-        f = open('data_isbtcode/' + path + '/nl', 'r', encoding='utf-8')
+        f = open('data_RQ1/40000_idxdata_park/' + path + '/nl', 'r', encoding='utf-8')
         NLs = f.readlines()
         f.close()
         for temp in NLs:
             nl = [int(w) for w in temp.strip().split()]
-            nl = [2] + nl + [3]
+            nl = [2] + nl + [3]  # add <start>, <end> special tokens
             inp = nl[0:-1]
             outp = nl[1:len(nl)]
             if len(inp) > nl_leng:
@@ -83,7 +83,7 @@ def get_Data(bath, path):
             inputNL.append(inp)
             outputNL.append(outp)
     else:
-        f = open('data_isbtcode/' + path + '/nl.char', 'r', encoding='utf-8')
+        f = open('data_RQ1/40000_idxdata_park/' + path + '/nl.char', 'r', encoding='utf-8')
         NLs = f.readlines()
         f.close()
         for temp in NLs:
@@ -101,27 +101,28 @@ def get_Data(bath, path):
     bathsbtpos = []
     bathsbtsize = []
     bathsbtmask = []
-    bathcode = []
-    bathcodesize = []
-    bathcodemask = []
+    #bathcode = []
+    #bathcodesize = []
+    #bathcodemask = []
     bathinputNL = []
     bathoutputNL = []
     bathnloutputLeng = []
     start = 0
-    while start < len(codes):
-        end = min(start + bath, len(codes))
+    while start < len(sbts):  # len(codes)
+        end = min(start + bath, len(sbts))
         bathsbt.append(sbts[start:end])
         bathsbtpos.append(sbtposs[start:end])
         bathsbtsize.append(sbtsizes[start:end])
         bathsbtmask.append(sbtmasks[start:end])
 
-        bathcode.append(codes[start:end])
-        bathcodesize.append(codesizes[start:end])
-        bathcodemask.append(codemasks[start:end])
+    #    bathcode.append(codes[start:end])
+    #    bathcodesize.append(codesizes[start:end])
+    #    bathcodemask.append(codemasks[start:end])
 
         bathinputNL.append(inputNL[start:end])
         bathoutputNL.append(outputNL[start:end])
 
         bathnloutputLeng.append(nlopuputLeng[start:end])
         start += bath
-    return bathsbt, bathsbtpos, bathsbtsize, bathsbtmask, bathcode, bathcodesize, bathcodemask, bathinputNL, bathoutputNL, bathnloutputLeng
+    return bathsbt, bathsbtpos, bathsbtsize, bathsbtmask, bathinputNL, bathoutputNL, bathnloutputLeng
+    # return bathsbt, bathsbtpos, bathsbtsize, bathsbtmask, bathcode, bathcodesize, bathcodemask, bathinputNL, bathoutputNL, bathnloutputLeng
