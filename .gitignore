@@ -132,7 +132,8 @@ dmypy.json
 All_Data/
 
 # Model_Original
-data_isbtcode/
+Model_Original/data_isbtcode/
+Model_Original/model/
 
 # Model1
 Model1/data/
@@ -144,7 +145,8 @@ Model2/data/
 Model3/data/
 
 # Model4
-Model4/data_code_simsbt_codeseq/
+Model4/data_newsbt_codeseq/
 
 # Model5
-Model5/data
+Model5/data_ids/
+Model5/data_simids/
