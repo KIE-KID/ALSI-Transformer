@@ -5,13 +5,27 @@ import os
 import nltk
 import random
 import time
+import datetime
 import json
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
+#import argparse
+
+#parser = argparse.ArgumentParser(description='parser') # 인자값을 받을 수 있는 인스턴스 생성
+
+#parser.add_argument('--cuda', required=False, default='0', elp='cuda device')
+#parser.add_argument('--model', required=True, help='model path')
+
+#args = parser.parse_args() # 입력받은 인자값을 args에 저장 (type: namespace)
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
+
+output_dir = os.path.join(
+        './result/test/', datetime.datetime.now().strftime('%Y-%m-%d'))  # _%H-%M-%S
+if not os.path.isdir(output_dir):
+    os.makedirs(output_dir)
 
 MODEL_SAVE_PATH = "model"
 MODEL_NAME = "nl"
@@ -40,7 +54,7 @@ def train():
 
 def val(sess, model, data):
     smooth = SmoothingFunction()
-    NL = data[8]
+    NL = data[5]  # data[8]
     cbleu = 0
     count = 0
     refs = []
@@ -56,11 +70,11 @@ def val(sess, model, data):
                               model.father: data[1][i],
                               model.ast_size: data[2][i],
                               model.ast_mask: data[3][i],
-                              model.code_input: data[4][i],
-                              model.code_size: data[5][i],
-                              model.code_mask: data[6][i],
+                              # model.code_input: data[4][i],
+                              # model.code_size: data[5][i],
+                              # model.code_mask: data[6][i],
                               model.nl_input: data[7][i],
-                              model.index: [list(range(1, 201))] * batch,
+                              # model.index: [list(range(1, 201))] * batch,
                               model.index1: [list(range(1, 31))] * batch,
                               model.index3: [list(range(1, 301))] * batch,
                               model.nlsize: [30] * batch,
@@ -73,7 +87,8 @@ def val(sess, model, data):
                     break
                 hpy.append(dic_word[k])
             if len(hpy) > 2:
-                cbleu += nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4)
+                cbleu += nltk.translate.bleu([NL[i][j]],
+                                             hpy, smoothing_function=smooth.method4)
                 count += 1
             if len(hpy) > -1:
                 s = ''
@@ -97,18 +112,18 @@ def val(sess, model, data):
     sbleu = corpus_bleu(refs, hpys, smoothing_function=smooth.method4)
     print(cbleu, sbleu)
 
-    f = open('out3.txt' , 'r')
-    f.write(str(cbleu)+'\n')
-    f.write(str(sbleu)+'\n')
+    f = open(output_dir + '/out3.txt', 'a')
+    f.write('cbleu: ', str(cbleu)+'\n')
+    f.write('sbleu: ', str(sbleu)+'\n')
     f.close()
 
-    with open("refs.json", "w", encoding='utf-8') as f:
+    with open(output_dir + "refs.json", "a", encoding='utf-8') as f:
         json.dump(refsjson, f)
-    with open("hpy.json", "w", encoding='utf-8') as f:
+    with open(output_dir + "hpy.json", "a", encoding='utf-8') as f:
         json.dump(hpyjson, f)
 
 
-f = open('data/vocabulary/nl', 'r', encoding='utf-8')
+f = open('data_RQ1/40000_vocab_park/vocab.nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}
