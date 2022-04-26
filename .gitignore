@@ -135,13 +135,16 @@ All_Data/
 Model_Original/data_isbtcode/
 Model_Original/model/
 
-
 # Model1
 Model1/data/
 Model1/data_RQ1/
+Model1/nohup*
+Model1/model/
+Model1/result/
 
 # Model2
 Model2/data/
+Model2/newsbt_data/
 
 # Model3
 Model3/data/

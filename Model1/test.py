@@ -112,9 +112,9 @@ def val(sess, model, data):
     sbleu = corpus_bleu(refs, hpys, smoothing_function=smooth.method4)
     print(cbleu, sbleu)
 
-    f = open(output_dir + 'out3.txt', 'a')
-    f.write(str(cbleu)+'\n')
-    f.write(str(sbleu)+'\n')
+    f = open(output_dir + '/out3.txt', 'a')
+    f.write('cbleu: ', str(cbleu)+'\n')
+    f.write('sbleu: ', str(sbleu)+'\n')
     f.close()
 
     with open(output_dir + "refs.json", "a", encoding='utf-8') as f:
@@ -123,7 +123,7 @@ def val(sess, model, data):
         json.dump(hpyjson, f)
 
 
-f = open('data/vocabulary/nl', 'r', encoding='utf-8')
+f = open('data_RQ1/40000_vocab_park/vocab.nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}
