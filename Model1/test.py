@@ -112,9 +112,9 @@ def val(sess, model, data):
     sbleu = corpus_bleu(refs, hpys, smoothing_function=smooth.method4)
     print(cbleu, sbleu)
 
-    f = open(output_dir + 'out3.txt', 'a')
-    f.write(str(cbleu)+'\n')
-    f.write(str(sbleu)+'\n')
+    f = open(output_dir + '/out3.txt', 'a')
+    f.write('cbleu: ', str(cbleu)+'\n')
+    f.write('sbleu: ', str(sbleu)+'\n')
     f.close()
 
     with open(output_dir + "refs.json", "a", encoding='utf-8') as f:
