@@ -73,7 +73,7 @@ def val(sess, model, data):
                               # model.code_input: data[4][i],
                               # model.code_size: data[5][i],
                               # model.code_mask: data[6][i],
-                              model.nl_input: data[7][i],
+                              model.nl_input: data[4][i],
                               # model.index: [list(range(1, 201))] * batch,
                               model.index1: [list(range(1, 31))] * batch,
                               model.index3: [list(range(1, 301))] * batch,
@@ -117,9 +117,9 @@ def val(sess, model, data):
     f.write('sbleu: ', str(sbleu)+'\n')
     f.close()
 
-    with open(output_dir + "refs.json", "a", encoding='utf-8') as f:
+    with open(output_dir + "/refs.json", "a", encoding='utf-8') as f:
         json.dump(refsjson, f)
-    with open(output_dir + "hpy.json", "a", encoding='utf-8') as f:
+    with open(output_dir + "/hpy.json", "a", encoding='utf-8') as f:
         json.dump(hpyjson, f)
 
 
