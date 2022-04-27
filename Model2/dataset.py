@@ -2,7 +2,6 @@
 code_leng = 500 #200+300
 nl_leng = 30
 
-
 def get_Data(bath, path):
     # sbts = []
     # sbtposs = []
@@ -123,4 +122,5 @@ def get_Data(bath, path):
 
         bathnloutputLeng.append(nlopuputLeng[start:end])
         start += bath
+        
     return bathcode, bathcodesize, bathcodemask, bathinputNL, bathoutputNL, bathnloutputLeng
