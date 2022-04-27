@@ -1,5 +1,5 @@
 #sbt_leng = 300
-code_leng = 500 #200 + 300
+code_leng = 500 #200+300
 nl_leng = 30
 
 
@@ -8,7 +8,6 @@ def get_Data(bath, path):
     # sbtposs = []
     # sbtsizes = []
     # sbtmasks = []
-
     codes = []
     codesizes = []
     codemasks = []
