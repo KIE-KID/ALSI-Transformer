@@ -8,7 +8,7 @@ import time
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+os.environ['CUDA_VISIBLE_DEVICES'] = '4'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
 
@@ -135,7 +135,7 @@ def val(sess, model, data):
     return cbleu, sbleu
 
 
-f = open('data_isbtcode/vocabulary/nl', 'r', encoding='utf-8')
+f = open('data/vocabulary/nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}
