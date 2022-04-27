@@ -264,7 +264,6 @@ class Transformer:
 
         return logits, y_hat,
 
-
 def gelu(x):
     """Gaussian Error Linear Unit.
 
