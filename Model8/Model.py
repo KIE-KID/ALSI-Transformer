@@ -110,7 +110,7 @@ class Transformer:
 
             decoder = self.nl_input
             for i in range(30):
-                logits, preds = self.decode(decoder, self.index1, memory, tag_masks, enc_ast, src_masks, training=self.training)
+                logits, preds = self.decode(decoder, self.index1, memory, tag_masks, src_masks, training=self.training)
                 if i < 29:
                     temp = tf.concat(axis=1, values=[decoder[:, :i + 1], preds[:, i:i + 1], decoder[:, i + 2:]])
                     decoder = temp
