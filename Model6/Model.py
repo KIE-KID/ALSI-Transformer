@@ -43,7 +43,7 @@ class Transformer:
         self.code_embedding = tf.get_variable('code_emb', [CODE_VOCAB_SIZE, HIDDEN_SIZE])
         # self.ast_embedding = tf.get_variable('sbt_emb', [SBT_VOCAB_SIZE, HIDDEN_SIZE])
         # self.training = tf.placeholder(tf.bool)
-        E = HIDDEN_SIZE // 2
+        E = HIDDEN_SIZE
         position_enc = np.array([
             [pos / np.power(10000, (i - i % 2) / E) for i in range(E)]
             for pos in range(500)])
@@ -83,8 +83,7 @@ class Transformer:
         self.mask_size = tf.placeholder(tf.int32, [None])
         self.training = tf.placeholder(tf.bool)
 
-        memory, tag_masks= self.encode_code(self.code_input, self.index, self.code_mask, self.code_size,
-                                             training=self.training)
+        memory, tag_masks= self.encode_code(self.code_input, self.index, self.code_mask, training=self.training)
 
         # self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder2(memory,
         #                                                                                               self.code_size)
