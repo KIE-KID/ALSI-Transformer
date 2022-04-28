@@ -50,7 +50,7 @@ class Transformer:
         position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
         position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1)
         # self.position_enc1 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
-        self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE // 2],
+        self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE],
                                              initializer=self.create_initializer(0.002))
 
         # E = HIDDEN_SIZE
