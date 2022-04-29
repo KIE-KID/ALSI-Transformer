@@ -71,7 +71,7 @@ def get_Data(bath, path):
         for temp in NLs:
             nl = [int(w) for w in temp.strip().split()]
             nl = [2] + nl + [3]
-            inp = nl[0:-1]
+            inp = nl[0:-1]  
             outp = nl[1:len(nl)]
             if len(inp) > nl_leng:
                 inp = inp[0:nl_leng]

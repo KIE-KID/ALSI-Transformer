@@ -136,91 +136,111 @@ def check_type(codseq_file):
 
 
 
-# Get code sequence sbt file (for Model 2)
+# Get code sequence sbt file (for Model 2, Model6)
 # This is neither traditional sbt nor sim sbt.
 # Because we make sbt file considering code sequence.
 # Code: public static boolean isTokenExpired ...
 # Traiditonal SBT: ( MethodDeclaration isTokenExpired ( BasicType boolean ) BasicType ...
 # sim SBT: MethodDeclaration is token expired BasicType boolean FormalParameter token expiry ...
-# code sequequence: public Modifier static Modifier boolean BasicType MethodDeclaration isTokenExpired ...
-def codeseq_newsbt(flatten, codeseq, w):
+# file w(code sequequence): public Modifier static Modifier boolean BasicType MethodDeclaration isTokenExpired ...
+# file w2(code sequequence only type): Modifier Modifier BasicType MethodDeclaration ...
+def codeseq_newsbt(flatten, codeseq, w, w2):
     with open(codeseq, 'r') as cs:
         codeseqs = cs.readlines()
         with open(flatten, 'r') as fl:
             flattens = fl.readlines()
             with open(w, 'w+') as wf:
-                for c in tqdm(range(len(codeseqs))):
-                    result = []
-                    # ids = []
-                    c_json = json.loads(codeseqs[c])
-                    # print(c_json[0])
-                    # {'type': 'Modifier', 'value': 'public', 'position': 'None'}
-                    for i in c_json:
-                        # flatten의 c번째 줄 데이터 load
-                        f_json = json.loads(flattens[c])
-                        if i['type'] == 'Modifier' or i['type'] == 'Annotation' or i['type'] == 'Null' or i['type'] == 'Keyword' or i['type'] == 'Operator' or i['type'] == 'Separator':
-                            tmp = i['value'] + ' ' + i['type']
-                            # ids.append('None')
-                            result.append(tmp.replace('"', ''))
-                        elif i['type'] == 'BasicType':
-                            for j in f_json:
-                                if 'type' in j:
-                                    if j['type'] == 'BasicType' and i['value'] == j['value']:
-                                        tmp = i['value'] + ' ' + i['type']
-                                        # ids.append(j['id'])
-                                        break
-                                    else:
-                                        continue
-                                else:
-                                    continue
-                            result.append(tmp.replace('"', ''))
-                        elif i['type'] == 'Identifier':
-                            for j in f_json:
-                                if 'value' in j:
-                                    if i['value'] == j['value']:
-                                        tmp = j['value'] + ' ' + j['type']
-                                        result.append(tmp.replace('"', ''))
-                                        # ids.append(j['id'])
-                                        break
-                                    else:
-                                        if j == len(f_json):
+                with open(w2, 'w+') as wf2:
+                    for c in tqdm(range(len(codeseqs))):
+                        result = []
+                        result_type = []
+                        # ids = []
+                        c_json = json.loads(codeseqs[c])
+                        # print(c_json[0])
+                        # {'type': 'Modifier', 'value': 'public', 'position': 'None'}
+                        for i in c_json:
+                            # flatten의 c번째 줄 데이터 load
+                            f_json = json.loads(flattens[c])
+                            if i['type'] == 'Modifier' or i['type'] == 'Annotation' or i['type'] == 'Null' or i['type'] == 'Keyword' or i['type'] == 'Operator' or i['type'] == 'Separator':
+                                tmp = i['value'] + ' ' + i['type']
+                                tmp2 = i['type']
+                                # ids.append('None')
+                                result.append(tmp.replace('"', ''))
+                                result_type.append(tmp2)
+                            elif i['type'] == 'BasicType':
+                                for j in f_json:
+                                    if 'type' in j:
+                                        if j['type'] == 'BasicType' and i['value'] == j['value']:
                                             tmp = i['value'] + ' ' + i['type']
-                                            result.append(tmp.replace('"', ''))
-                                            # ids.append('None')
+                                            tmp2 = i['type']
+                                            # ids.append(j['id'])
                                             break
                                         else:
                                             continue
-                                else:
-                                    if 'position' in j and j['position'] != None:
-                                        if i['position'] == j['position'][1]:
-                                            tmp = i['value'] + ' ' + i['type']
+                                    else:
+                                        continue
+                                result.append(tmp.replace('"', ''))
+                                result_type.append(tmp2)
+                            elif i['type'] == 'Identifier':
+                                for j in f_json:
+                                    if 'value' in j:
+                                        if i['value'] == j['value']:
+                                            tmp = j['value'] + ' ' + j['type']
+                                            tmp2 = j['type']
                                             result.append(tmp.replace('"', ''))
+                                            result_type.append(tmp2)
                                             # ids.append(j['id'])
                                             break
                                         else:
                                             if j == len(f_json):
                                                 tmp = i['value'] + ' ' + i['type']
+                                                tmp2 = i['type']
                                                 result.append(tmp.replace('"', ''))
+                                                result_type.append(tmp2)
                                                 # ids.append('None')
                                                 break
                                             else:
                                                 continue
                                     else:
-                                        tmp = i['value'] + ' ' + i['type']
-                                        result.append(tmp.replace('"', ''))
-                                        # ids.append('None')
-                                        break
-                    result = ' '.join(result).replace('"', '')
-                    # print(ids)
-                    wf.write(result)
-                    wf.write('\n')
+                                        if 'position' in j and j['position'] != None:
+                                            if i['position'] == j['position'][1]:
+                                                tmp = i['value'] + ' ' + i['type']
+                                                tmp2 = i['type']
+                                                result.append(tmp.replace('"', ''))
+                                                result_type.append(tmp2)
+                                                # ids.append(j['id'])
+                                                break
+                                            else:
+                                                if j == len(f_json):
+                                                    tmp = i['value'] + ' ' + i['type']
+                                                    tmp2 = i['type']
+                                                    result.append(tmp.replace('"', ''))
+                                                    result_type.append(tmp2)
+                                                    # ids.append('None')
+                                                    break
+                                                else:
+                                                    continue
+                                        else:
+                                            tmp = i['value'] + ' ' + i['type']
+                                            tmp2 = i['type']
+                                            result.append(tmp.replace('"', ''))
+                                            result_type.append(tmp2)
+                                            # ids.append('None')
+                                            break
+                        result = ' '.join(result).replace('"', '')
+                        result_type = ' '.join(result_type).replace('"', '')
+                        # print(ids)
+                        wf.write(result)
+                        wf.write('\n')
+                        wf2.write(result_type)
+                        wf2.write('\n')
 
 if __name__ == '__main__':
     # pre-process the source code: strings -> STR_, numbers-> NUM_, Booleans-> BOOL_
     process_source(sys.argv[1], 'source.code')
     get_flatten_node('source.code', sys.argv[2])
     get_codeseqsbt('source.code', sys.argv[3])
-    codeseq_newsbt('valid.flatten', 'valid.codeseq', 'valid.result')
-    # codeseq_newsbt('idflatten', 'idcodeseq', 'idresult')
+    codeseq_newsbt('train.flatten', 'train.codeseq', 'train.result', 'train.result2')
+    #codeseq_newsbt('idflatten', 'idcodeseq', 'idresult', 'idresult2')
 
 # python getdata_codeseqsbt.py code flatten codeseq
