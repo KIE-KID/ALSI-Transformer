@@ -56,13 +56,13 @@ def train():
                                                     # model.father: trainData[1][j],
                                                     # model.ast_size: trainData[2][j],
                                                     # model.ast_mask: trainData[3][j],
-                                                    model.code_input: trainData[4][j],
-                                                    model.code_size: trainData[5][j],
-                                                    model.code_mask: trainData[6][j],
-                                                    model.nl_input: trainData[7][j],
-                                                    model.nl_output: trainData[8][j],
-                                                    model.mask_size: trainData[9][j],
-                                                    model.index: [list(range(1, 201))] * batch,
+                                                    model.code_input: trainData[0][j],
+                                                    model.code_size: trainData[1][j],
+                                                    model.code_mask: trainData[2][j],
+                                                    model.nl_input: trainData[3][j],
+                                                    model.nl_output: trainData[4][j],
+                                                    model.mask_size: trainData[5][j],
+                                                    model.index: [list(range(1, 501))] * batch,
                                                     model.index1: [list(range(1, 31))] * batch,
                                                     # model.index3: [list(range(1, 301))] * batch,
                                                     model.nlsize: [30]*batch,
@@ -96,7 +96,7 @@ def train():
 
 def val(sess, model, data):
     smooth = SmoothingFunction()
-    NL = data[8]
+    NL = data[4]
     cbleu = 0
     count = 0
     refs = []
@@ -109,11 +109,11 @@ def val(sess, model, data):
                               # model.father: data[1][i],
                               # model.ast_size: data[2][i],
                               # model.ast_mask: data[3][i],
-                              model.code_input: data[4][i],
-                              model.code_size: data[5][i],
-                              model.code_mask: data[6][i],
-                              model.nl_input: data[7][i],
-                              model.index: [list(range(1, 201))] * batch,
+                              model.code_input: data[0][i],
+                              model.code_size: data[1][i],
+                              model.code_mask: data[2][i],
+                              model.nl_input: data[3][i],
+                              model.index: [list(range(1, 501))] * batch,
                               model.index1: [list(range(1, 31))] * batch,
                               # model.index3: [list(range(1, 301))] * batch,
                               model.nlsize: [30] * batch,
