@@ -43,14 +43,14 @@ class Transformer:
         self.code_embedding = tf.get_variable('code_emb', [CODE_VOCAB_SIZE, HIDDEN_SIZE])
         # self.ast_embedding = tf.get_variable('sbt_emb', [SBT_VOCAB_SIZE, HIDDEN_SIZE])
         # self.training = tf.placeholder(tf.bool)
-        E = HIDDEN_SIZE // 2
+        E = HIDDEN_SIZE
         position_enc = np.array([
             [pos / np.power(10000, (i - i % 2) / E) for i in range(E)]
             for pos in range(500)])
         position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
         position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1)
         # self.position_enc1 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
-        self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE // 2],
+        self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE],
                                              initializer=self.create_initializer(0.002))
 
         # E = HIDDEN_SIZE
@@ -83,8 +83,7 @@ class Transformer:
         self.mask_size = tf.placeholder(tf.int32, [None])
         self.training = tf.placeholder(tf.bool)
 
-        memory, tag_masks= self.encode_code(self.code_input, self.index, self.code_mask, self.code_size,
-                                             training=self.training)
+        memory, tag_masks= self.encode_code(self.code_input, self.index, self.code_mask, training=self.training)
 
         # self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder2(memory,
         #                                                                                               self.code_size)
@@ -111,7 +110,7 @@ class Transformer:
 
             decoder = self.nl_input
             for i in range(30):
-                logits, preds = self.decode(decoder, self.index1, memory, tag_masks, enc_ast, src_masks, training=self.training)
+                logits, preds = self.decode(decoder, self.index1, memory, tag_masks, training=self.training)
                 if i < 29:
                     temp = tf.concat(axis=1, values=[decoder[:, :i + 1], preds[:, i:i + 1], decoder[:, i + 2:]])
                     decoder = temp
