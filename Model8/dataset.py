@@ -44,7 +44,7 @@ def get_Data(bath, path):
     #         sbt.append(0)
     #     sbtposs.append(sbt)
 
-    f = open('newsbt_data/' + path + '/codetype_bpe', 'r', encoding='utf-8')
+    f = open('newsbt_data/' + path + '/code_type_bpe', 'r', encoding='utf-8')
     CODEs = f.readlines()
     f.close()
     for temp in CODEs:
