@@ -1,21 +1,24 @@
-def compare(sbt, ids):
-    sbt_list = []
-    ids_list = []
-    with open(sbt, 'r') as sbts:
-        sbt = sbts.readlines()
-        print(len(sbt))
-        for s in sbt:
-            tmp = s.split(' ')
-            sbt_list.append(len(tmp))
-    with open(ids, 'r') as isds:
-        ids = isds.readlines()
-        for i in ids:
-            tmp2 = i.split(' ')
-            ids_list.append(len(tmp2))
+# 데이터 별 토큰 길이 비교
+from pyparsing import line
 
-    print(sbt_list[0:10], ids_list[0:10])
-    for i in range(len(sbt_list)):
-        if sbt_list[i] != ids_list[i]:
+
+def compare(file1, file2):
+    data = []
+    data2 = []
+    with open(file1, 'r') as f:
+        line = f.readlines()
+        for l in line:
+            tmp = l.split(' ')
+            data.append(len(tmp))
+    with open(file2, 'r') as f2:
+        line2 = f2.readlines()
+        for l2 in line2:
+            tmp2 = l2.split(' ')
+            data2.append(len(tmp2))
+
+    print(data[0:10], data2[0:10])
+    for i in range(len(data)):
+        if data[i] != data2[i]:
             print(False)
 
-compare('./train/sbt', './train/ids')
+compare('valid.token.code', 'valid.result2')
