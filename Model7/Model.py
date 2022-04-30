@@ -1,12 +1,13 @@
+from encodings import CodecRegistryError
 import tensorflow as tf
 from modules import get_token_embeddings, ff, positional_encoding, multihead_attention, label_smoothing, noam_scheme
 import numpy as np
 import bert
 
 VOCAB_SIZE = 40000
-CODE_VOCAB_SIZE = VOCAB_SIZE #30002
-SBT_VOCAB_SIZE = VOCAB_SIZE #40000
-NL_VOCAB_SIZE = VOCAB_SIZE #23428
+CODE_VOCAB_SIZE = 52000 #30002
+SBT_VOCAB_SIZE = 52000 #40000
+NL_VOCAB_SIZE = 40000 #23428
 HIDDEN_SIZE = 768
 NUM_LAYERS = 1
 SHARE_EMB_AND_SOFTMAX = True
@@ -75,7 +76,7 @@ class Transformer:
         self.code_size = tf.placeholder(tf.int32, [None])
         self.code_mask = tf.placeholder(tf.int32, [None, self.codeLneg // 2])
 
-        self.both_mask = tf.placeholder(tf.int32, [None, self.codeLneg // 2])
+        # self.both_mask = tf.placeholder(tf.int32, [None, self.codeLneg // 2])
 
         self.index = tf.placeholder(tf.int32, [None, self.codeLneg])
         self.index1 = tf.placeholder(tf.int32, [None, self.nlLeng])
@@ -90,7 +91,7 @@ class Transformer:
         # memory, tag_masks= self.encode_code(self.code_input, self.index, self.code_mask, training=self.training)
         memory, tag_masks = self.encode_code(self.code_input, self.index, self.code_mask,
                                              self.ast_input, self.index3, self.ast_mask,
-                                             self.both_mask, training=self.training)
+                                             training=self.training)
 
         # self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder2(memory,
         #                                                                                               self.code_size)
@@ -99,13 +100,15 @@ class Transformer:
     def mydecoder1(self, memory, tag_masks):
         with tf.variable_scope('decoder1'):
             logits, preds = self.decode(self.nl_input, self.index1, memory, tag_masks, training=self.training)
-
+            # print('logits: ', logits)
+            # print('preds', preds)
             cost = tf.contrib.seq2seq.sequence_loss(logits=logits, targets=self.nl_output,
                                                     weights=tf.sequence_mask(self.mask_size,
                                                                              maxlen=tf.shape(self.nl_output)[1],
                                                                              dtype=tf.float32))
-
+            # print('cost: ', cost)
             global_step = tf.Variable(0, trainable=False)
+            # print('global_step: ', global_step)
             learning_rate = tf.train.exponential_decay(1e-4,
                                                        global_step=global_step,
                                                        decay_steps=self.bacth_num,
@@ -127,7 +130,7 @@ class Transformer:
 
        # delete my_decoder2 function
 
-    def encode_code(self, code_input, index, mask, ast_input, index3, mask3, mask4, training=True):
+    def encode_code(self, code_input, index, mask, ast_input, index3, mask3, training=True):
         '''
         Returns
         memory: encoder outputs. (N, T1, d_model)
@@ -169,14 +172,14 @@ class Transformer:
             enc_both = tf.concat([enc_code, enc_ast], axis=2)
 
             # mask_both = tf.concat([tgt_masks, src_masks], axis=1)
-            mask_both = tf.math.equal(mask4, 0)
+            # mask_both = tf.math.equal(mask4, 0)
 
             for i in range(num_blocks):
                 with tf.variable_scope("num_blocks2_{}".format(i), reuse=tf.AUTO_REUSE):
-                    enc_code = multihead_attention(queries=enc_both,
+                    enc_both = multihead_attention(queries=enc_both,
                                                    keys=enc_both,
                                                    values=enc_both,
-                                                   key_masks=mask_both,
+                                                   key_masks=tgt_masks,
                                                    num_heads=head_num,
                                                    dropout_rate=0.2,
                                                    training=training,
@@ -207,10 +210,10 @@ class Transformer:
                     # temp_code = enc_code
                     # temp_ast = enc_ast
 
-                    enc_code = multihead_attention(queries=enc_both,
+                    enc_both = multihead_attention(queries=enc_both,
                                                    keys=temp_both,
-                                                   values=mask_both,
-                                                   key_masks=mask_both,
+                                                   values=temp_both,
+                                                   key_masks=tgt_masks,
                                                    num_heads=head_num,
                                                    dropout_rate=0.2,
                                                    training=training,
@@ -236,11 +239,10 @@ class Transformer:
                     #                               training=training,
                     #                               causality=False,
                     #                               scope="vanilla_attention_ast")
-
-                    enc_both = ff(enc_both, num_units=[d_ff, HIDDEN_SIZE])
+                    enc_both = ff(enc_both, num_units=[d_ff, HIDDEN_SIZE * 2])
                     # enc_code = ff(enc_code, num_units=[d_ff, HIDDEN_SIZE])
                     # enc_ast = ff(enc_ast, num_units=[d_ff, HIDDEN_SIZE])
-            return enc_both, mask_both #, enc_ast, src_masks
+            return enc_both, tgt_masks #, enc_ast, src_masks
 
     def decode(self, nl_input, index, memory, tag_masks, training=True):
     # (self, nl_input, index, memory, tag_masks, enc_ast, src_masks, training=True):
