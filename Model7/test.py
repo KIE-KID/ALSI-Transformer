@@ -3,6 +3,8 @@ import Model
 import tensorflow as tf
 import os
 import nltk
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 import random
 import time
 import datetime
@@ -96,7 +98,8 @@ def val(sess, model, data):
                 bleu_3gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 0, 1, 0))
                 bleu_4gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 0, 0, 1))
                 meteor += meteor_score([NL[i][j]], hpy)
-                temp_rouge = rouge.get_scores([NL[i][j]], hpy, avg=True)['rouge-l']
+                rouge = Rouge()
+                temp_rouge = rouge.get_scores(' '.join(NL[i][j]), ' '.join(hpy), avg=True)['rouge-l']
                 rouge_l_f1 += temp_rouge['f']
                 rouge_l_precision += temp_rouge['p']
                 rouge_l_recall += temp_rouge['r']
@@ -143,16 +146,16 @@ def val(sess, model, data):
 
     
     f = open(output_dir + '/out3.txt', 'a')
-    f.write('sentence bleu: ', str(cbleu)+'\n')
-    f.write('corpus bleu: ', str(sbleu)+'\n')
-    f.write('1-Gram BLEU: ', str(bleu_1gram)+'\n')
-    f.write('2-Gram BLEU: ', str(bleu_2gram)+'\n')
-    f.write('3-Gram BLEU: ', str(bleu_3gram)+'\n')
-    f.write('4-Gram BLEU: ', str(bleu_4gram)+'\n')
-    f.write('METEOR: ', str(meteor)+'\n')
-    f.write('ROUGE-L F1 score: ', str(rouge_l_f1)+'\n')
-    f.write('ROUGE-L Precision: ', str(rouge_l_precision)+'\n')
-    f.write('ROUGE-L Recall: ', str(rouge_l_recall)+'\n')
+    f.write('sentence bleu: '+ str(cbleu)+'\n')
+    f.write('corpus bleu: '+ str(sbleu)+'\n')
+    f.write('1-Gram BLEU: '+ str(bleu_1gram)+'\n')
+    f.write('2-Gram BLEU: '+ str(bleu_2gram)+'\n')
+    f.write('3-Gram BLEU: '+ str(bleu_3gram)+'\n')
+    f.write('4-Gram BLEU: '+ str(bleu_4gram)+'\n')
+    f.write('METEOR: '+ str(meteor)+'\n')
+    f.write('ROUGE-L F1 score: '+ str(rouge_l_f1)+'\n')
+    f.write('ROUGE-L Precision: '+ str(rouge_l_precision)+'\n')
+    f.write('ROUGE-L Recall: '+ str(rouge_l_recall)+'\n')    
     f.close()
 
     with open(output_dir + "/refs.json", "a", encoding='utf-8') as f:

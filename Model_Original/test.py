@@ -3,11 +3,15 @@ import Model
 import tensorflow as tf
 import os
 import nltk
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 import random
 import time
 import json
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
+from nltk.translate.meteor_score import meteor_score
+from rouge import Rouge
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 REGULARIZER = 0.0001
@@ -74,6 +78,16 @@ def val(sess, model, data):
                 hpy.append(dic_word[k])
             if len(hpy) > 2:
                 cbleu += nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4)
+                bleu_1gram += sentence_bleu([NL[i][j]], hpy, weights=(1, 0, 0, 0), smoothing_function=smooth.method4)
+                bleu_2gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 1, 0, 0), smoothing_function=smooth.method4)
+                bleu_3gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 0, 1, 0), smoothing_function=smooth.method4)
+                bleu_4gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 0, 0, 1), smoothing_function=smooth.method4)
+                meteor += meteor_score([NL[i][j]], hpy)
+                rouge = Rouge()
+                temp_rouge = rouge.get_scores(' '.join(NL[i][j]), ' '.join(hpy), avg=True)['rouge-l']
+                rouge_l_f1 += temp_rouge['f']
+                rouge_l_precision += temp_rouge['p']
+                rouge_l_recall += temp_rouge['r']
                 count += 1
             if len(hpy) > -1:
                 s = ''
@@ -94,12 +108,36 @@ def val(sess, model, data):
 
     if count > 1:
         cbleu = cbleu / count
+        bleu_1gram = bleu_1gram / count
+        bleu_2gram = bleu_2gram / count
+        bleu_3gram = bleu_3gram / count
+        bleu_4gram = bleu_4gram / count
+        meteor = meteor / count
+        rouge_l_f1 = rouge_l_f1 / count
+        rouge_l_precision = rouge_l_precision / count
+        rouge_l_recall = rouge_l_recall / count 
     sbleu = corpus_bleu(refs, hpys, smoothing_function=smooth.method4)
-    print(cbleu, sbleu)
+    print(f'cbleu: {cbleu} sbleu: {sbleu}')
+    print(f'1-Gram BLEU: {bleu_1gram:.6f}')
+    print(f'2-Gram BLEU: {bleu_2gram:.6f}')
+    print(f'3-Gram BLEU: {bleu_3gram:.6f}')
+    print(f'4-Gram BLEU: {bleu_4gram:.6f}')
+    print(f'METEOR: {meteor:.6f}')
+    print(f'ROUGE-L F1 score: {rouge_l_f1:.6f}')
+    print(f'ROUGE-L Presicion: {rouge_l_precision:.6f}')
+    print(f'ROUGE-L Recall: {rouge_l_recall:.6f}')
 
     f = open('out3.txt' , 'r')
-    f.write(str(cbleu)+'\n')
-    f.write(str(sbleu)+'\n')
+    f.write('sentence bleu: '+ str(cbleu)+'\n')
+    f.write('corpus bleu: '+ str(sbleu)+'\n')
+    f.write('1-Gram BLEU: '+ str(bleu_1gram)+'\n')
+    f.write('2-Gram BLEU: '+ str(bleu_2gram)+'\n')
+    f.write('3-Gram BLEU: '+ str(bleu_3gram)+'\n')
+    f.write('4-Gram BLEU: '+ str(bleu_4gram)+'\n')
+    f.write('METEOR: '+ str(meteor)+'\n')
+    f.write('ROUGE-L F1 score: '+ str(rouge_l_f1)+'\n')
+    f.write('ROUGE-L Precision: '+ str(rouge_l_precision)+'\n')
+    f.write('ROUGE-L Recall: '+ str(rouge_l_recall)+'\n')
     f.close()
 
     with open("refs.json", "w", encoding='utf-8') as f:
