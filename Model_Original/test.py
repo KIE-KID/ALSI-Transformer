@@ -13,7 +13,7 @@ from nltk.translate.bleu_score import SmoothingFunction
 from nltk.translate.meteor_score import meteor_score
 from rouge import Rouge
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
 
@@ -46,6 +46,15 @@ def val(sess, model, data):
     smooth = SmoothingFunction()
     NL = data[8]
     cbleu = 0
+    bleu_1gram = 0
+    bleu_2gram = 0
+    bleu_3gram = 0
+    bleu_4gram = 0
+    meteor = 0
+    rouge_l_f1 = 0 
+    rouge_l_precision = 0 
+    rouge_l_recall = 0 
+
     count = 0
     refs = []
     hpys = []
@@ -127,7 +136,7 @@ def val(sess, model, data):
     print(f'ROUGE-L Presicion: {rouge_l_precision:.6f}')
     print(f'ROUGE-L Recall: {rouge_l_recall:.6f}')
 
-    f = open('out3.txt' , 'r')
+    f = open('out3.txt' , 'a')
     f.write('sentence bleu: '+ str(cbleu)+'\n')
     f.write('corpus bleu: '+ str(sbleu)+'\n')
     f.write('1-Gram BLEU: '+ str(bleu_1gram)+'\n')
@@ -146,7 +155,7 @@ def val(sess, model, data):
         json.dump(hpyjson, f)
 
 
-f = open('data/vocabulary/nl', 'r', encoding='utf-8')
+f = open('data_isbtcode/vocabulary/nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}
