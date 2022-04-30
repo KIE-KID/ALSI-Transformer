@@ -42,15 +42,15 @@ class Transformer:
         self.code_embedding = tf.get_variable('code_emb', [CODE_VOCAB_SIZE, HIDDEN_SIZE])
         self.ast_embedding = tf.get_variable('sbt_emb', [SBT_VOCAB_SIZE, HIDDEN_SIZE])
         # self.training = tf.placeholder(tf.bool)
-        E = HIDDEN_SIZE // 2
-        position_enc = np.array([
-            [pos / np.power(10000, (i - i % 2) / E) for i in range(E)]
-            for pos in range(500)])
-        position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
-        position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1)
-        # self.position_enc1 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
-        self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE // 2],
-                                             initializer=self.create_initializer(0.002))
+        # E = HIDDEN_SIZE // 2
+        # position_enc = np.array([
+        #     [pos / np.power(10000, (i - i % 2) / E) for i in range(E)]
+        #     for pos in range(500)])
+        # position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
+        # position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1)
+        # # self.position_enc1 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
+        # self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE // 2],
+        #                                      initializer=self.create_initializer(0.002))
 
         E = HIDDEN_SIZE
         position_enc = np.array([
@@ -60,8 +60,10 @@ class Transformer:
         position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1
 
         # self.position_enc2 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
-        self.position_enc2 = tf.get_variable('pos_emb2', shape=[500, HIDDEN_SIZE],
-                                             initializer=self.create_initializer(0.002))
+        # self.position_enc2 = tf.get_variable('pos_emb2', shape=[500, HIDDEN_SIZE],
+        #                                      initializer=self.create_initializer(0.002))
+        self.position_enc2 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE],
+                                             initializer=tf.constant_initializer(position_enc))
 
         self.ast_input = tf.placeholder(tf.int32, [None, self.sbtLneg])
         self.father = tf.placeholder(tf.int32, [None, self.sbtLneg])

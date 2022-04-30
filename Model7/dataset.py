@@ -1,12 +1,12 @@
-#sbt_leng = 300
-code_leng = 500 #200+300
+sbt_leng = 300
+code_leng = 300
 nl_leng = 30
 
 def get_Data(bath, path):
-    # sbts = []
+    sbts = []
     # sbtposs = []
-    # sbtsizes = []
-    # sbtmasks = []
+    sbtsizes = []
+    sbtmasks = []
     codes = []
     codesizes = []
     codemasks = []
@@ -14,23 +14,23 @@ def get_Data(bath, path):
     inputNL = []
     outputNL = []
     nlopuputLeng = []
-    # f = open('newsbt_data/' + path + '/newsbtcode', 'r', encoding='utf-8')
-    # SBTs = f.readlines()
-    # f.close()
-    # for temp in SBTs:
-    #     sbt = [int(w) for w in temp.strip().split()]
-    #     sbt = [2] + sbt + [3]
-    #     if len(sbt) > sbt_leng:
-    #         sbt = sbt[0:sbt_leng]
-    #     if len(sbt) % 2 == 0:
-    #         ls = len(sbt) // 2
-    #     else:
-    #         ls = len(sbt) // 2 + 1
-    #     sbtsizes.append(ls)
-    #     sbtmasks.append([1] * ls + [0] * (sbt_leng//2 - ls))
-    #     while len(sbt) < sbt_leng:
-    #         sbt.append(0)
-    #     sbts.append(sbt)
+    f = open('newsbt_data/' + path + '/type_bpe', 'r', encoding='utf-8')
+    SBTs = f.readlines()
+    f.close()
+    for temp in SBTs:
+        sbt = [int(w) for w in temp.strip().split()]
+        sbt = [2] + sbt + [3]
+        if len(sbt) > sbt_leng:
+            sbt = sbt[0:sbt_leng]
+        if len(sbt) % 2 == 0:
+            ls = len(sbt) // 2
+        else:
+            ls = len(sbt) // 2 + 1
+        sbtsizes.append(ls)
+        sbtmasks.append([1] * ls + [0] * (sbt_leng//2 - ls))
+        while len(sbt) < sbt_leng:
+            sbt.append(0)
+        sbts.append(sbt)
 
     # f = open('data_isbtcode/' + path + '/ids', 'r', encoding='utf-8')
     # SBTs = f.readlines()
@@ -44,7 +44,7 @@ def get_Data(bath, path):
     #         sbt.append(0)
     #     sbtposs.append(sbt)
 
-    f = open('newsbt_data/' + path + '/newsbtcode', 'r', encoding='utf-8')
+    f = open('newsbt_data/' + path + '/code_bpe', 'r', encoding='utf-8')
     CODEs = f.readlines()
     f.close()
     for temp in CODEs:
@@ -95,10 +95,10 @@ def get_Data(bath, path):
                 nl.append(0)
             inputNL.append(nl)
 
-    # bathsbt = []
+    bathsbt = []
     # bathsbtpos = []
-    # bathsbtsize = []
-    # bathsbtmask = []
+    bathsbtsize = []
+    bathsbtmask = []
     bathcode = []
     bathcodesize = []
     bathcodemask = []
@@ -108,10 +108,10 @@ def get_Data(bath, path):
     start = 0
     while start < len(codes):
         end = min(start + bath, len(codes))
-        # bathsbt.append(sbts[start:end])
+        bathsbt.append(sbts[start:end])
         # bathsbtpos.append(sbtposs[start:end])
-        # bathsbtsize.append(sbtsizes[start:end])
-        # bathsbtmask.append(sbtmasks[start:end])
+        bathsbtsize.append(sbtsizes[start:end])
+        bathsbtmask.append(sbtmasks[start:end])
 
         bathcode.append(codes[start:end])
         bathcodesize.append(codesizes[start:end])
@@ -123,4 +123,4 @@ def get_Data(bath, path):
         bathnloutputLeng.append(nlopuputLeng[start:end])
         start += bath
         
-    return bathcode, bathcodesize, bathcodemask, bathinputNL, bathoutputNL, bathnloutputLeng
+    return bathsbt, bathsbtsize, bathsbtmask, bathcode, bathcodesize, bathcodemask, bathinputNL, bathoutputNL, bathnloutputLeng

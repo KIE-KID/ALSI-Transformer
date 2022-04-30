@@ -135,7 +135,7 @@ def val(sess, model, data):
     return cbleu, sbleu
 
 
-f = open('data_isbtcode/vocabulary/nl', 'r', encoding='utf-8')
+f = open('newsbt_data/vocabulary/nl', 'r', encoding='utf-8')
 s = f.readlines()
 f.close()
 dic_word = {}

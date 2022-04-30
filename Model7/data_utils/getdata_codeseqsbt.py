@@ -1,3 +1,6 @@
+import os, sys
+p = os.path.abspath('../../')
+sys.path.insert(1, p)
 from pyexpat.errors import codes
 from turtle import position
 import javalang
@@ -5,7 +8,7 @@ import json
 from pyparsing import null_debug_action
 from tqdm import tqdm
 import collections
-import sys
+from All_Data.data_park_0422.utils_park import hump2underline
 
 
 def get_name(obj):
@@ -162,7 +165,8 @@ def codeseq_newsbt(flatten, codeseq, w, w2):
                             # flatten의 c번째 줄 데이터 load
                             f_json = json.loads(flattens[c])
                             if i['type'] == 'Modifier' or i['type'] == 'Annotation' or i['type'] == 'Null' or i['type'] == 'Keyword' or i['type'] == 'Operator' or i['type'] == 'Separator':
-                                tmp = i['value'] + ' ' + i['type']
+                                # tmp = i['value'] + ' ' + i['type']
+                                tmp = hump2underline(i['value']) + ' ' + i['type']
                                 tmp2 = i['type']
                                 # ids.append('None')
                                 result.append(tmp.replace('"', ''))
@@ -171,7 +175,8 @@ def codeseq_newsbt(flatten, codeseq, w, w2):
                                 for j in f_json:
                                     if 'type' in j:
                                         if j['type'] == 'BasicType' and i['value'] == j['value']:
-                                            tmp = i['value'] + ' ' + i['type']
+                                            # tmp = i['value'] + ' ' + i['type']
+                                            tmp = hump2underline(i['value']) + ' ' + i['type']
                                             tmp2 = i['type']
                                             # ids.append(j['id'])
                                             break
@@ -185,15 +190,17 @@ def codeseq_newsbt(flatten, codeseq, w, w2):
                                 for j in f_json:
                                     if 'value' in j:
                                         if i['value'] == j['value']:
-                                            tmp = j['value'] + ' ' + j['type']
+                                            # tmp = j['value'] + ' ' + j['type']
+                                            tmp = hump2underline(j['value']) + ' ' + i['type']
                                             tmp2 = j['type']
                                             result.append(tmp.replace('"', ''))
                                             result_type.append(tmp2)
                                             # ids.append(j['id'])
                                             break
                                         else:
-                                            if j == len(f_json):
-                                                tmp = i['value'] + ' ' + i['type']
+                                            if f_json.index(j) == len(f_json)-1:
+                                                # tmp = i['value'] + ' ' + i['type']
+                                                tmp = hump2underline(i['value']) + ' ' + i['type']
                                                 tmp2 = i['type']
                                                 result.append(tmp.replace('"', ''))
                                                 result_type.append(tmp2)
@@ -204,15 +211,17 @@ def codeseq_newsbt(flatten, codeseq, w, w2):
                                     else:
                                         if 'position' in j and j['position'] != None:
                                             if i['position'] == j['position'][1]:
-                                                tmp = i['value'] + ' ' + i['type']
+                                                # tmp = i['value'] + ' ' + i['type']
+                                                tmp = hump2underline(i['value']) + ' ' + i['type']
                                                 tmp2 = i['type']
                                                 result.append(tmp.replace('"', ''))
                                                 result_type.append(tmp2)
                                                 # ids.append(j['id'])
                                                 break
                                             else:
-                                                if j == len(f_json):
-                                                    tmp = i['value'] + ' ' + i['type']
+                                                if f_json.index(j) == len(f_json)-1:
+                                                    # tmp = i['value'] + ' ' + i['type']
+                                                    tmp = hump2underline(i['value']) + ' ' + i['type']
                                                     tmp2 = i['type']
                                                     result.append(tmp.replace('"', ''))
                                                     result_type.append(tmp2)
@@ -221,7 +230,8 @@ def codeseq_newsbt(flatten, codeseq, w, w2):
                                                 else:
                                                     continue
                                         else:
-                                            tmp = i['value'] + ' ' + i['type']
+                                            # tmp = i['value'] + ' ' + i['type']
+                                            tmp = hump2underline(i['value']) + ' ' + i['type']
                                             tmp2 = i['type']
                                             result.append(tmp.replace('"', ''))
                                             result_type.append(tmp2)
@@ -240,7 +250,7 @@ if __name__ == '__main__':
     process_source(sys.argv[1], 'source.code')
     get_flatten_node('source.code', sys.argv[2])
     get_codeseqsbt('source.code', sys.argv[3])
-    codeseq_newsbt('train.flatten', 'train.codeseq', 'train.result', 'train.result2')
-    #codeseq_newsbt('idflatten', 'idcodeseq', 'idresult', 'idresult2')
+    codeseq_newsbt('valid.flatten', 'valid.codeseq', 'valid.result', 'valid.result2')
+    # codeseq_newsbt('flatten', 'codeseq', 'result', 'result2')
 
 # python getdata_codeseqsbt.py code flatten codeseq
