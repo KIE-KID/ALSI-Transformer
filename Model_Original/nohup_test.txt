@@ -1,0 +1,2564 @@
+/home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+[nltk_data] Downloading package wordnet to /home/gpuadmin/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to /home/gpuadmin/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+WARNING:tensorflow:From /home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/gpuadmin/ahjeong/SeQubic-Transformer/Model_Original/Model.py:192: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+WARNING:tensorflow:From /home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/keras/layers/core.py:143: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+WARNING:tensorflow:From /home/gpuadmin/ahjeong/SeQubic-Transformer/Model_Original/modules.py:176: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From /home/gpuadmin/ahjeong/SeQubic-Transformer/Model_Original/modules.py:128: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /home/gpuadmin/ahjeong/SeQubic-Transformer/Model_Original/Model.py:319: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2022-04-30 22:44:06.278778: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2022-04-30 22:44:06.311390: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2095320000 Hz
+2022-04-30 22:44:06.313738: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x5572032fc510 executing computations on platform Host. Devices:
+2022-04-30 22:44:06.313790: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2022-04-30 22:44:06.477689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1433] Found device 0 with properties: 
+name: NVIDIA GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.78GiB
+2022-04-30 22:44:06.477752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1512] Adding visible gpu devices: 0
+2022-04-30 22:44:06.479280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-04-30 22:44:06.479304: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990]      0 
+2022-04-30 22:44:06.479314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 0:   N 
+2022-04-30 22:44:06.479402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 9535 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2022-04-30 22:44:06.481541: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x557202b63e50 executing computations on platform CUDA. Devices:
+2022-04-30 22:44:06.481570: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): NVIDIA GeForce GTX 1080 Ti, Compute Capability 6.1
+WARNING:tensorflow:From /home/gpuadmin/anaconda3/envs/emse-deepcom/lib/python3.7/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+2022-04-30 22:44:41.940444: I tensorflow/stream_executor/dso_loader.cc:152] successfully opened CUDA library libcublas.so.10.0 locally
+load data......
+load finish
+['compute', 'the', 'size', 'in', 'bytes', 'for', 'storing', '.']
+['as', 'far', 'as', 'we', 're', 'concerned', 'all', 'entries', 'have', 'the', 'same', 'size']
+
+
+['returns', 'true', 'if', 'upon', 'the', 'next', 'update', 'step', 'the', 'contacts', 'must', 'be', 'updated', '.']
+['returns', 'true', 'if', 'upon', 'the', 'next', 'time', 'step', 'the', 'contacts', 'must', 'be', 'updated', '.']
+
+
+['find', 'catch', 'clauses', 'in', 'annotation', 'tree', '.']
+['searches', 'the', 'given', 'field', 'node', 'for', 'annotations', 'and', 'returns', 'each', 'one', 'that', 'matches', 'the', 'provided', 'regular', 'expression', 'pattern', '.']
+
+
+['create', 'an', 'instance', 'of', 'the', 'class']
+['build', 'reflect', 'bytecode', 'from', 'accessor', 'list', '.']
+
+
+['increment', 'the', 'histogram', 'and', 'count', '.']
+['increment', 'the', 'value', 'at', 'position', 'by', 'value', '.']
+
+
+['convert', 'string', 'to', 'geometry', 'object', '.']
+['convert', 'to', 'com', '.', 'vividsolutions', '.', 'jts', '.', 'geom', 'geometry', '.']
+
+
+['shifts', 'given', 'decimal', 'shift', 'to', 'use', 'after', 'formatting', '.']
+['set', 'number', 'of', 'digits', 'to', 'shift', 'the', 'decimal', 'separator', 'to', 'the', 'right', 'coming', 'from', 'the', 'standard', 'btc', 'notation', 'that', 'was', 'common', 'pre', '.']
+
+
+['registers', 'the', 'instrumentation', 'tap', '.']
+['adds', 'an', 'instrumentation', 'tap', 'to', 'monitor', 'internal', 'processing', '.']
+
+
+['returns', 'true', 'if', '<unk>', 'can', 'be', 'called', 'without', 'setting', 'a', 'printer', '.']
+['returns', 'true', 'if', 'toprinter', 'can', 'be', 'called', 'without', 'throwing', 'an', 'unsupportedoperationexception', '.']
+
+
+['identifier', 'of', 'an', 'item', 'owner', 'community', 'note', 'that', 'community', 'id', 'in', 'the', 'owner', 'id', 'parameter', 'should', 'be', 'negative', 'number', '.']
+['identifier', 'of', 'an', 'item', 'owner', 'community', 'note', 'that', 'community', 'id', 'in', 'the', 'owner', 'id', 'parameter', 'should', 'be', 'negative', 'number', '.']
+
+
+['executes', 'thread', 'internal', 'call', '.']
+['executes', 'query', 'runnable', '.']
+
+
+['reads', 'in', 'a', 'sequence', 'of', 'strings', 'from', 'standard', 'input', 'insertion', 'sorts', 'them', 'and', 'prints', 'them', 'to', 'standard', 'output', 'in', 'ascending', 'order', '.']
+['reads', 'in', 'a', 'sequence', 'of', 'strings', 'from', 'standard', 'input', 'insertion', 'sorts', 'them', 'and', 'prints', 'them', 'to', 'standard', 'output', 'in', 'ascending', 'order', '.']
+
+
+['call', 'to', 'notify', 'listener', 'that', 'content', 'loading', 'has', 'changed', '.']
+['function', 'to', 'synchronize', 'adapter', 'content', 'loading', '.']
+
+
+['constructs', 'a', 'pixelinterleavedsamplemodel', 'with', 'the', 'specified', 'parameters', '.']
+['constructs', 'a', 'pixelinterleavedsamplemodel', 'with', 'the', 'specified', 'parameters', '.']
+
+
+['run', 'all', 'the', 'tests', 'in', 'the', 'computer', '.']
+['run', 'all', 'the', 'tests', 'in', 'classes', '.']
+
+
+['internal', 'routine', 'to', 'handle', 'a', 'timeout']
+['internal', 'routine', 'to', 'handle', 'a', 'timeout']
+
+
+['return', 'the', 'user', 's', 'username']
+['find', 'user', 'by', 'name', '.']
+
+
+['creates', 'a', 'new', 'instance', 'of', 'this', 'extended', 'operation', 'config', 'manager', '.']
+['creates', 'a', 'new', 'instance', 'of', 'this', 'extended', 'operation', 'config', 'manager', '.']
+
+
+['drag', 'the', 'edge', 'for', 'a', 'distance', 'in', 'the', 'object', '.']
+['drag', 'a', 'mouse', 'from', 'a', 'point', 'to', 'another', 'point', 'i', '.', 'e', '.']
+
+
+['query', 'the', 'statistics', 'about', 'the', 'currently', 'executing', 'and', 'formats', 'them', 'as', 'a', 'query', 'in', 'the', 'query', 'pool']
+['get', 'the', 'preparedexecutor', 'with', 'the', 'execution', 'explain', '.']
+
+
+['utility', 'to', 'grab', 'a', 'random', 'element', 'from', 'an', 'array', 'of', 'strings', '.']
+['utility', 'to', 'grab', 'a', 'random', 'element', 'from', 'an', 'array', 'of', 'strings', '.']
+
+
+['true', 'if', 'the', 'action', 'bar', 'should', 'be', 'shown', 'false', 'if', 'not', '.']
+['indicates', 'whether', 'or', 'not', 'the', 'caret', 'is', 'currently', 'visible', '.']
+
+
+['is', 'this', 'array', 'a', 'sparsearray', '?']
+['overrides', 'issparse', 'in', 'array', 'and', 'always', 'returns', 'true', '.']
+
+
+['constructs', 'an', 'instance', 'of', 'this', 'class', '.']
+['constructs', 'an', 'instance', 'of', 'this', 'class', '.']
+
+
+['register', 'for', 'a', 'particular', 'request', 'route']
+['register', 'a', 'after', 'routing', 'request', 'interceptor']
+
+
+['writes', 'a', 'block', 'height', 'object', '.']
+['writes', 'a', 'block', 'height', 'object', '.']
+
+
+['removes', 'any', 'spaces', 'or', 'tabs', 'from', 'the', 'current', 'segment', '.']
+['removes', 'any', 'spaces', 'or', 'tabs', 'from', 'the', 'end', 'of', 'the', 'segment', '.']
+
+
+['returns', 'the', 'bytes', 'hash', 'of', 'a', 'single', 'byte', 'array', '.']
+['converts', 'two', 'bytes', 'to', 'an', 'integer', '.']
+
+
+['used', 'to', 'check', 'if', 'the', 'file', 'is', 'raster', 'format', '.']
+['used', 'to', 'check', 'if', 'the', 'file', 'is', 'raster', 'format', '.']
+
+
+['the', 'number', 'of', 'ints', 'in', 'the', 'buffer', '.']
+['returns', 'the', 'number', 'of', 'elements', 'read', 'from', 'the', 'buffer', 'so', 'far', 'after', 'the', 'last', 'reset', '.']
+
+
+['creates', 'a', 'java', 'context', 'type', '.']
+['creates', 'a', 'java', 'context', 'type', '.']
+
+
+['adds', 'a', 'segment', 'date', 'as', 'an', 'exception', '.']
+['adds', 'a', 'segment', 'as', 'an', 'exception', '.']
+
+
+['add', 'a', 'path', 'to', 'the', 'given', 'location']
+['adds', 'a', 'new', 'location', 'with', 'a', 'time', 'to', 'this', 'model', 's', 'move', 'pattern', '.']
+
+
+['obtiene', 'el', 'detalle', 'de', 'un', 'prestamo', 'en', 'el', 'detalle', 'de', 'un', 'prestamo', 'y', 'va', 'a', '<unk>', 'estableciendo', 'su', 'estado', 'keeping', 'no', 'i', '.']
+['comprueba', 'si', 'una', 'signatura', 'de', 'una', 'unidad', 'documental', 'ha', 'sido', 'entregada', '.']
+
+
+['returns', 'true', 'if', 'the', 'expandable', 'expansion', 'can', 'be', 'expanded', '.']
+['convenience', 'method', 'that', 'determines', 'if', 'expansion', 'is', 'set', '.']
+
+
+['opens', 'the', 'os', 'and', 'mac', '.']
+['opens', 'a', 'file', 'manager', 'for', 'the', 'given', 'file', '.']
+
+
+['creates', 'a', 'new', 'url', 'of', 'the', 'given', 'component', 'parts', '.']
+['creates', 'a', 'new', 'url', 'of', 'the', 'given', 'component', 'parts', '.']
+
+
+['visits', 'the', 'given', 'type', 'specific', 'ast', 'node', '.']
+['visits', 'the', 'given', 'type', 'specific', 'ast', 'node', '.']
+
+
+['receive', 'notification', 'of', 'the', 'beginning', 'of', 'an', 'element', '.']
+['receive', 'notification', 'of', 'the', 'beginning', 'of', 'an', 'element', '.']
+
+
+['construct', 'demographic', 'model', 'with', 'default', 'settings']
+['construct', 'demographic', 'model', 'with', 'default', 'settings']
+
+
+['there', 'is', 'no', 'package', 'currently', 'use', '?']
+['appends', 'a', 'package', '.']
+
+
+['decode', 'a', 'varint', 'encoded', 'unsigned', 'long', 'value']
+['decode', 'a', 'varint', 'encoded', 'signed', 'long', 'value']
+
+
+['read', 'a', 'swf', 'file']
+['read', 'an', 'unsigned', 'bit', 'value']
+
+
+['creates', 'a', 'new', 'filesetsetting', 'instance', 'for', 'a', 'file', 'array', 'setting', 'with', 'the', 'specified', 'key', 'and', 'default', 'value', '.']
+['creates', 'a', 'new', 'filearraysetting', 'instance', 'for', 'a', 'file', 'array', 'setting', 'with', 'the', 'specified', 'key', 'and', 'default', 'value', '.']
+
+
+['add', 'a', 'file', 'extension', 'to', 'this', 'file', 'filter', '.']
+['add', 'a', 'file', 'extension', 'to', 'this', 'file', 'filter', '.']
+
+
+['get', 'the', 'retention', 'policy', 'for', 'the', 'corresponding', 'list', 'of', 'files', 'in', 'this', 'resource', '.']
+['returns', 'the', 'retention', 'policy', 'for', 'this', 'annotation', 'type', '.']
+
+
+['skips', 'and', 'discards', 'n', 'bytes', 'from', 'the', 'input', 'stream', '.']
+['skips', 'n', 'bytes', 'of', 'input', 'from', 'this', 'input', 'stream', '.']
+
+
+['go', 'to', 'the', 'specified', 'file', 'location', '.']
+['go', 'to', 'the', 'specified', 'file', 'location', '.']
+
+
+['populate', 'polling', 'box', 'for', 'the', 'users', '.']
+['populates', 'the', 'combo', 'with', 'available', 'versions', 'of', 'sdk', '.']
+
+
+['hide', 'footer', 'when', 'disable', 'pull', 'load', 'more']
+['hide', 'footer', 'when', 'disable', 'pull', 'load', 'more']
+
+
+['make', 'an', 'incoming', 'message', 'sent', 'after', 'the', 'ending', '.']
+['this', 'is', 'a', 'default', 'null', 'implementation', 'which', 'must', 'be', 'overridden', 'in', 'an', 'adapter', 'specific', 'subclass', '.']
+
+
+['validate', 'the', 'date', 'from', 'the', 'specified', 'key', 'and', 'localized', 'date', 'string', '.']
+['validate', 'that', 'the', 'from', 'date', 'is', 'not', 'after', 'the', 'to', 'date', '.']
+
+
+['returns', 'true', 'if', 'this', 'frustum', 'intersects', 'a', 'specified', 'frustum', '.']
+['indicates', 'whether', 'this', 'tile', 's', 'cartesian', 'extent', 'intersects', 'a', 'specified', 'frustum', '.']
+
+
+['prepares', 'the', 'proxy', 'servers', 'to', 'try', '.']
+['prepares', 'the', 'proxy', 'servers', 'to', 'try', '.']
+
+
+['initialize', 'a', 'invoked', 'to', 'repaint', 'the', 'logcat']
+['center', 'based', 'on', 'highlight', 'view', '.']
+
+
+['creates', 'a', 'default', 'socks', 'proxy', 'server', 'and', 'does', 'not', 'require', 'an', 'anonymous', 'port', '.']
+['creates', 'a', 'no', 'authentication', 'socks', 'server', '.']
+
+
+['adds', 'a', 'new', 'region', 'to', 'the', 'match', 'with', 'a', 'priority', '.']
+['adds', 'a', 'new', 'applied', 'region', 'to', 'the', 'match', 'without', 'a', 'priority', '.']
+
+
+['creates', 'a', 'abstractquerybuilder', 'instance', 'that', 'can', 'be', 'used', 'to', 'build', 'api', 'request', 'with', 'various', 'parameters']
+['creates', 'a', 'abstractquerybuilder', 'instance', 'that', 'can', 'be', 'used', 'to', 'build', 'api', 'request', 'with', 'various', 'parameters']
+
+
+['verifies', 'signature', 'on', 'termination', 'request', 'received', 'from', 'the', 'remote', 'end', '.']
+['verifies', 'logout', 'request', 'signature', 'received', 'from', 'the', 'remote', 'end', '.']
+
+
+['action', 'to', 'receive', 'the', 'room', 'changes']
+['action', 'when', 'updating', 'the', 'room', 'topic', '.']
+
+
+['send', 'a', 'sequence', 'of', 'insteon', 'messages', 'to', 'the', 'actual', 'device', 'at', 'the', 'e', '.', 'g', '.']
+['send', 'a', 'sequence', 'of', 'insteon', 'messages', 'to', 'an', 'adapter', '.']
+
+
+['converts', 'decoded', 'asn', '.', 'integer', 'to', 'int', 'value', '.']
+['converts', 'decoded', 'asn', '.', 'integer', 'to', 'int', 'value', '.']
+
+
+['construct', 'a', 'specific', 'type', 'of', 'neuron', '.']
+['construct', 'a', 'specific', 'type', 'of', 'neuron', 'from', 'a', 'string', 'description', '.']
+
+
+['returns', 'whether', 'updates', 'are', 'detected', '.']
+['returns', 'whether', 'updates', 'are', 'detected', '.']
+
+
+['constructs', 'a', 'new', 'doc', 'flavor', 'with', 'the', 'given', 'mime', 'type', 'and', 'a', 'print', 'data', 'representation', 'class', 'name', 'of', 'b', 'byte', 'array', '.']
+['constructs', 'a', 'new', 'doc', 'flavor', 'with', 'the', 'given', 'mime', 'type', 'and', 'a', 'print', 'data', 'representation', 'class', 'name', 'of', 'b', 'byte', 'array', '.']
+
+
+['connects', 'this', 'startup', 'process', 'for', 'a', 'subscriber', 'with', 'it', 's', 'own', 'startup', 'state']
+['process', 'a', 'surprise', 'connect', 'event', 'or', 'place', 'it', 'on', 'the', 'startup', 'queue', '.']
+
+
+['launch', 'the', 'url', '.']
+['tells', 'simplechromecustomtabs', 'that', 'a', 'potential', 'url', 'might', 'be', 'launched', '.']
+
+
+['returns', 'a', 'clone', 'of', 'this', 'priority', 'queue', '.']
+['returns', 'a', 'clone', 'of', 'this', 'priority', 'queue', '.']
+
+
+['create', 'a', 'set', 'of', 'image', 'cache', 'cache']
+['create', 'a', 'set', 'of', 'image', 'cache', 'parameters', 'that', 'can', 'be', 'provided', 'to']
+
+
+['launch', 'the', 'class', '.']
+['prints', 'out', 'the', 'version', 'number', 'to', 'system', '.', 'out', '.']
+
+
+['creates', 'a', 'photo', 'for', 'use', 'as', 'the', 'photo', 'implementations', '.']
+['required', 'to', 'have', 'my', 'own', 'enhanced', 'attacher', 'that', 'contains', 'the', 'additional', 'functionality']
+
+
+['internal', 'query', 'to', 'resolve', 'the', '<unk>', 'to', 'many', 'relationship', 'of', 'groupdb', '.']
+['internal', 'query', 'to', 'resolve', 'the', 'clouddevices', 'to', 'many', 'relationship', 'of', 'groupdb', '.']
+
+
+['used', 'by', 'the', 'whitebox', 'gui', 'to', 'tell', 'if', 'this', 'plugin', 'is', 'still', 'running', '.']
+['used', 'by', 'the', 'whitebox', 'gui', 'to', 'tell', 'if', 'this', 'plugin', 'is', 'still', 'running', '.']
+
+
+['paints', 'the', 'border', 'of', 'a', 'color', 'chooser', '.']
+['paints', 'the', 'border', 'of', 'a', 'color', 'chooser', '.']
+
+
+['constructs', 'an', 'instantiationerror', 'with', 'the', 'specified', 'detail', 'message', '.']
+['constructs', 'an', 'instantiationexception', 'with', 'the', 'specified', 'detail', 'message', '.']
+
+
+['lazy', 'initialization', 'as', 'the', 'vehicle', 'info', 'may', 'not', 'be', 'available', 'from', 'the', 'beginning', '.']
+['lazy', 'initialization', 'as', 'the', 'vehicle', 'info', 'may', 'not', 'be', 'available', 'from', 'the', 'beginning', '.']
+
+
+['register', 'a', 'movement', 'listener', 'for', 'notification', '.']
+['unregister', 'a', 'movement', 'listener', 'from', 'notification', '.']
+
+
+['this', 'method', 'was', 'generated', 'by', 'mybatis', 'generator', '.']
+['this', 'method', 'was', 'generated', 'by', 'mybatis', 'generator', '.']
+
+
+['register', 'container', 'capabilities', '.']
+['register', 'container', 'capabilities', '.']
+
+
+['returns', 'the', 'text', 'nodes', 'of', 'the', 'first', 'type', 'found', 'by', 'this', 'text', '.']
+['returns', 'the', 'list', 'of', 'any', 'direct', 'string', 'nodes', 'of', 'this', 'node', '.']
+
+
+['adds', 'to', 'the', 'starting', 'configuration', 'parameter', 'all', 'search', 'methods']
+['this', 'method', 'initializes', 'relational', 'maps']
+
+
+['swap', 'the', 'pages', 'the', 'page', '.']
+['create', 'a', 'copy', 'of', 'this', 'page', '.']
+
+
+['used', 'to', 'communicate', 'a', 'progress', 'update', 'between', 'a', 'plugin', 'tool', 'and', 'the', 'main', 'whitebox', 'user', 'interface', '.']
+['used', 'to', 'communicate', 'a', 'progress', 'update', 'between', 'a', 'plugin', 'tool', 'and', 'the', 'main', 'whitebox', 'user', 'interface', '.']
+
+
+['log', 'a', 'info', 'message', 'with', 'a', 'throwable', '.']
+['log', 'a', 'info', 'message', 'with', 'a', 'throwable', '.']
+
+
+['group', 'this', 'traversable', 'by', 'the', 'provided', 'classifying', 'function']
+['group', 'this', 'traversable', 'by', 'the', 'provided', 'classifying', 'function', 'and', 'collected', 'by', 'the', 'provided', 'collector']
+
+
+['returns', 'true', 'if', 'the', 'origin', 'and', 'origin', 'label', 'should', 'be', 'shown', '.']
+['returns', 'true', 'if', 'the', 'origin', 'and', 'origin', 'label', 'should', 'be', 'shown', '.']
+
+
+['parse', 'an', 'unwrap', 'action', '.']
+['parse', 'an', 'unwrap', 'action', '.']
+
+
+['deletes', 'all', 'unfixed', 'selected', 'traces', 'and', 'vias', 'inside', 'a', 'rectangle', '.']
+['assigns', 'all', 'selected', 'items', 'to', 'a', 'new', 'group', 'new', 'component', 'for', 'example']
+
+
+['determines', 'if', 'the', 'passed', 'volume', 'has', 'the', 'default', 'naming', 'conventions', '.']
+['determines', 'if', 'the', 'passed', 'volume', 'name', 'conforms', 'to', 'the', 'default', 'naming', 'convention', '.']
+
+
+['check', 'if', 'available', 'send', 'current', 'runtime', 'todo', 'send', 'request']
+['check', 'if', 'we', 'are', 'already', 'in', 'sync', '.']
+
+
+['paint', 'a', 'header', '.']
+['render', 'the', 'data', 'category', 'row', 'element', '.']
+
+
+['returns', 'an', 'enumeration', 'of', 'all', 'the', 'available', 'options', '.']
+['returns', 'an', 'enumeration', 'of', 'all', 'the', 'available', 'options', '.']
+
+
+['create', 'a', 'defined', 'method']
+['constructs', 'the', 'defined', 'method', '.']
+
+
+['adds', 'steps', 'for', 'modifying', 'the', 'rp', 'cg', '.']
+['method', 'that', 'adds', 'the', 'step', 'to', 'the', 'workflow', 'for', 'adding', 'a', 'journal', 'volume', 'to', 'a', 'cg', '.']
+
+
+['clears', 'the', 'trie', 'in', 'preparation', 'for', 'the', 'new', 'match', '.']
+['clears', 'the', 'currently', 'locked', 'node', 'and', 'associated', 'state', 'variables', '.']
+
+
+['destroyed', 'general', 'dimension', 'access']
+['headerstmt', 'header', 'quotedstring']
+
+
+['converts', 'hex', 'values', 'from', 'strings', 'to', 'byte', 'arra']
+['converts', 'hex', 'values', 'from', 'strings', 'to', 'byte', 'arra']
+
+
+['initiates', 'a', 'scan', 'for', 'all', 'known', 'barcode', 'types', 'with', 'the', 'specified', 'camera', '.']
+['initiates', 'a', 'scan', 'for', 'all', 'known', 'barcode', 'types', 'with', 'the', 'specified', 'camera', '.']
+
+
+['creates', 'an', 'instance', 'of', 'the', 'specified', 'class', 'using', 'the', 'specified', 'classloader', '.']
+['creates', 'an', 'instance', 'of', 'the', 'specified', 'class', 'using', 'the', 'specified', 'classloader', 'object', '.']
+
+
+['creates', 'an', 'batchupdateexception', 'object', '.']
+['creates', 'an', 'batchupdateexception', 'object', '.']
+
+
+['block', 'all', 'proxies', 'of', 'the', 'domain', 'except', 'the', 'ones', '.']
+['blocks', 'all', 'available', 'gateways']
+
+
+['remove', 'cookie', 'with', 'web', 'user']
+['remove', 'cookie', 'with', 'web', 'user', 'by', 'setting', 'user', 'to']
+
+
+['returns', 'a', 'string', 'representation', 'of', 'the', 'object', '.']
+['returns', 'the', 'string', 'representation', 'of', 'the', 'condition']
+
+
+['returns', 'a', 'non', 'empty', 'string', 'representation', 'of', 'this', 'optional', 'suitable', 'for', 'debugging', '.']
+['returns', 'a', 'non', 'empty', 'string', 'representation', 'of', 'this', 'optional', 'suitable', 'for', 'debugging', '.']
+
+
+['you', 'restored', 'num', 'of', 'skilltarget', 's', 'hp', 'by', 'using', 'skillname', '.']
+['you', 'restored', 'num', 'of', 'skilltarget', 's', 'hp', 'by', 'using', 'skillname', '.']
+
+
+['create', 'a', 'new', 'target', 'packet', 'using', 'the', 'information', 'from', 'the', '<unk>', 'wrapper', '.']
+['create', 'a', 'new', 'packet', 'with', 'values', '.']
+
+
+['gets', 'the', 'rollout', 'rollout', 'cache', 'and', 'item', 'to', 'db', 'custom', 'rollout', '.']
+['update', 'rollout', 'details', '.']
+
+
+['overrides', 'provided', 'authorization', 'details', 'to', 'determine', 'the', 'authorization', 'details', '.']
+['private', 'helper', 'method', '.']
+
+
+['returns', 'true', 'if', 'the', 'query', 'path', 'is', 'a', 'valid', 'file', '.']
+['checks', 'if', 'this', 'asset', 'is', 'valid']
+
+
+['barrier', 'for', 'writes', 'of', 'doubles', 'into', 'fields', 'of', 'instances', 'i', '.', 'e', '.']
+['barrier', 'for', 'writes', 'of', 'doubles', 'into', 'fields', 'of', 'instances', 'i', '.', 'e', '.']
+
+
+['reads', 'from', 'input', 'and', 'initalizes', 'the', 'value', 'in', 'this', 'objectholder', 'object', 'with', 'the', 'unmarshalled', 'data', '.']
+['reads', 'from', 'input', 'and', 'initalizes', 'the', 'value', 'in', 'the', 'holder', 'with', 'the', 'unmarshalled', 'data', '.']
+
+
+['creates', 'the', '<unk>', 'object', 'with', 'the', 'provided', 'topic', 'value', '.']
+['creates', 'the', 'basetopicproperty', 'object', 'with', 'the', 'provided', 'topic', 'value', '.']
+
+
+['this', 'method', 'will', 'update', 'the', 'aggval', 'it', 'will', 'add', 'new', 'value', 'to', 'aggval']
+['this', 'method', 'will', 'update', 'the', 'aggval', 'it', 'will', 'add', 'new', 'value', 'to', 'aggval']
+
+
+['writes', 'the', 'character', 'using', 'the', 'correct', 'encoding', '.']
+['writes', 'a', 'character', 'to', 'the', 'output', 'stream', 'with', 'the', 'correct', 'encoding', '.']
+
+
+['construct', 'a', 'vector', 'from', 'part', 'of', 'a', 'array', '.']
+['construct', 'a', 'vector', 'from', 'part', 'of', 'an', 'array', '.']
+
+
+['returns', 'the', 'text', 'matched', 'by', 'the', 'current', 'regular', 'expression', '.']
+['returns', 'the', 'text', 'matched', 'by', 'the', 'current', 'regular', 'expression', '.']
+
+
+['launch', 'the', 'test', '.']
+['runs', 'all', 'test', 'cases', 'in', 'this', 'test', 'suite']
+
+
+['register', 'a', 'new', 'observer', 'for', 'a', 'given', 'notification', 'name', 'and', 'a', 'list', 'of', 'observers', '.']
+['register', 'an', 'observer', 'to', 'be', 'notified', 'of', 'inotifications', 'with', 'a', 'given', 'name', '.']
+
+
+['compares', 'a', 'string', 'with', 'a', 'double']
+['compares', 'a', 'string', 'with', 'a', 'string']
+
+
+['returns', 'true', 'if', 'the', 'dom', 'implementation', 'handled', 'by', 'this', 'helper', 'supports', 'the', 'sax', 'contenthandler', 'interface', '.']
+['returns', 'true', 'if', 'the', 'dom', 'implementation', 'handled', 'by', 'this', 'helper', 'supports', 'the', 'sax', 'contenthandler', 'interface', '.']
+
+
+['report', 'whether', 'active', 'radio', 'is', 'active', 'or', 'not', '.']
+['returns', 'true', 'if', 'this', 'node', 's', 'radio', 'is', 'active', 'false', 'if', 'not']
+
+
+['join', 'items', 'on', 'separator', 'appending', 'the', 'result', 'to', 'out', '.']
+['join', 'items', 'on', 'separator', 'appending', 'the', 'result', 'to', 'out', '.']
+
+
+['helper', 'for', '<unk>', 'that', 'takes', 'values', 'instead', 'of', 'a', 'rectf', '.']
+['helper', 'version', 'of', 'savelayer', 'that', 'takes', 'values', 'rather', 'than', 'a', 'rectf', '.']
+
+
+['send', 'a', 'message', 'to', 'all', 'plugins', '.']
+['send', 'a', 'message', 'to', 'all', 'plugins', '.']
+
+
+['removes', 'the', 'given', 'point', 'from', 'the', 'list', 'of', 'points', '.']
+['removes', 'the', 'point', 'from', 'the', 'cloud', 'but', 'doesn', 't', 'update', 'the', 'bounds', 'automatically', '.']
+
+
+['adds', 'the', 'range', 'between', 'min', 'max', 'as', 'possible', 'saturation', 'and', 'max', 'range', '.']
+['adds', 'the', 'range', 'between', 'min', 'max', 'as', 'possible', 'hue', 'values', 'for', 'this', 'range', '.']
+
+
+['set', 'corner', 'radius', 'for', 'all', 'corners', 'in', 'dip']
+['set', 'corner', 'radius', 'for', 'all', 'corners', 'in', 'density', 'independent', 'pixels', '.']
+
+
+['generates', 'a', 'version', 'filename', 'prepended', 'with', 'the', 'stable', 'storage', 'directory', 'path']
+['generates', 'a', 'version', 'filename', 'prepended', 'with', 'the', 'stable', 'storage', 'directory', 'path', 'with', 'the', 'current', 'version', 'number', 'as', 'a', 'suffix', '.']
+
+
+['returns', 'a', '<unk>', 'as', 'converted', 'from', 'the', 'given', 'string']
+['returns', 'a', 'packeddate', 'as', 'converted', 'from', 'the', 'given', 'string']
+
+
+['creates', 'stream', 'for', 'decoding', '.']
+['creates', 'stream', 'for', 'decoding', '.']
+
+
+['given', 'a', 'feature', 'index', 'see', 'if', 'it', 'contains', 'a', 'feature']
+['query', 'a', 'feature', 'as', 'identified', 'by', 'the', 'given', 'featureindex', 'as', 'to', 'whether', 'the', 'given', 'featurevalue', 'is', 'a', 'known', 'value', 'of', 'that', 'feature', '.']
+
+
+['prepares', 'a', 'payment', 'type', 'for', 'automatic', 'scan', 'of', 'the', 'provided', 'payment', 'type', '.']
+['set', 'the', 'payment', 'type']
+
+
+['shim', 'to', 'set', 'the', 'result', 'type', 'of', 'the', 'extraction', '.']
+['shim', 'to', 'set', 'the', 'result', 'type', 'of', 'the', 'extraction', '.']
+
+
+['reads', 'a', 'document', 'from', 'the', 'given', 'file']
+['reads', 'a', 'document', 'from', 'the', 'given', 'file']
+
+
+['performs', 'the', 'given', 'action', 'for', 'each', 'line', 'of', 'the', 'charseq', 'with', 'the', 'given', 'parameter']
+['performs', 'the', 'given', 'action', 'for', 'each', 'line', 'of', 'the', 'charseq', '.']
+
+
+['returns', 'true', 'if', 'a', 'and', 'b', 'values', 'are', 'equal', 'whether', 'or', 'not', 'either', 'of', 'them', 'are', 'null']
+['returns', 'true', 'if', 'a', 'and', 'b', 'are', 'equal', 'or', 'are', 'both', 'null', '.']
+
+
+['mark', 'the', 'cached', 'xmlreader', 'as', 'available', '.']
+['mark', 'the', 'cached', 'xmlreader', 'as', 'available', '.']
+
+
+['checks', 'that', 'the', 'value', 'isn', 't', 'too', 'long', 'for', 'a', 'name', '.']
+['checks', 'that', 'the', 'value', 'isn', 't', 'too', 'long', 'for', 'a', 'name', '.']
+
+
+['is', 'a', 'imdn', 'delivered', 'message']
+['is', 'imdn', 'notification', 'displayed', 'requested']
+
+
+['convert', 'pixel', 'to', 'dp']
+['convert', 'pixels', 'to', 'dp']
+
+
+['parse', 'a', 'uri', 'query', 'string', 'returning', 'a', 'list', 'of', 'name', 'value', 'pairs', 'in', 'the', 'order', 'they', 'represent', 'the', 'same', 'query', 'and', 'keeping', 'duplicates', '.']
+['parse', 'a', 'uri', 'query', 'string', 'returning', 'a', 'list', 'of', 'name', 'value', 'pairs', 'in', 'the', 'order', 'they', 'occur', 'in', 'the', 'query', 'and', 'keeping', 'duplicates', '.']
+
+
+['returns', 'max', 'of', 'two', 'dogs', 'd', 'and', 'd']
+['returns', 'max', 'of', 'two', 'dogs', 'd', 'and', 'd']
+
+
+['pops', 'the', 'given', 'number', 'of', 'types', 'from', 'the', 'output', 'frame', 'stack', '.']
+['pops', 'the', 'given', 'number', 'of', 'types', 'from', 'the', 'output', 'frame', 'stack', '.']
+
+
+['test', 'to', 'verify', 'that', 'the', 'connection', 'api', 'name', 'is', 'not', 'generated', 'but', 'has', 'a', 'valid', 'api', 'name', '.']
+['test', 'to', 'verify', 'that', 'an', 'api', 'name', 'beginning', 'with', 'a', 'digit', 'causes', 'an', 'apinameinspection', 'error', 'to', 'be', 'generated', '.']
+
+
+['stores', 'the', 'json', 'data', 'for', 'the', 'fields', 'in', 'this', 'request']
+['this', 'method', 'controls', 'the', 'form', 's', 'state', 'flow', 'and', 'subsequently', 'process', 'all', 'fields', 'added', 'to', 'this', 'form', 'with', 'their', 'respective', 'validations', '.']
+
+
+['determine', 'whether', 'a', 'repository', 'matches', 'a', 'given', 'entity']
+['defines', 'a', 'predicate', 'for', 'matching', 'entities']
+
+
+['listener', 'for', 'retrieved', '<unk>', 'from', 'the', 'gc', 'gateway']
+['listener', 'for', 'retrieved', 'paymentproduct', 'from', 'the', 'gc', 'gateway']
+
+
+['return', 'true', 'if', 'variable', 'name', 'is', 'set', 'to', 'something', 'symbol', 'in', 'its', 'variable', 'definition', 'number', 'and', 'loads', 'has', 'a', 'variable', 'name', '.']
+['determines', 'whether', 'the', 'given', 'defuse', 'reads', 'or', 'writes', 'the', 'same', 'variable', 'as', 'this', 'defuse']
+
+
+['create', 'a', 'new', 'searchabletextareapanel', 'encapsulating', 'the', 'given', 'jtextarea', 'with', 'the', 'search', 'bar', 'hidden']
+['creates', 'a', 'text', 'area', 'output', 'stream', 'for', 'writing', 'text', 'to', 'the', 'given', 'text', 'area', '.']
+
+
+['get', 'the', 'null', 'string', 'value', '.']
+['returns', 'the', 'simple', 'name', 'of', 'this', 'class', '.']
+
+
+['checks', 'whether', 'the', 'object', 'name', 'is', 'a', 'pattern', '.']
+['checks', 'whether', 'the', 'object', 'name', 'is', 'a', 'pattern', '.']
+
+
+['compute', 'the', 'hash', 'the', 'inputs', 'in', 'the', 'tree', 'and', 'hash', 'the', 'set', 'of', 'input', '.']
+['walks', 'over', 'pairs', 'of', 'inputs', 'and', 'combines', 'them', 'to', 'create', 'lowest', 'level', 'of', 'non', 'leaf', 'nodes', '.']
+
+
+['creates', 'a', 'new', 'instance', '.']
+['creates', 'a', 'new', 'component', 'entry', '.']
+
+
+['update', 'without', 'erasing', 'the', 'background', '.']
+['updates', 'the', 'display', 'area', 'of', 'the', 'window', '.']
+
+
+['increase', 'the', 'number', 'of', 'occurrences', 'count', '.']
+['increases', 'the', 'count', 'by', '.']
+
+
+['retains', 'only', 'the', 'elements', 'in', 'the', 'list', 'that', 'are', 'contained', 'in', 'the', 'specified', 'collection', '.']
+['retains', 'only', 'the', 'elements', 'in', 'this', 'list', 'that', 'are', 'contained', 'in', 'the', 'specified', 'collection', '.']
+
+
+['attempts', 'to', 'match', 'the', 'given', 'name', 'returning', 'true', 'if', 'the', 'lock', 'token', 'matches', 'the', 'pattern', '.']
+['returns', 'true', 'if', 'name', 'matches', 'one', 'of', 'the', 'patterns']
+
+
+['return', 'a', 'stream', 'consisting', 'of', 'the', 'elements', 'of', 'this', 'stream', 'which', 'have', 'no', 'keys', '.']
+['returns', 'a', 'stream', 'consisting', 'of', 'the', 'keys', 'of', 'this', 'stream', 'elements', '.']
+
+
+['this', 'method', 'should', 'try', 'and', 'build', 'one', 'or', 'more', 'nodes', 'in', 'the', 'table', '.']
+['this', 'method', 'should', 'try', 'and', 'build', 'one', 'or', 'more', 'nodes', 'in', 'the', 'table', '.']
+
+
+['tells', 'whether', 'required', 'proposals', 'are', 'supported', 'by', 'this', 'proposal', '.']
+['tells', 'whether', 'required', 'proposals', 'are', 'supported', 'by', 'this', 'proposal', '.']
+
+
+['resets', 'the', 'xml', 'for', 'reuse', '.']
+['resets', 'the', 'iterator', 'to', 'its', 'initial', 'state', '.']
+
+
+['dump', 'of', 'thread', 'dump']
+['returns', 'the', 'singleton', 'instance', 'creating', 'if', 'necessary', '.']
+
+
+['initialise', 'a', 'des', 'cipher', '.']
+['initialise', 'a', 'des', 'cipher', '.']
+
+
+['clears', 'the', 'context', 'so', 'that', 'it', 'will', 'be', 'shown', 'in', 'the', 'current', 'page', '.']
+['clear', 'all', 'of', 'the', 'groups', 'within', 'this', 'track']
+
+
+['creates', 'an', 'confirmation', 'file', '.']
+['we', 'need', 'real', 'jar', 'contents', 'as', 'this', 'test', 'will', 'actually', 'run', 'gradle', 'that', 'will', 'peek', 'inside', 'the', 'archive', '.']
+
+
+['create', 'a', 'new', 'instance', 'of', 'this', 'class', '.']
+['create', 'instance', 'of', 'this', 'class', '.']
+
+
+['returns', 'the', 'parameter', 'string', 'representing', 'the', 'state', 'of', 'this', 'menushortcut', '.']
+['returns', 'the', 'parameter', 'string', 'representing', 'the', 'state', 'of', 'this', 'menushortcut', '.']
+
+
+['ensures', 'that', 'an', 'object', 'reference', 'passed', 'as', 'a', 'parameter', 'to', 'the', 'calling', 'method', 'is', 'not', 'null', '.']
+['ensures', 'that', 'an', 'object', 'reference', 'passed', 'as', 'a', 'parameter', 'to', 'the', 'calling', 'method', 'is', 'not', 'null', '.']
+
+
+['constructs', 'a', '<unk>', 'from', 'the', 'given', 'input', 'stream']
+['constructs', 'a', 'sample', 'info', 'from', 'the', 'given', 'input', 'stream']
+
+
+['if', 'this', 'block', 'is', 'a', 'register', 'this', 'item', 'and', 'does', 'not', 'update', 'the', 'global', 'machine', '.']
+['like', 'above', 'but', 'with', 'boolean', 'parameters', 'instead', 'of', 'a', 'bitmask']
+
+
+['create', 'asset', 'product', 'item']
+['create', 'asset', 'for', 'this', 'product']
+
+
+['visits', 'a', 'signature', 'corresponding', 'to', 'a', 'primitive', 'type', '.']
+['visits', 'a', 'signature', 'corresponding', 'to', 'a', 'primitive', 'type', '.']
+
+
+['the', 'textual', 'representation', 'of', 'this', 'nsstring', '.']
+['the', 'textual', 'representation', 'of', 'this', 'nsstring', '.']
+
+
+['creates', 'a', 'default', 'recall', 'object', '.']
+['creates', 'a', 'new', 'recall', 'evaluator']
+
+
+['resets', 'the', 'operation', 'retry', 'handler', '.']
+['sets', 'the', 'unlimited', 'number', 'of', 'operation', 'retry', 'attempts', '.']
+
+
+['this', 'function', 'returns', 'the', 'result', 'of', 'linearly', 'interpolating', 'the', 'start', 'and', 'end', 'values', 'with', 'fraction', 'representing', 'the', 'proportion', 'between', 'the', 'start', 'and', 'end', 'values', '.']
+['this', 'function', 'returns', 'the', 'result', 'of', 'linearly', 'interpolating', 'the', 'start', 'and', 'end', 'values', 'with', 'fraction', 'representing', 'the', 'proportion', 'between', 'the', 'start', 'and', 'end', 'values', '.']
+
+
+['returns', 'true', 'if', 'this', 'tag', 'is', 'a', 'block', 'tag', 'used', 'to', 'add', 'a', 'tag', 'to', 'the', 'document', '.']
+['returns', 'true', 'if', 'this', 'tag', 'is', 'a', 'block', 'tag', 'which', 'is', 'a', 'tag', 'used', 'to', 'add', 'structure', 'to', 'a', 'document', '.']
+
+
+['parse', 'a', 'comment', 'string', 'cursor', 'is', 'at', 'a', '.']
+['parse', 'a', 'comment', 'string', 'cursor', 'is', 'at', 'a', '.']
+
+
+['converts', 'a', 'jaxb', 'object', 'and', 'writes', 'to', 'an', 'outputstream', 'object', '.']
+['converts', 'a', 'jaxb', 'object', 'and', 'writes', 'to', 'an', 'outputstream', 'object', '.']
+
+
+['adds', 'a', 'host', 'limit', 'to', 'the', 'query']
+['adds', 'a', 'host', 'limit', 'to', 'the', 'query']
+
+
+['unmarshals', 'token', 'from', 'base', 'string', 'using', 'the', 'object', 'de', 'serialization', '.']
+['deserialize', 'the', 'string', 'into', 'token', 'restriction', 'object', '.']
+
+
+['constrain', 'a', 'box', 'with', 'all', 'components', '.']
+['forcefully', 'fits', 'the', 'vector', 'in', 'the', 'given', 'aabb', '.']
+
+
+['create', 'a', 'datalengthexception', 'with', 'the', 'given', 'message', '.']
+['create', 'a', 'datalengthexception', 'with', 'the', 'given', 'message', '.']
+
+
+['method', 'called', 'when', 'the', 'user', 'clicks', 'the', 'confirm', 'button', '.']
+['method', 'used', 'to', 'confirm', 'changes', 'in', 'the', 'dialog']
+
+
+['main', 'version', 'of', 'the', '<unk>', 'class', '.']
+['initialization', 'common', 'to', 'both', 'activatable', 'and', 'transient', 'instances', '.']
+
+
+['test', 'if', 'an', 'broker', 'uses', 'one', 'or', 'more', 'connection']
+['determines', 'whether', 'a', 'bridge', 'has', 'been', 'established', 'between', 'the', 'specified', 'brokers', '.', 'establishment', 'means', 'that', 'connections', 'have', 'been', 'created', 'and', 'broker', 'info', 'has', 'been', 'exchanged', '.']
+
+
+['returns', 'a', 'decoding', 'exception', 'suitable', 'for', 'use', 'when', 'an', 'unexpected', 'ldap', 'message', 'is', 'received', '.']
+['returns', 'a', 'decoding', 'exception', 'suitable', 'for', 'use', 'when', 'an', 'unexpected', 'ldap', 'response', 'is', 'received', '.']
+
+
+['tell', 'if', 'the', 'string', 'is', 'whitespace', '.']
+['tell', 'if', 'the', 'string', 'is', 'whitespace', '.']
+
+
+['creates', 'an', 'initial', 'port', 'and', 'starts', 'to', 'listen', '.']
+['creates', 'an', 'initial', 'port', 'and', 'starts', 'to', 'listen', '.']
+
+
+['plays', 'a', 'stream', 'synchronously', '.']
+['plays', 'a', 'stream', 'synchronously', '.']
+
+
+['update', 'both', 'the', 'primary', 'and', 'class', 'indices', 'for', 'the', 'provided', 'device', '.']
+['update', 'both', 'the', 'primary', 'and', 'class', 'indices', 'for', 'the', 'provided', 'device', '.']
+
+
+['creates', 'a', 'new', '<unk>', '.']
+['constructs', 'a', 'screeninfoaction', 'based', 'on', 'a', 'location', 'on', 'the', 'screen']
+
+
+['clear', 'the', 'list', 'making', 'the', 'cursor', 'be', 'on', 'a', 'component', '.']
+['reset', 'the', 'velocity', 'tracker', 'back', 'to', 'its', 'initial', 'state', '.']
+
+
+['constructs', 'a', 'new', 'xpathfactoryconfigurationexception', 'with', 'the', 'specified', 'detail', 'message', '.']
+['constructs', 'a', 'new', 'xpathfactoryconfigurationexception', 'with', 'the', 'specified', 'detail', 'message', '.']
+
+
+['determines', 'if', 'the', 'specified', 'coordinate', 'falls', 'anywhere', 'inside', 'the', 'given', 'bounds', '.']
+['determines', 'if', 'the', 'specified', 'coordinate', 'falls', 'anywhere', 'inside', 'the', 'given', 'bounds', '.']
+
+
+['sends', 'a', 'partitionedregion', 'removeallprmessage', 'to', 'the', 'recipient']
+['sends', 'a', 'partitionedregion', 'putallprmessage', 'to', 'the', 'recipient']
+
+
+['does', 'this', 'index', 'belong', 'to', 'a', 'primary', 'key', 'constraint', '?']
+['does', 'this', 'index', 'belong', 'to', 'a', 'primary', 'key', 'constraint', '?']
+
+
+['lock', 'if', 'lock', 'is', 'held', '.']
+['handling', 'of', 'the', 'locking', 'mechanism', 'using', 'zoo', 'keeper', '.']
+
+
+['custom', 'deserialization', 'method', '.']
+['custom', 'deserialization', 'method', '.']
+
+
+['constructs', 'a', 'new', '<unk>', '.']
+['construct', 'a', 'new', 'resourcesetregistrationendpoint', 'instance', '.']
+
+
+['context', 'length', 'k', '.']
+['context', 'length', 'k', '.']
+
+
+['builds', 'an', 'updates', 'the', 'app', 'app', 'app', 'app', 'with', 'the', 'downloaded', 'image', 'uri', '.']
+['builds', 'a', 'new', 'app', 'card', 'for', 'the', 'composeractivity', '.']
+
+
+['returns', 'whether', 'the', 'entry', 'has', 'subordinates', 'or', 'not', '.']
+['returns', 'whether', 'the', 'entry', 'has', 'subordinates', 'or', 'not', '.']
+
+
+['determines', 'whether', 'the', 'provided', 'configuration', 'provider', 'is', 'acceptable', 'for', 'the', 'new', 'configuration', 'security', 'implementation', '.']
+['check', 'if', 'the', 'class', 'provided', 'in', 'the', 'configuration', 'is', 'an', 'acceptable', 'java', 'class', 'for', 'a', 'synchronization', 'provider', '.']
+
+
+['this', 'method', 'is', 'called', 'in', 'case', 'the', 'canvas', 'is', 'unchecked', 'on', 'the', 'canvas', '.']
+['draws', 'the', 'checked', 'state', '.']
+
+
+['clear', 'possible', 'sensitive', 'data']
+['clear', 'possible', 'sensitive', 'data']
+
+
+['can', 'be', 'implemented', 'by', 'subclasses', '.']
+['can', 'be', 'implemented', 'by', 'subclasses', '.']
+
+
+['checks', 'if', 'is', 'testing', '.']
+['returns', 'true', 'if', 'we', 're', 'currently', 'running', 'a', 'test', '.']
+
+
+['returns', 'the', 'tip', 'text', 'for', 'this', 'property']
+['returns', 'the', 'tip', 'text', 'for', 'this', 'property']
+
+
+['overrides', '.', 'equals', '.']
+['overrides', '.', 'equals', '.']
+
+
+['used', 'to', 'generate', 'price', 'model', 'table', 'for', 'the', 'price', 'model', 'table', 'and', 'return', 'it', '.']
+['generate', 'a', 'list', 'of', 'string', 's', 'which', 'contains', 'the', 'price', 'model', 'data', 'from', 'the', 'subscription', 'price', 'model', 'table']
+
+
+['returns', 'the', 'tip', 'text', 'for', 'this', 'property']
+['returns', 'the', 'tip', 'text', 'for', 'this', 'property']
+
+
+['use', 'the', 'local', 'scope', 'or', 'xml', 'syntax', '?']
+['determines', 'if', 'currently', 'using', 'namespaces', '.']
+
+
+['called', 'whenever', 'image', 'request', 'finishes', 'successfully', 'that', 'is', 'whenever', 'image', 'is', 'set', '.']
+['called', 'whenever', 'image', 'request', 'fails', 'that', 'is', 'whenever', 'failure', 'drawable', 'is', 'set', '.']
+
+
+['encode', 'a', 'list', 'into', 'json', 'text', 'and', 'write', 'it', 'to', 'out', '.']
+['encode', 'a', 'list', 'into', 'json', 'text', 'and', 'write', 'it', 'to', 'out', '.']
+
+
+['create', 'an', 'instance', 'of', 'partial']
+['create', 'an', 'instance', 'of', 'wtlstype']
+
+
+['close', 'the', 'dialog']
+['save', 'parameters', 'and', 'close']
+
+
+['escape', 'and', 'recreate', 'a', 'form', 'connection', 'with', 'the', 'form', '<unk>', 'method']
+['create', 'upload', 'form', '.']
+
+
+['returns', 'the', 'operator', 'that', 'should', 'be', 'called', 'after', 'applying', 'a', 'unary', 'operators']
+['returns', 'a', 'new', 'unaryoperator', 'instance', 'which', 'wraps', 'thrown', 'checked', 'exception', 'instance', 'into', 'a', 'runtimeexception']
+
+
+['called', 'when', 'stop', 'is', 'called', 'with', 'computed', 'total', 'and', 'time', 'since', 'last', 'event', 'values', 'in', 'milliseconds', '.']
+['called', 'when', 'stop', 'is', 'called', 'with', 'computed', 'total', 'and', 'time', 'since', 'last', 'event', 'values', 'in', 'milliseconds', '.']
+
+
+['initialize', 'the', 'extension', '.']
+['initialize', 'the', 'extension', '.']
+
+
+['initializes', 'an', 'empty', 'string', 'tree', 'with', 'the', 'given', 'values', '.']
+['should', 'only', 'be', 'called', 'inside', 'sqlstring', 'because', 'this', 'class', 'essentially', 'verifies', 'that', 'we', 've', 'checked', 'for', 'updates', '.']
+
+
+['is', 'the', 'command', 'currently', 'applicable', '?']
+['is', 'the', 'command', 'currently', 'applicable', '?']
+
+
+['add', 'a', 'member', 'as', 'a', 'member', 'of', 'this', 'set', 'and', 'return', 'the', 'set', 'of', 'members', 'even', 'if', 'the', 'member', 'is', 'not', 'unique', 'in', 'the', 'mapping', '.']
+['add', 'a', 'member', 'to', 'this', 'component', 'and', 'sort', 'array', 'with', 'membercomparator']
+
+
+['create', 'one', 'of', 'these', 'in', 'the', 'local', 'case', 'so', 'that', 'we', 'have', 'a', 'snapshot', 'of', 'the', 'state', 'and', 'so', 'that', 'we', 'have', 'the', 'bucket', 'to', 'move', 'back', 'to', '.']
+['create', 'one', 'of', 'these', 'in', 'the', 'local', 'case', 'so', 'that', 'we', 'have', 'a', 'snapshot', 'of', 'the', 'state', 'and', 'can', 'allow', 'the', 'bucket', 'to', 'move', 'out', 'from', 'under', 'us', '.']
+
+
+['reads', 'data', 'to', 'a', 'given', 'checkpoint', 'bucket', '.']
+['reads', 'checkpoint', 'data', '.']
+
+
+['construct', 'a', 'lookup', 'plan', 'using', 'the', 'lookup', 'table', 'starting', 'from', 'the', 'given', 'source', 'and', 'script', '.']
+['lookup', 'a', 'branch', 'right', 'right', 'beneath', 'a', 'starting', 'point', '.']
+
+
+['bind', 'lua', 'functions', 'using', 'opcode']
+['bind', 'lua', 'functions', 'using', 'opcode']
+
+
+['compare', 'this', 'object', 'with', 'the', 'by', 'its', 'value', '.']
+['return', 'true', 'if', 'the', 'new', 'value', 'is', 'different', 'from', 'the', 'previous', 'value', '.']
+
+
+['validate', 'that', 'the', 'right', 'attribute', 'for', 'the', 'dataset', 'is', 'valid', '.']
+['verify', 'that', 'the', 'message', 'has', 'all', 'obligatory', 'attributes', 'and', 'throw', 'an', 'exception', 'if', 'this', 'is', 'not', 'the', 'case', '.']
+
+
+['clears', 'the', 'list', 'of', 'source', 'images', '.']
+['clears', 'the', 'list', 'of', 'source', 'images', '.']
+
+
+['this', 'method', 'transforms', 'the', 'reporter', 'to', 'a', 'report', 'for', 'a', 'report']
+['creates', 'report', 'for', 'given', 'report', 'template', 'format', 'data', 'source', 'and', 'parameters']
+
+
+['runs', 'the', 'test', 'case', '.']
+['runs', 'the', 'test', 'case', '.']
+
+
+['this', 'test', 'fails', 'with', 'npe', 'when', 'the', 'stopwords', 'file', 'is', 'missing', 'in', 'classpath']
+['this', 'test', 'fails', 'with', 'npe', 'when', 'the', 'stopwords', 'file', 'is', 'missing', 'in', 'classpath']
+
+
+['constructs', 'a', 'new', 'token', 'for', 'the', 'specified', 'image', 'and', 'kind', '.']
+['constructs', 'a', 'new', 'token', 'for', 'the', 'specified', 'image', 'and', 'kind', '.']
+
+
+['normalize', 'a', 'sequence', 'of', 'char', 'values', '.']
+['normalize', 'a', 'sequence', 'of', 'char', 'values', '.']
+
+
+['todo', 'is', 'the', 'language', 'available', 'on', 'any', 'engine', 'not', 'just', 'the', 'default']
+['todo', 'is', 'the', 'language', 'available', 'on', 'any', 'engine', 'not', 'just', 'the', 'default']
+
+
+['skips', 'variable', 'length', 'blocks', 'up', 'to', 'and', 'including', 'next', 'zero', 'length', 'block', '.']
+['skips', 'variable', 'length', 'blocks', 'up', 'to', 'and', 'including', 'next', 'zero', 'length', 'block', '.']
+
+
+['initialize', 'the', 'boot', 'raw', 'storage', 'with', 'the', 'tib', 'with', 'an', 'initial', 'uninitialized', 'memory', 'size', 'of', 'the', 'header', 'of', 'the', 'tib', 's']
+['initialize', 'raw', 'storage', 'with', 'low', 'memory', 'word', 'ptr', 'of', 'size', 'bytes', 'to', 'be', 'an', 'uninitialized', 'instance', 'of', 'the', 'scalar', 'type', 'specified', 'by', 'tib', '.']
+
+
+['is', 'the', 'keycode', 'currently', 'pressed', '?']
+['is', 'the', 'keycode', 'currently', 'being', 'pressed', '?']
+
+
+['attempts', 'to', 'match', 'a', 'new', 'pattern', '.']
+['computes', 'a', 'regular', 'expression', 'string', 'where', 'each', 'instance', 'of', 'the', 'old', 'name', 'can', 'be', 'fulfilled', 'by', 'either', 'the', 'old', 'name', 'or', 'new', 'name', '.']
+
+
+['clears', 'the', 'task', 'stack', 'of', 'all', 'sub', 'queues', '.']
+['clear', 'all', 'activity', 'related', 'data', 'structures', '.']
+
+
+['returns', 'the', 'string', 'representation', 'of', 'the', 'current', 'values', 'of', 'array', '.']
+['returns', 'the', 'string', 'representation', 'of', 'the', 'current', 'values', 'of', 'array', '.']
+
+
+['init', 'web', 'environment', '.']
+['init', 'web', 'environment', '.']
+
+
+['verify', 'if', 'a', 'role', 'is', 'already', 'marked', 'as', 'selected', '.']
+['predicate', 'for', 'checking', 'are', 'there', 'roles', '.']
+
+
+['create', 'a', 'zipfian', 'generator', 'for', 'the', 'specified', 'number', 'of', 'items', 'using', 'the', 'specified', 'zipfian', 'constant', '.']
+['create', 'a', 'zipfian', 'generator', 'for', 'the', 'specified', 'number', 'of', 'items', 'using', 'the', 'specified', 'zipfian', 'constant', '.']
+
+
+['looks', 'up', 'class', 'android', 'project', 'by', 'internal', 'name']
+['looks', 'for', 'inner', 'and', 'anonymous', 'classes', 'by', 'fqn', 'in', 'a', 'javac', 'notation', 'pkg', '.', 'top', 'inner', '.']
+
+
+['used', 'by', 'group', 'creation', 'routine', 'not', 'by', 'users']
+['used', 'by', 'group', 'creation', 'routine', 'not', 'by', 'users']
+
+
+['synchronous', 'closesecurechannel', 'service', 'request', '.']
+['synchronous', 'closesecurechannel', 'service', 'request', '.']
+
+
+['create', 'a', 'new', 'float', 'numericliteral', '.']
+['create', 'a', 'new', 'float', 'numericliteral', '.']
+
+
+['logs', 'the', 'event', 'to', 'the', 'log', 'with', 'the', 'given', 'priority']
+['enable', 'event', 'if', 'disabled']
+
+
+['is', 'the', 'device', 'half', 'supported']
+['whether', 'this', 'device', 'supports', 'the', 'cl', 'khr', 'fp', 'extension', '.']
+
+
+['is', 'the', 'node', 'an', 'authorized', 'authenticate', '?']
+['check', 'that', 'the', 'given', 'node', 'and', 'password', 'match', 'in', 'the', 'node', 'security', 'table', '.']
+
+
+['makes', 'sure', 'update', 'signals', 'are', 'called', 'on', 'the', 'specified', 'source', '.']
+['allows', 'fluent', 'composition', 'via', 'a', 'composer', 'function', 'that', 'receives', 'this', 'agera', 'instance', 'and', 'must', 'return', 'some', 'agera', 'instance', '.']
+
+
+['parses', 'a', 'name', 'value', 'pair', 'with', 'the', 'given', 'parser', '.']
+['parses', 'a', 'name', 'value', 'pair', 'with', 'the', 'given', 'parser', '.']
+
+
+['returns', 'a', 'random', 'integer', 'k', 'with', 'probability', 'pdf', 'k', '.']
+['returns', 'a', 'random', 'integer', 'k', 'with', 'probability', 'pdf', 'k', '.']
+
+
+['get', 'the', 'value', 'of', 'the', 'back', 'camera', 'facing', 'the', 'direction', 'setting', '.']
+['whether', 'the', 'back', 'camera', 'should', 'be', 'opened', '.']
+
+
+['call', 'the', 'visitor', 'for', 'the', 'function', '.']
+['call', 'the', 'visitor', 'for', 'the', 'function', '.']
+
+
+['utility', 'method', 'to', 'trim', 'trailing', 'whitespace', '.']
+['trims', 'trailing', 'whitespace', '.']
+
+
+['constructs', 'an', 'instance', 'using', 'the', 'default', 'key', '.']
+['constructs', 'an', 'instance', 'using', 'the', 'default', 'key', '.']
+
+
+['unbind', 'and', 'stop', 'the', 'downloader', 'service', '.']
+['unbind', 'stop', 'filedownloader', 'process', 'manually', 'do', 'not', 'need', 'will', 'unbind', 'stop', 'automatically', 'by', 'system', 'if', 'leave', 'unused', 'period']
+
+
+['links', 'two', 'instruction', 'edges', '.']
+['links', 'two', 'nodes', '.']
+
+
+['parse', 'the', 'version', 'of', 'the', 'velocity', 'vm', 'by', 'looking', 'for', 'the', 'version', 'token', 'name', 'and', 'build', 'the', 'internal', 'version']
+['process', 'a', 'version', 'string', 'to', 'determine', 'the', 'major', 'and', 'minor', 'versions', 'of', 'the', 'file', '.']
+
+
+['sets', 'this', 'peer', 'as', 'if', 'it', 'had', 'been', 'reset', 'before', 'any', 'peer', 'components', 'will', 'reset', '.']
+['this', 'method', 'resets', 'the', 'source', 'of', 'certificates', '.']
+
+
+['get', 'the', 'text', 'up', 'but', 'not', 'including', 'the', 'specified', 'character', 'or', 'the', 'end', 'of', 'line', 'whichever', 'comes', 'first', '.']
+['get', 'the', 'text', 'up', 'but', 'not', 'including', 'the', 'specified', 'character', 'or', 'the', 'end', 'of', 'line', 'whichever', 'comes', 'first', '.']
+
+
+['check', 'if', 'this', 'result', 'set', 'is', 'closed', '.']
+['check', 'if', 'this', 'result', 'set', 'is', 'closed', '.']
+
+
+['appending', 'the', 'offset', 'clause', '.']
+['appending', 'the', 'offset', 'clause', '.']
+
+
+['remove', 'all', 'localized', 'widgets', 'from', 'the', 'provided', 'list', '.']
+['filter', 'scoutwidget', 's', 'of', 'guideline', 'objects']
+
+
+['creates', 'new', 'icon', '.']
+['creates', 'new', 'icon', '.']
+
+
+['resets', 'this', 'matcher', '.']
+['resets', 'this', 'matcher', '.']
+
+
+['print', 'the', 'the', 'trace', 'of', 'methods', 'from', 'where', 'the', 'error', 'originated', '.']
+['print', 'the', 'the', 'trace', 'of', 'methods', 'from', 'where', 'the', 'error', 'originated', '.']
+
+
+['writes', 'a', 'compressed', 'message', 'to', 'this', 'output', 'stream', '.']
+['writes', 'len', 'bytes', 'from', 'the', 'specified', 'byte', 'array', 'starting', 'at', 'offset', 'off', 'to', 'this', 'output', 'stream', '.']
+
+
+['ctor', 'for', 'a', 'functional', 'swing', 'object', 'with', 'no', 'prexisting', 'adapter']
+['ctor', 'for', 'a', 'functional', 'swing', 'object', 'with', 'no', 'existing', 'adapter']
+
+
+['scores', 'the', 'given', 'dag', 'up', 'to', 'a', 'constant', '.']
+['scores', 'the', 'given', 'dag', 'up', 'to', 'a', 'constant', '.']
+
+
+['returns', 'the', 'name', 'of', 'the', 'affected', 'table', '.']
+['returns', 'the', 'table', 'name', 'of', 'this', 'tableinfo']
+
+
+['updates', 'the', 'item', 'in', 'this', 'matrix', 'series', '.']
+['updates', 'the', 'value', 'of', 'the', 'specified', 'item', 'in', 'this', 'matrix', 'series', '.']
+
+
+['deallocate', 'the', 'case', 'of', 'destroy', 'the', 'proxy', 'mbean', '.']
+['finalize', 'this', 'servlet', '.']
+
+
+['used', 'to', 'communicate', 'a', 'progress', 'update', 'between', 'a', 'plugin', 'tool', 'and', 'the', 'main', 'whitebox', 'user', 'interface', '.']
+['used', 'to', 'communicate', 'a', 'progress', 'update', 'between', 'a', 'plugin', 'tool', 'and', 'the', 'main', 'whitebox', 'user', 'interface', '.']
+
+
+['removes', 'all', 'occurrences', 'in', 'this', 'collection', 'which', 'are', 'contained', 'in', 'the', 'specified', 'collection', '.']
+['removes', 'all', 'occurrences', 'in', 'this', 'collection', 'which', 'are', 'contained', 'in', 'the', 'specified', 'collection', '.']
+
+
+['split', 'a', 'value', 'that', 'may', 'contain', 'a', 'comma', 'space', 'of', 'bar', 'separated', 'list', '.']
+['split', 'a', 'value', 'that', 'may', 'contain', 'a', 'comma', 'space', 'of', 'bar', 'separated', 'list', '.']
+
+
+['sorts', 'the', 'specified', 'array', 'into', 'ascending', 'numerical', 'order', '.']
+['sorts', 'the', 'specified', 'array', 'into', 'ascending', 'numerical', 'order', '.']
+
+
+['returns', 'true', 'if', 'state', 'is', 'in', 'a', 'state', 'not', 'state']
+['this', 'method', 'determines', 'if', 'the', 'argument', 'is', 'a', 'valid', 'state', '.']
+
+
+['constructs', 'a', 'database', 'administrator', 'without', 'a', 'connection']
+['constructs', 'a', 'database', 'administrator', 'without', 'a', 'connection']
+
+
+['the', 'put', 'update', 'order', 'operation']
+['the', 'put', 'update', 'order', 'operation']
+
+
+['returns', 'the', 'best', 'achieved', 'with', 'the', 'best', 'score', 'value', '.']
+['returns', 'the', 'best', 'achieved', 'metric', 'value', '.']
+
+
+['creates', 'a', 'new', 'settings', 'based', 'map', 'from', 'a', 'settings', 'object']
+['creates', 'a', 'new', 'mapbasedmovement', 'based', 'on', 'a', 'settings', 'object', 's', 'settings', 'but', 'with', 'different', 'simmap']
+
+
+['supports', 'deferred', 'automatic', 'layout', '.']
+['supports', 'deferred', 'automatic', 'layout', '.']
+
+
+['block', 'until', 'the', 'processor', 'has', '<unk>', 'to', 'the', 'given', 'state', '.']
+['block', 'until', 'the', 'processor', 'has', 'transitioned', 'to', 'the', 'given', 'state', '.']
+
+
+['fills', 'the', 'specified', 'array', 'with', 'the', 'specified', 'element', '.']
+['fills', 'the', 'specified', 'array', 'with', 'the', 'specified', 'element', '.']
+
+
+['finalizes', 'the', 'hashcode', 'method', '.']
+['finalizes', 'the', 'hashcode', 'method']
+
+
+['update', 'the', 'sparse', 'features', 'in', 'the', 'gold', 'data', '.']
+['performs', 'the', 'update', 'of', 'the', 'weight', 'vector']
+
+
+['merges', 'the', 'data', 'of', 'another', 'histogram', 'dnotherdocumentngram', 'with', 'this', 'histogram', 'data', '.']
+['merges', 'the', 'data', 'of', 'another', 'histogram', 'dnotherdocumentngram', 'with', 'this', 'histogram', 'data', '.']
+
+
+['creates', 'a', 'new', 'validedgepredicate', '.']
+['creates', 'a', 'new', 'validedgepredicate', '.']
+
+
+['return', 'whether', 'the', 'type', 'identified', 'by', 'the', 'token', 'is', 'a', 'member', 'of', 'the', 'mbean', '.']
+['determines', 'if', 'the', 'user', 'identified', 'by', 'ssotoken', 'is', 'a', 'member', 'of', 'this', 'subject', '.']
+
+
+['skip', 'until', 'the', 'given', 'string', 'is', 'matched', 'in', 'the', 'stream', 'but', 'ignoring', 'chars', 'initially', 'escaped', 'by', 'a', 'and', 'any', 'el', 'expressions', '.']
+['skip', 'until', 'the', 'given', 'string', 'is', 'matched', 'in', 'the', 'stream', 'but', 'ignoring', 'chars', 'initially', 'escaped', 'by', 'a', '.']
+
+
+['parse', 'a', 'string', 'of', 'csv', 'csv', 'csv', 'output', '.']
+['parses', 'comma', 'separated', 'roles', 'groups', 'into', 'array', 'of', 'groups', 'strings', '.']
+
+
+['collect', 'the', 'stats', 'of', 'the', 'rp', 'system', '.']
+['collects', 'the', 'rp', 'statistics', 'for', 'the', 'given', 'protectionsystem', '.']
+
+
+['removes', 'the', 'sub', 'class', 'from', 'the', 'type', '.']
+['removes', 'the', 'sub', 'class', 'from', 'the', 'type', '.']
+
+
+['true', 'if', 'the', 'session', 'is', 'anonymous']
+['efficient', 'check', 'for', 'whether', 'a', 'token', 'is', 'anonymous', 'by', 'performing', 'instance', 'comparison', 'with', 'the', 'singleton', '.']
+
+
+['returns', 'the', 'odds', 'that', 'a', 'certain', 'number', 'above', 'will', 'be', 'above', 'the', 'current', 'value', '.']
+['returns', 'the', 'odds', 'that', 'a', 'certain', 'number', 'or', 'above', 'will', 'be', 'rolled', 'on', 'd', '.']
+
+
+['returns', 'an', 'iterator', 'for', 'the', 'outlier', 'lists', '.']
+['returns', 'an', 'iterator', 'for', 'the', 'outlier', 'lists', '.']
+
+
+['find', 'the', 'fields', 'constant', 'that', 'matches', 'fieldid', 'throwing', 'an', 'exception', 'if', 'it', 'is', 'not', 'found', '.']
+['find', 'the', 'fields', 'constant', 'that', 'matches', 'fieldid', 'throwing', 'an', 'exception', 'if', 'it', 'is', 'not', 'found', '.']
+
+
+['utility', 'method', 'for', 'testing', 'the', 'given', 'classpath', 'directory', 'for', 'a', 'given', 'jar', 'file', '.']
+['checks', 'the', 'java', 'classpath', 'for', 'rapidminer', 'studio', 'launcher', 'or', 'core', 'jars', '.']
+
+
+['create', 'a', 'download', 'object', '.']
+['create', 'download', 'request', '.']
+
+
+['reset', 'the', 'stream', '.']
+['reset', 'the', 'stream', '.']
+
+
+['creates', 'a', 'new', 'cipher', 'instance', '.']
+['creates', 'a', 'new', 'cipher', 'instance', '.']
+
+
+['run', 'controls', 'asynchronously', 'in', 'a', 'new', 'network', 'asynchronously', '.']
+['run', 'raptor', 'in', 'its', 'own', 'thread', 'that', 'will', 'be', 'paused', 'and', 'unpaused', 'as', 'the', 'search', 'progresses']
+
+
+['add', 'all', 'the', 'package', 'name', 'to', 'the', 'provided', 'class', '.']
+['add', 'a', 'package', 'import', 'or', 'perhaps', 'an', 'inner', 'class', 'scope', '.']
+
+
+['constructs', 'a', 'malformeduriexception', 'with', 'the', 'specified', 'detail', 'message', '.']
+['constructs', 'a', 'malformeduriexception', 'with', 'the', 'specified', 'detail', 'message', '.']
+
+
+['creates', 'a', 'new', 'naming', 'context', 'with', 'the', 'given', 'table', 'and', 'the', 'given', 'predicate', '.']
+['create', 'the', 'expandabletablerowskin', 'and', 'listen', 'to', 'changes', 'for', 'the', 'item', 'this', 'table', 'row', 'represents', '.']
+
+
+['perform', 'an', 'asynchronous', 'max', 'operation']
+['perform', 'an', 'asynchronous', 'min', 'operation']
+
+
+['returns', 'the', 'signed', 'point', 'of', 'the', 'vectors', 'p', 'with', 'p', 'p', 'p', 'and', 'p', '.']
+['calculates', 'the', 'scalar', 'product', 'of', 'p', 'this', '.']
+
+
+['load', 'exp', 'frac', 'a', '.']
+['load', 'exp', 'frac', 'a', '.']
+
+
+['build', 'the', 'keys', 'in', 'the', 'range', 'builder', '.']
+['builds', 'the', 'swagger', 'markupconfig', '.']
+
+
+['returns', 'int', 'from', 'given', 'array', 'of', 'shorts', '.']
+['returns', 'int', 'from', 'given', 'array', 'of', 'shorts', '.']
+
+
+['resumes', 'engine', 'work', '.']
+['resumes', 'engine', 'work', '.']
+
+
+['constructs', 'a', 'control', 'to', 'sort', 'on', 'a', 'list', 'of', 'sort', 'keys', '.']
+['constructs', 'a', 'control', 'to', 'sort', 'on', 'a', 'list', 'of', 'sort', 'keys', '.']
+
+
+['removes', 'the', 'element', 'at', 'the', 'head', 'of', 'the', 'queue', 'and', 'returns', 'it', '.']
+['removes', 'the', 'element', 'at', 'the', 'head', 'of', 'the', 'queue', 'and', 'returns', 'it', '.']
+
+
+['creates', 'a', 'new', 'state', 'object', 'when', 'a', 'node', 'is', 'pressed', 'with', 'the', 'middle', 'mouse', 'button', '.']
+['creates', 'a', 'new', 'state', 'object', 'after', 'the', 'mouse', 'middle', 'button', 'has', 'been', 'pressed', '.']
+
+
+['creates', 'a', 'node', '.']
+['creates', 'a', 'node', '.']
+
+
+['adds', 'a', 'new', 'output', '.']
+['adds', 'a', 'new', 'output', '.']
+
+
+['returns', 'whether', 'this', 'text', 'area', 'contains', 'multipart', 'content', '.']
+['queries', 'whether', 'the', 'inputs', 'to', 'the', 'compare', 'engine', 'were', 'all', 'identical', 'modified', 'original', 'and', 'if', 'specified', 'ancestor', '.']
+
+
+['restore', 'original', 'location', 'that', 'much', 'be', 'original', 'as', 'they', 'need', 'to', 'be', 'restored', '.']
+['restore', 'the', 'selected', 'widgets', 'to', 'their', 'original', 'location', '.']
+
+
+['writes', 'standard', 'header', 'string', 'for', 'the', 'gap', 'statistics', 'file', '.']
+['writes', 'a', 'standard', 'header', 'string', 'for', 'the', 'gap', 'statistics', 'file', '.']
+
+
+['equivalent', 'to', 'this', '.', 'cross', 'b', '.', 'normalize', '.']
+['equivalent', 'to', 'this', '.', 'cross', 'b', '.', 'normalize', '.']
+
+
+['create', 'a', 'time', 'period', 'expression']
+['returns', 'a', 'time', 'period', 'expression', 'for', 'the', 'specified', 'parts', '.']
+
+
+['get', 'the', 'null', 'string', 'value', '.']
+['returns', 'the', 'name', 'of', 'this', 'audioplayer']
+
+
+['constructs', 'a', 'new', 'independence', 'test', 'which', 'checks', 'independence', 'facts', 'based', 'on', 'the', 'correlation', 'matrix', 'implied', 'by', 'the', 'given', 'data', 'set', 'must', 'be', 'continuous', '.']
+['constructs', 'a', 'new', 'independence', 'test', 'which', 'checks', 'independence', 'facts', 'based', 'on', 'the', 'correlation', 'matrix', 'implied', 'by', 'the', 'given', 'data', 'set', 'must', 'be', 'continuous', '.']
+
+
+['finish', 'activity', 'for', 'the', 'given', 'activity', '.']
+['finish', 'the', 'activities', 'according', 'to', 'the', 'given', 'class', 'type', '.']
+
+
+['test', 'the', 'configuration', 'files', '.']
+['test', 'a', 'configuration', 'file', 'which', 'should', 'make', 'the', 'bootstrap', 'fail', '.']
+
+
+['creates', 'a', 'new', 'memory', 'synchronizer', 'object', '.']
+['creates', 'a', 'new', 'memory', 'synchronizer', 'object', '.']
+
+
+['add', 'extended', 'data', 'to', 'the', 'intent', '.']
+['add', 'extended', 'data', 'to', 'the', 'intent', '.']
+
+
+['creates', 'a', 'instance', 'of', '<unk>', 'that', 'holds', 'the', 'named', 'lock', 'service', '.']
+['creates', 'new', 'instance', 'of', 'grantor', 'for', 'the', 'lock', 'service', '.']
+
+
+['factory', 'method', 'for', 'constructing', 'jackson', 'digestible', 'schema', 'using', 'specified', 'message', 'class', '.']
+['factory', 'method', 'for', 'constructing', 'jackson', 'digestible', 'schema', 'using', 'the', 'first', 'message', 'type', 'defined', 'in', 'the', 'underlying', 'native', 'protobuf', 'schema', '.']
+
+
+['inserts', 'the', 'given', 'instruction', 'at', 'the', 'begining', 'of', 'this', 'list', '.']
+['inserts', 'the', 'given', 'instruction', 'at', 'the', 'begining', 'of', 'this', 'list', '.']
+
+
+['returns', 'the', 'minute', 'rational', 'function', 'form', 'a', 'new', 'polynomial', 'instance', '.']
+['returns', 'a', 'copy', 'of', 'the', 'denominator', 'polynomial', '.']
+
+
+['handles', 'a', 'mouse', 'move', 'into', 'the', 'region', 'over', 'a', 'link', '.']
+['handles', 'a', 'mouse', 'move', 'out', 'of', 'the', 'region', 'over', 'a', 'link', '.']
+
+
+['paints', 'the', 'border', 'of', 'a', 'text', 'area', '.']
+['paints', 'the', 'border', 'of', 'a', 'text', 'area', '.']
+
+
+['given', 'a', 'chain', 'of', 'library', 'in', 'scenario', 'check', 'if', 'they', 'are', 'eligible', 'for', 'be', 'run', 'in', 'warn', 'scenario', '.']
+['determines', 'if', 'a', 'scenario', 'has', 'at', 'least', 'one', 'of', 'the', 'affect', 'check', 'boxes', 'checked', '.']
+
+
+['it', 'returns', 'the', 'names', 'of', 'the', 'sub', 'streams', 'stored', 'in', 'the', 'names', 'of', 'the', 'given', 'stream', 'info']
+['returns', 'a', 'stream', 'name', 'assigned', 'for', 'each', 'stream', 'generated', 'if', 'none', 'was', 'supplied', '.']
+
+
+['removes', 'a', 'texture', 'from', 'this', 'material', '.']
+['removes', 'a', 'texture', 'from', 'this', 'material', '.']
+
+
+['takes', 'a', 'byte', 'array', 'and', 'returns', 'the', 'bytes', 'in', 'the', 'byte', 'array', '.']
+['select', 'bar', 'code', 'height', 'select', 'the', 'height', 'of', 'the', 'bar', 'code', 'as', 'n', 'dots', 'default', 'dots']
+
+
+['adds', 'one', 'or', 'more', 'addresses', 'to', 'the', 'email', 'that', 'is', 'being', 'built', '.']
+['adds', 'to', 'primary', 'recipients', 'to', 'the', 'email', 'that', 'is', 'being', 'built', '.']
+
+
+['computes', 'the', 'quantile', 'value', 'of', 'the', 'given', 'dataset', '.']
+['computes', 'the', 'quantile', 'value', 'of', 'the', 'given', 'dataset', '.']
+
+
+['when', 'a', 'flush', 'is', 'still', 'active', '.']
+['if', 'set', 'to', 'true', 'the', 'flush', 'will', 'block', 'if', 'a', 'another', 'flush', 'operation', 'is', 'already', 'running', 'until', 'the', 'flush', 'can', 'be', 'performed', '.']
+
+
+['method', 'generated', 'by', 'intellij', 'idea', 'gui', 'designer', 'important', '!', '!']
+['method', 'generated', 'by', 'intellij', 'idea', 'gui', 'designer', 'important', '!', '!']
+
+
+['returns', 'true', 'if', 'os', 'is', 'unix', '.']
+['checks', 'if', 'is', 'unix', '.']
+
+
+['construct', 'a', '<unk>', 'that', 'takes', 'a', 'host', 'name', 'and', 'a', 'context', 'object', '.']
+['constructs', 'an', 'instance', 'of', 'the', 'idm', 'client']
+
+
+['get', 'the', 'position', 'in', 'the', 'list', 'of', 'a', 'given', 'item']
+['get', 'the', 'position', 'in', 'the', 'list', 'of', 'a', 'given', 'item']
+
+
+['delete', 'bucket', '.']
+['delete', 'a', 'bucket', '.']
+
+
+['return', 'true', 'if', 'the', 'cell', 'union', 'intersects', 'the', 'given', 'cell', 'id', '.']
+['return', 'true', 'if', 'the', 'cell', 'union', 'intersects', 'the', 'given', 'cell', 'id', '.']
+
+
+['removes', 'the', 'specified', 'key', 'and', 'its', 'associated', 'value', 'from', 'this', 'symbol', 'table', 'if', 'the', 'key', 'is', 'in', 'this', 'symbol', 'table', '.']
+['removes', 'the', 'specified', 'key', 'and', 'its', 'associated', 'value', 'from', 'the', 'symbol', 'table', 'if', 'the', 'key', 'is', 'in', 'the', 'symbol', 'table', '.']
+
+
+['returns', 'the', 'number', 'of', 'leaves', 'in', 'the', 'tree', 'structure', '.']
+['returns', 'number', 'of', 'leaves', 'in', 'tree', 'structure', '.']
+
+
+['get', 'the', 'collection', 'and', 'create', 'some', 'indexes']
+['get', 'the', 'mongo', 'db', 'collection', 'and', 'create', 'some', 'indexes']
+
+
+['save', 'a', 'crashinfo', 'instance', 'to', 'a', 'parcel', '.']
+['save', 'a', 'crashinfo', 'instance', 'to', 'a', 'parcel', '.']
+
+
+['used', 'to', 'communicate', 'feedback', 'pop', 'up', 'messages', 'between', 'a', 'plugin', 'tool', 'and', 'the', 'main', 'whitebox', 'user', 'interface', '.']
+['used', 'to', 'communicate', 'feedback', 'pop', 'up', 'messages', 'between', 'a', 'plugin', 'tool', 'and', 'the', 'main', 'whitebox', 'user', 'interface', '.']
+
+
+['generate', 'a', 'random', 'of', 'given', 'length', '.']
+['return', 'a', 'random', 'byte', 'of', 'size', 'count', '.']
+
+
+['use', 'valueof', 'instead', '.']
+['use', 'valueof', 'instead', '.']
+
+
+['sets', 'the', 'current', 'bindings', 'aside', 'and', 'starts', 'a', 'new', 'element', 'context', '.']
+['sets', 'the', 'current', 'bindings', 'aside', 'and', 'starts', 'a', 'new', 'element', 'context', '.']
+
+
+['creates', 'a', 'canvas', 'to', 'append', 'the', 'specified', 'page', 'to', 'the', 'document', '.']
+['convenience', 'method', 'for', 'fast', 'pdfcanvas', 'creation', 'by', 'a', 'certain', 'page', '.']
+
+
+['a', 'factory', 'method', 'to', 'build', 'the', 'appropriate', 'luminancesource', 'object', 'based', 'on', 'the', 'format', 'of', 'the', 'preview', 'buffers', 'as', 'described', 'by', 'camera', '.', 'parameters', '.']
+['a', 'factory', 'method', 'to', 'build', 'the', 'appropriate', 'luminancesource', 'object', 'based', 'on', 'the', 'format', 'of', 'the', 'preview', 'buffers', 'as', 'described', 'by', 'camera', '.', 'parameters', '.']
+
+
+['waits', 'for', 'a', 'specified', 'object', 'to', 'be', 'returned', 'an', 'infinite', 'loop', '.']
+['waits', 'for', 'a', 'object', 'or', 'a', 'timeout', 'for', 'synchronization', 'purposes', '.']
+
+
+['creates', 'a', 'new', 'pointer', 'to', 'the', 'given', 'values', '.']
+['creates', 'a', 'new', 'pointer', 'to', 'the', 'given', 'values', '.']
+
+
+['multlocal', 'multiplies', 'this', 'matrix', 'internally', 'by', 'a', 'given', 'float', 'scale', 'factor', '.']
+['multlocal', 'multiplies', 'this', 'matrix', 'internally', 'by', 'a', 'given', 'float', 'scale', 'factor', '.']
+
+
+['notifies', 'the', 'channel', 'listener', 'that', 'we', 'our', 'connection', 'has', 'been', 'closed']
+['notifies', 'the', 'channel', 'listener', 'that', 'we', 'our', 'connection', 'has', 'been', 'closed']
+
+
+['writes', 'this', 'protocol', 'op', 'to', 'an', 'asn', '.', 'output', 'stream', '.']
+['writes', 'this', 'protocol', 'op', 'to', 'an', 'asn', '.', 'output', 'stream', '.']
+
+
+['send', 'a', 'bad', 'request', 'response', '.']
+['send', 'a', 'bad', 'request', 'response', '.']
+
+
+['validates', 'expected', 'partition', 'values', 'for', 'delete', 'request', '.']
+['validates', 'the', 'expected', 'partition', 'values', 'delete', 'request', '.']
+
+
+['check', 'if', 'another', 'entity', 'is', 'in', 'the', 'same', 'world', 'and', 'is', 'in', 'world', '.']
+['check', 'if', 'the', 'other', 'entity', 'is', 'near', 'enough', 'to', 'be', 'in', 'sight', 'on', 'the', 'client', 'screen', '.']
+
+
+['register', 'some', 'messages', '.']
+['register', 'the', 'device', 'for', 'gcm', '.']
+
+
+['returns', 'the', 'sum', 'of', 'all', 'values', 'in', 'this', 'map', '.']
+['returns', 'the', 'sum', 'of', 'all', 'values', 'in', 'this', 'map', '.']
+
+
+['create', 'a', 'question', '.']
+['create', 'a', 'question', '.']
+
+
+['setup', 'before', 'adding', 'to', 'window', 'to', 'the', 'view', '.']
+['sets', 'to', 'rgba', 'to', 'ensure', 'fluent', 'gradients', '.']
+
+
+['this', 'is', 'used', 'to', 'determine', 'if', 'this', 'class', 'is', 'an', 'inner', 'class', '.']
+['this', 'is', 'used', 'to', 'determine', 'if', 'the', 'class', 'is', 'an', 'inner', 'class', '.']
+
+
+['launch', 'npm', 'to', 'download', 'dependencies']
+['creates', 'the', 'grunt', 'build', 'command', 'line']
+
+
+['invalidates', 'an', 'existing', 'user', '.']
+['invalidated', 'the', 'user', 'in', 'session', 'and', 'also', 'clears', 'the', 'spring', 'security', 'context', '.']
+
+
+['logs', 'an', 'event', 'status', '.', 'fatal']
+['logs', 'an', 'event', 'status', '.', 'fatal', 'with', 'details']
+
+
+['called', 'when', 'the', 'position', 'is', 'section', '.']
+['releases', 'allocated', 'resources', '.']
+
+
+['ruft', 'den', 'wert', 'der', 'reverse', 'eigenschaft', 'ab', '.']
+['returns', 'a', 'boolean', 'indicating', 'if', 'the', 'field', 'is', 'a', 'reverse', 'relationship', '.']
+
+
+['ensures', 'that', 'an', 'object', 'reference', 'passed', 'as', 'a', 'parameter', 'to', 'the', 'calling', 'method', 'is', 'not', 'null', '.']
+['ensures', 'that', 'an', 'object', 'reference', 'passed', 'as', 'a', 'parameter', 'to', 'the', 'calling', 'method', 'is', 'not', 'null', '.']
+
+
+['tests', 'whether', 'or', 'not', 'a', 'string', 'matches', 'against', 'a', 'pattern', '.']
+['test', 'whether', 'or', 'not', 'a', 'string', 'matches', 'against', 'a', 'pattern', '.']
+
+
+['receive', 'notification', 'of', 'character', 'data', '.']
+['receive', 'notification', 'of', 'character', 'data', '.']
+
+
+['test', 'the', 'non', 'windows', 'being', 'run', 'of', 'the', 'test', '.']
+['this', 'method', 'returns', 'true', 'if', 'the', 'expected', 'and', 'detected', 'arguments', 'are', 'the', 'same', '.']
+
+
+['reverses', 'the', 'elements', 'of', 'the', 'receiver', '.']
+['reverses', 'the', 'elements', 'of', 'the', 'receiver', '.']
+
+
+['sets', 'the', 'year', 'component', '.']
+['sets', 'the', 'year', 'component', '.']
+
+
+['expand', 'the', 'clip', 'in', 'all', 'directions', 'by', 'the', 'given', 'value', '.']
+['expand', 'the', 'clip', 'in', 'all', 'directions', 'by', 'the', 'given', 'value', '.']
+
+
+['clears', 'the', 'state', 'of', 'the', 'actor', 's', 'properties', '.']
+['asynchronously', 'clears', 'the', 'actor', 's', 'state', '.']
+
+
+['get', 'the', 'color', 'code', 'for', 'the', 'given', 'red', 'green', 'blue', 'and', 'alpha', 'values', '.']
+['get', 'the', 'color', 'code', 'for', 'the', 'given', 'red', 'green', 'blue', 'and', 'alpha', 'values', '.']
+
+
+['converts', 'all', 'separators', 'to', 'the', 'windows', 'separator', 'of', 'backslash', '.']
+['converts', 'all', 'separators', 'to', 'the', 'windows', 'separator', 'of', 'backslash', '.']
+
+
+['inserts', 'a', 'node', 'and', 'ensures', 'that', 'a', 'heap', 'size', 'lt', 'persist', 'when', 'unsigned', 'starting', 'a', 'new', 'entry', '.']
+['insert', 'a', 'new', 'element', 'into', 'the', 'heap', 'satisfying', 'the', 'heap', 'property', '.']
+
+
+['copy', 'nodelist', 'members', 'into', 'this', 'nodelist', 'adding', 'in', 'document', 'order', '.']
+['copy', 'nodelist', 'members', 'into', 'this', 'nodelist', 'adding', 'in', 'document', 'order', '.']
+
+
+['check', 'if', 'a', 'given', 'local', 'path', 'is', 'a', 'local', 'file', '.']
+['determines', 'if', 'the', 'given', 'path', 'is', 'associated', 'with', 'the', 'default', 'local', 'file', 'system', '.']
+
+
+['add', 'an', 'overlay', 'to', 'the', 'panel', '.']
+['add', 'an', 'overlay', 'to', 'the', 'panel', '.']
+
+
+['sends', 'an', 'put', 'request', 'with', 'with', 'with', 'with', 'the', 'specified', 'etags', 'in', 'the', 'if', 'match', 'option', 'and', 'blocks', 'until', 'the', 'response', 'is', 'available', '.']
+['sends', 'a', 'put', 'request', 'with', 'with', 'the', 'specified', 'etags', 'in', 'the', 'if', 'match', 'option', 'and', 'blocks', 'until', 'the', 'response', 'is', 'available', '.']
+
+
+['provided', 'a', 'tag', 'with', 'the', 'provided', 'id', '.']
+['updates', 'the', 'time', 'between', 'this', 'tag', 'and', 'the', 'last', 'with', 'the', 'same', 'id', 'and', 'calculates', 'the', 'new', 'average', '.']
+
+
+['inserts', 'a', 'type', 'at', 'the', 'beginning', 'of', 'the', 'parameter', 'list', 'represented', 'by', 'the', 'given', 'descriptor', '.']
+['inserts', 'a', 'parameter', 'type', 'at', 'the', 'beginning', 'of', 'the', 'parameter', 'list', 'represented', 'by', 'the', 'given', 'descriptor', '.']
+
+
+['intersects', 'the', 'current', 'clip', 'with', 'the', 'specified', 'rectangle', '.']
+['intersects', 'the', 'current', 'clip', 'with', 'the', 'specified', 'rectangle', '.']
+
+
+['inform', 'an', 'existing', 'enabled', 'state']
+['remote', 'search', 'has', 'been', 'completed', '.']
+
+
+['it', 'is', 'allowed', 'that', 'user', 'can', 'register', 'their', 'own', 'entity']
+['it', 'is', 'allowed', 'that', 'user', 'can', 'register', 'their', 'own', 'entity']
+
+
+['returns', 'true', 'if', 'this', 'bag', 'is', 'empty', '.']
+['return', 'true', 'if', 'empty']
+
+
+['handler', 'for', 'the', 'timeout', 'attempt']
+['internal', 'routine', 'to', 'handle', 'a', 'timeout']
+
+
+['get', 'the', 'time', 'offset', 'that', 'may', 'be', 'calculated', 'in', 'the', 'given', 'time', 'base', 'last', 'be', 'sync', 'representation', '.']
+['subtract', 'billing', 'offset', 'from', 'billing', 'invocation', 'time', 'and', 'set', 'hour', 'minute', 'second', 'and', 'millisecond', 'to', '.']
+
+
+['add', 'renderer', 'to', 'this', 'sub', 'suite', 'of', 'a', 'existing', 'turn', '.']
+['adds', 'and', 'returns', 'pathway', 'cross', 'reference']
+
+
+['multiply', 'this', 'quaternion', 'by', 'the', 'quaternion', 'represented', 'via', 'qx', 'qy', 'qz', 'qw', '.']
+['multiply', 'this', 'quaternion', 'by', 'the', 'quaternion', 'represented', 'via', 'qx', 'qy', 'qz', 'qw', '.']
+
+
+['performs', 'a', 'deep', 'copy', 'on', 'other', '.']
+['performs', 'a', 'deep', 'copy', 'on', 'other', '.']
+
+
+['only', 'used', 'for', 'fake', 'recipe', 'handlers', 'to', 'show', 'something', 'in', 'nei', 'do', 'not', 'use', 'this', 'for', 'adding', 'actual', 'recipes', '!']
+['only', 'used', 'for', 'fake', 'recipe', 'handlers', 'to', 'show', 'something', 'in', 'nei', 'do', 'not', 'use', 'this', 'for', 'adding', 'actual', 'recipes', '!']
+
+
+['determines', 'whether', 'this', 'mechanism', 'has', 'completed', '.']
+['determines', 'whether', 'this', 'mechanism', 'has', 'completed', '.']
+
+
+['the', 'e', 'alignment', 'grid', '.']
+['return', 'the', 'rule', 'internal', 'source', 'target', 'alignment', 'grid', '.']
+
+
+['returns', 'the', 'string', 'representing', 'the', 'object', '.']
+['returns', 'the', 'string', 'representing', 'its', 'value']
+
+
+['fixup', 'an', 'artifact', '.']
+['execute', 'the', 'dependency', 'calculator', '.']
+
+
+['read', 'and', 'return', 'the', 'next', 'float', '.']
+['read', 'and', 'return', 'the', 'next', 'float', '.']
+
+
+['we', 'need', 'to', 'override', 'the', 'draw', 'to', 'ensure', 'that', 'we', 'don', 't', 'draw', 'the', 'overscroll', 'effect', 'beyond', 'the', 'background', 'bounds', '.']
+['we', 'need', 'to', 'override', 'the', 'draw', 'to', 'ensure', 'that', 'we', 'don', 't', 'draw', 'the', 'overscroll', 'effect', 'beyond', 'the', 'background', 'bounds', '.']
+
+
+['generate', 'a', 'new', 'dialog', 'for', 'this', 'dialog', '.']
+['generate', 'a', 'new', 'description', 'for', 'this', 'activity', '.']
+
+
+['returns', 'a', 'hash', 'code', 'for', 'the', 'object', '.']
+['returns', 'the', 'hashcode', 'for', 'the', 'range', 'of', 'values']
+
+
+['enables', 'the', 'help', 'for', 'a', 'component', '.']
+['enables', 'help', 'for', 'a', 'component', '.']
+
+
+['returns', 'column', 'index', 'of', 'id', 'column', 'or', 'if', 'not', 'found', '.']
+['returns', 'column', 'index', 'of', 'id', 'column', 'or', 'if', 'not', 'found', '.']
+
+
+['returns', 'whether', 'it', 'has', 'the', 'specialized', 'data', 'that', 'define', 'this', 'snapshot', 's', 'attributes', '.']
+['returns', 'whether', 'it', 'has', 'the', 'whether', 'the', 'exception', 'is', 'specialized', '.']
+
+
+['indicates', 'whether', 'current', 'os', 'is', 'linux', 'flavor', '.']
+['return', 'true', 'if', 'running', 'on', 'linux', '.']
+
+
+['computes', 'the', 'deviation', 'of', 'a', 'data', 'point', 'as', 'values', 'of', 'the', 'beta', 'density', 'function', '.']
+['deviation', 'from', 'a', 'manifold', 'described', 'by', 'beta', '.']
+
+
+['main', 'method', 'for', 'testing', 'this', 'class', '.']
+['main', 'method', 'for', 'testing', 'this', 'class', '.']
+
+
+['construct', 'new', 'nbttagbytearray', 'without', 'name', 'and', 'empty', 'array', 'as', 'value', '.']
+['construct', 'new', 'nbttagbytearray', 'without', 'name', 'and', 'empty', 'array', 'as', 'value', '.']
+
+
+['updates', 'the', 'state', 'of', 'the', 'scroll', 'bars', '.']
+['updates', 'the', 'state', 'of', 'the', 'scroll', 'bars', '.']
+
+
+['returns', 'true', 'if', 'the', 'field', 'is', 'present', 'in', 'the', 'schema', '.']
+['returns', 'true', 'if', 'this', 'entry', 'contains', 'either', 'an', 'abstract', 'or', 'concrete', 'method', '.']
+
+
+['returns', 'true', 'if', 'best', 'someone', 'someone', 'someone', 'who', 'is', 'responsible', 'to', 'send', 'the', 'query']
+['query', 'the', 'grantor', 'for', 'current', 'leasing', 'information', 'of', 'a', 'lock', '.']
+
+
+['adds', 'all', 'points', 'in', 'the', 'vector', 'to', 'the', 'set', '.']
+['adds', 'all', 'points', 'of', 'the', 'collection', 'to', 'the', 'octree', '.']
+
+
+['actualiza', 'la', 'base', 'de', 'datos', 'la', 'unidad', 'documental', 'en', 'la', 'busqueda', 'de', '<unk>']
+['establece', 'el', 'asunto', 'de', 'una', 'unidad', 'documental']
+
+
+['returns', 'currenttimemillis', 'as', 'string']
+['returns', 'currenttimemillis', 'as', 'string']
+
+
+['construct', 'the', 'vector', 'with', 'all', 'components', 'as', '.']
+['construct', 'the', 'vector', 'with', 'all', 'components', 'as', '.']
+
+
+['verifies', 'the', 'statistics', 'of', 'a', 'single', 'stat', 'file', '.']
+['final', 'file', 'expectedstatarchivefile', 'new', 'file', 'testutil', '.', 'getresourcepath', 'getclass', 'statarchivewriterreaderjunittest', 'this', '.', 'testname', '.', 'getmethodname', 'expected', '.', 'gfs']
+
+
+['routes', 'the', 'event', 'handler', 'to', 'the', 'global', 'context', 'of', 'the', 'class', '.']
+['runs', 'an', 'event', 'handler', '.']
+
+
+['logs', 'all', 'preferences', 'of', 'a', 'root', 'node', 'in', 'the', 'preferences', 'dialog', '.']
+['logs', 'the', 'proxy', 'preferences', '.']
+
+
+['create', 'a', 'trap', 'code', 'operand', 'for', 'a', 'check', 'cast']
+['create', 'a', 'trap', 'code', 'operand', 'for', 'a', 'must', 'implement']
+
+
+['public', 'for', 'use', 'only', 'by', 'javacprocessingenvironment']
+['public', 'for', 'use', 'only', 'by', 'javacprocessingenvironment']
+
+
+['return', 'whether', 'or', 'not', 'the', 'given', 'opcode', 'is', 'a', '<unk>', 'one', 'of', 'the', 'given', 'operands', '.']
+['determines', 'if', 'an', 'opcode', 'is', 'commutative', '.']
+
+
+['constructs', 'a', 'mergeoptions', 'with', 'no', 'flags', 'initially', 'set', '.']
+['constructs', 'a', 'mergeoptions', 'with', 'no', 'flags', 'initially', 'set', '.']
+
+
+['returns', 'the', 'class', 'instance', 'corresponding', 'to', 'the', 'given', 'name', '.']
+['class', 'from', 'a', 'canonical', 'name', 'for', 'a', 'type', '.']
+
+
+['registers', 'simple', 'classes', 'that', 'extend', 'this', 'class', 'with', 'the', 'given', 'meta', 'class', '.']
+['registers', 'a', 'modified', 'expandometaclass', 'with', 'the', 'creation', 'handle']
+
+
+['sets', 'the', 'internal', 'state', 'of', 'the', 'map', 'to', 'the', 'given', 'unit', 'value', 'object']
+['creates', 'a', 'map', 'object', 'and', 'adds', 'it', 'to', 'this', 'map', 'layer', '.']
+
+
+['creates', 'a', 'new', 'bytebuffer', 'with', 'the', 'same', 'contents', 'as', 'the', 'given', 'bytebuffer', '.']
+['creates', 'a', 'new', 'bytebuffer', 'with', 'the', 'same', 'contents', 'as', 'the', 'given', 'bytebuffer', '.']
+
+
+['calculates', 'the', 'approximate', 'width', 'of', 'a', 'text', 'depending', 'on', 'a', 'demo', 'text', 'avoid', 'repeated', 'calls', 'e', '.', 'g', '.']
+['calculates', 'the', 'approximate', 'width', 'of', 'a', 'text', 'depending', 'on', 'a', 'demo', 'text', 'avoid', 'repeated', 'calls', 'e', '.', 'g', '.']
+
+
+['test', 'against', 'the', 'void', '<unk>', 'int', 'method', 'it', 'checks', 'out', 'that', 'the', 'method', 'throws', 'negativearraysizeexception', 'if', 'argument']
+['test', 'against', 'the', 'void', 'generateseed', 'int', 'method', 'it', 'checks', 'out', 'that', 'the', 'method', 'throws', 'negativearraysizeexception', 'if', 'argument']
+
+
+['connect', 'to', 'remote', 'peer', '.']
+['creates', 'a', 'new', 'remoteconnectionimpl', 'object', 'and', 'returns', 'it', '.']
+
+
+['getter', 'for', 'property', 'predestroycalled', '.']
+['getter', 'for', 'property', 'predestroycalled', '.']
+
+
+['replace', 'an', 'entry', 'with', 'the', 'given', 'key', '.']
+['constructs', 'a', 'map', 'from', 'the', 'current', 'one', 'but', 'also', 'containing', 'the', 'given', 'entry', '.']
+
+
+['register', 'configuration', 'factories', '.']
+['register', 'configuration', 'factories', '.']
+
+
+['constructs', 'a', 'sessiontracker', 'to', 'track', 'the', 'session', 'object', 'passed', 'in', '.']
+['constructs', 'a', 'sessiontracker', 'to', 'track', 'the', 'session', 'object', 'passed', 'in', '.']
+
+
+['serialize', 'the', 'object', 'to', 'bytes']
+['method', 'to', 'serialize', 'custom', 'session', 'data']
+
+
+['move', 'from', 'fromc', 'fromr', 'to', 'toc', 'tor']
+['move', 'from', 'fromc', 'fromr', 'to', 'toc', 'tor']
+
+
+['returns', 'whether', 'the', 'catalog', 'name', 'in', 'grant', 'is', 'supported', '.']
+['returns', 'whether', 'the', 'catalog', 'name', 'in', 'grant', 'is', 'supported', '.']
+
+
+['writes', 'the', 'specified', 'byte', 'the', 'low', 'eight', 'bits', 'of', 'the', 'argument', 'b', 'to', 'the', 'underlying', 'output', 'stream', '.']
+['writes', 'the', 'specified', 'byte', 'the', 'low', 'eight', 'bits', 'of', 'the', 'argument', 'b', 'to', 'the', 'underlying', 'output', 'stream', '.']
+
+
+['construct', 'a', 'geopoint', 'from', 'the', 'trig', 'functions', 'of', 'a', 'lat', 'and', 'lon', 'pair', '.']
+['construct', 'a', 'geopoint', 'from', 'the', 'trig', 'functions', 'of', 'a', 'lat', 'and', 'lon', 'pair', '.']
+
+
+['construct', 'a', 'new', 'debug', 'routing', 'visitor', '.']
+['mode', 'should', 'be', 'in', 'the', 'state', 'itself']
+
+
+['returns', 'true', 'if', 'fake', 'generation', 'id', 'for', 'some', 'safe', 'find', 'visited', 'id', '.']
+['are', 'group', 'id', 'and', 'generation', 'id', 'ok', 'for', 'being', 'an', 'eligible', 'rs', 'for', 'assured', 'update', '?']
+
+
+['reset', 'to', 'the', 'beginning', 'of', 'the', 'document', '.']
+['reset', 'all', 'components', 'before', 'parsing']
+
+
+['constructs', 'a', 'x', 'matrix', 'with', 'no', 'specified', 'native', 'values', '.']
+['constructs', 'a', 'x', 'identity', 'matrix', '.']
+
+
+['creates', 'and', 'returns', 'an', 'enumeration', 'that', 'traverses', 'the', 'subtree', 'rooted', 'at', 'this', 'node', 'in', 'breadth', 'first', 'order', '.']
+['creates', 'and', 'returns', 'an', 'enumeration', 'that', 'traverses', 'the', 'subtree', 'rooted', 'at', 'this', 'node', 'in', 'breadth', 'first', 'order', '.']
+
+
+['returns', 'the', 'estimated', 'duration', 'of', 'the', 'sequence', 'between', 'now', 'and', 'now', '.']
+['remove', 'fraction', 'of', 'milli', 'seconds', 'in', 'sequence', 'time']
+
+
+['this', 'function', 'implements', 'the', 'semenatics', 'of', 'the', 'realm', 'directive', '.']
+['this', 'function', 'implements', 'the', 'semenatics', 'of', 'the', 'maxbuf', 'directive', '.']
+
+
+['returns', 'true', 'if', 'the', 'location', 'is', 'known', 'to', 'be', 'known', 'to', 'become', 'available', 'in', 'the', 'specified', 'timeout']
+['tests', 'if', 'a', 'network', 'location', 'is', 'reachable', '.']
+
+
+['processes', 'a', 'delete', 'request', '.']
+['processes', 'a', 'delete', 'request', '.']
+
+
+['arguments', 'are', '.']
+['arguments', 'are', '.']
+
+
+['find', 'a', 'generic', 'entity', 'by', 'its', 'primary', 'key', 'and', 'only', 'returns', 'the', 'values', 'requested', 'by', 'the', 'passed', 'keys']
+['find', 'a', 'generic', 'entity', 'by', 'its', 'primary', 'key']
+
+
+['swf', 'vectors', 'added', 'to', 'a', 'jpeg', 'image', 'on', 'the', 'swf', 'flushing', 'it', '.']
+['converts', 'a', 'jpeg', 'binary', 'input', 'stream', 'into', 'a', 'swf', 'definebits', 'tag', 'and', 'adds', 'it', 'to', 'the', 'sprite', 'taglist', 'context', '.']
+
+
+['main', 'method', 'for', 'running', 'one', 'test', 'at', 'a', 'time', '.']
+['main', 'method', 'for', 'running', 'single', 'tests', 'from', 'eclipse', '.']
+
+
+['creates', 'a', 'abstractquerybuilder', 'instance', 'that', 'can', 'be', 'used', 'to', 'build', 'api', 'request', 'with', 'various', 'parameters']
+['creates', 'a', 'abstractquerybuilder', 'instance', 'that', 'can', 'be', 'used', 'to', 'build', 'api', 'request', 'with', 'various', 'parameters']
+
+
+['constructs', 'a', 'random', 'initialization', 'operator', 'that', 'includes', 'one', 'or', 'more', 'pre', 'defined', 'solutions', '.']
+['constructs', 'a', 'random', 'initialization', 'operator', 'that', 'includes', 'one', 'or', 'more', 'pre', 'defined', 'solutions', '.']
+
+
+['creates', 'a', 'jlabel', 'instance', 'with', 'default', 'values', '.']
+['creates', 'a', 'jlabel', 'instance', 'with', 'no', 'image', 'and', 'with', 'an', 'empty', 'string', 'for', 'the', 'title', '.']
+
+
+['construct', 'a', 'new', 'row', 'list', 'for', 'this', 'session', '.']
+['construct', 'a', 'new', 'row', 'list', 'for', 'this', 'session', '.']
+
+
+['check', 'if', 'the', 'given', 'sample', 'has', 'a', 'value', 'for', 'a', 'record', 'that', 'already', 'declared', 'a', 'given', 'audit', 'record', 'or', 'not', '.']
+['check', 'if', 'the', 'record', 'contains', 'a', 'well', 'defined', 'variant', 'genotype', 'for', 'the', 'specified', 'sample', '.']
+
+
+['flush', 'existing', 'threadpool', 'and', 'pass', 'a', 'new', 'collection', 'to', 'threadpool']
+['flushes', 'the', 'buffered', 'logrecords', 'in', 'a', 'separate', 'thread', 'to', 'prevent', 'blocking', '.']
+
+
+['instantiates', 'a', 'new', 'easy', 'bluetooth', 'mod', '.']
+['instantiates', 'a', 'new', 'easy', 'bluetooth', 'mod', '.']
+
+
+['adds', 'a', 'stroke', 'to', 'the', 'gesture', '.']
+['adds', 'a', 'stroke', 'to', 'the', 'gesture', '.']
+
+
+['creates', 'a', 'new', 'scope', 'with', 'given', 'selectable', '.']
+['factory', 'method', 'to', 'produce', 'a', 'scope', '.']
+
+
+['configure', 'the', 'maximum', 'number', 'of', 'iterations', '.']
+['configure', 'the', 'maximum', 'number', 'of', 'iterations', '.']
+
+
+['constructs', 'a', 'new', 'empty', 'attribute', '.']
+['constructs', 'a', 'new', 'empty', 'attribute', '.']
+
+
+['sorts', 'images', 'so', 'that', 'the', 'contents', 'sorts', 'greater', 'than', 'and', 'ignores', 'be', 'equal', '.']
+['compares', 'two', 'bufferedimages', 'pixel', 'by', 'pixel', '.']
+
+
+['trim', 'a', 'string', 'by', 'removing', 'trailing', 'white', 'spaces', '.']
+['this', 'function', 'will', 'trim', 'the', 'given', 'input', 'string', '.']
+
+
+['convert', 'a', 'string', 'to', 'a', 'constant', 'schema']
+['convert', 'a', 'string', 'to', 'a', 'constant', 'schema']
+
+
+['create', 'a', 'new', '<unk>', 'based', 'on', 'the', 'provided', 'connection', '.']
+['creates', 'a', 'limitedservletinputstream', 'with', 'the', 'specified', 'length', 'limit', 'that', 'wraps', 'the', 'provided', 'servletinputstream', '.']
+
+
+['lazily', 'construct', 'the', 'lookup', 'table', 'for', 'this', 'schema', '.']
+['lazily', 'construct', 'the', 'lookup', 'table', 'for', 'this', 'schema', '.']
+
+
+['creates', 'a', 'new', 'sparse', '<unk>', 'instance', '.']
+['returns', 'for', 'a', 'table', 'giving', 'the', 'equivalence', 'between', 'the', 'positions', 'of', 'the', 'attributes', 'in', 'the', 'exampletable', 'and', 'the', 'number', 'of', 'the', 'regular', 'attributes', 'in', 'the', 'exampleset', '.']
+
+
+['url', 'encoding', 'is', 'ascii', '.']
+['checks', 'if', 'the', 'provided', 'string', 'is', 'urlencoded', '.']
+
+
+['helper', 'function', 'for', 'checking', 'whether', 'a', 'task', 'is', 'present', 'or', 'not', '.']
+['test', 'whether', 'a', 'task', 'should', 'be', 'displayed', 'in', 'the', 'overview', 'plot', '.']
+
+
+['overrides', 'the', 'parent', 'implementation', 'to', 'install', 'a', 'socketproxy', 'in', 'front', 'of', 'the', 'jetty', 'server', '.']
+['overrides', 'the', 'parent', 'implementation', 'to', 'install', 'a', 'socketproxy', 'in', 'front', 'of', 'the', 'jetty', 'server', '.']
+
+
+['compute', 'val', 'n', 'return', 'this', 'product', 'if', 'it', 'is', 'representable', 'as', 'a', 'long', 'inflated', 'version']
+['compute', 'val', 'n', 'return', 'this', 'product', 'if', 'it', 'is', 'representable', 'as', 'a', 'long', 'inflated', 'otherwise', '.']
+
+
+['writes', 'a', 'character', 'to', 'the', 'buffer', '.']
+['writes', 'a', 'character', 'to', 'the', 'buffer', '.']
+
+
+['create', 'and', 'initialize', 'a', 'vector', 'from', 'the', 'given', 'mesh']
+['creates', 'vector', 'objects', 'from', 'the', 'vertices', 'of', 'the', 'mesh', '.']
+
+
+['used', 'to', 'retrieve', 'the', 'number', 'of', 'lines', 'in', 'a', 'file', '.']
+['used', 'to', 'retrieve', 'the', 'number', 'of', 'lines', 'in', 'a', 'file', '.']
+
+
+['creates', 'a', 'token', 'builder', 'with', 'the', 'specified', 'value', '.']
+['build', 'a', 'new', 'token', 'builder', 'with', 'the', 'specified', 'value']
+
+
+['registers', 'a', 'bean', 'for', 'injection', '.']
+['registers', 'a', 'bean', 'instance', 'for', 'injection', '.']
+
+
+['creates', 'a', 'new', 'thread', 'pool', 'and', 'sets', 'the', 'created', 'thread', 'pool', 'as', 'the', 'default', 'thread', 'pool', 'for', 'batch', 'jobs', '.']
+['creates', 'a', 'new', 'thread', 'pool', 'and', 'sets', 'the', 'created', 'thread', 'pool', 'as', 'the', 'default', 'thread', 'pool', 'for', 'batch', 'jobs', '.']
+
+
+['runs', 'the', 'test', 'case', '.']
+['runs', 'the', 'test', 'case', '.']
+
+
+['for', 'commands', 'with', 'given', 'arguments', '.']
+['for', 'commands', 'with', 'finite', 'number', 'of', 'values', 'last', 'argument', 'accepts', '.']
+
+
+['replace', 'the', 'given', 'template', 'with', 'the', 'current', 'names']
+['this', 'will', 'replace', 'the', 'accumulated', 'for', 'an', 'system', 'variable', 'name', 'with', 'the', 'value', 'of', 'that', 'system', 'variable', '.']
+
+
+['returns', 'a', 'normalized', 'version', 'of', 'a', 'wwn', 'as', 'we', 'can', 'display', 'the', 'translation', 'for', '?']
+['converts', 'ascii', 'encoded', 'wwn', 'returned', 'from', 'powerpath', 'to', 'useable', 'wwn']
+
+
+['creates', 'a', 'new', 'reference', 'count', '.']
+['creates', 'a', 'new', 'reference', 'counter', '.']
+
+
+['returns', 'whether', 'the', 'given', 'node', 'and', 'the', 'other', 'object', 'match', '.']
+['returns', 'whether', 'the', 'given', 'node', 'and', 'the', 'other', 'object', 'match', '.']
+
+
+['write', 'a', 'byte', 'to', 'the', 'buffer', '.']
+['write', 'the', 'low', 'order', 'bits', 'of', 'the', 'given', 'int']
+
+
+['initializes', 'this', 'key', 'generator', '.']
+['initializes', 'this', 'key', 'generator', '.']
+
+
+['utility', 'for', 'class', 'to', 'extract', 'header', 'for', 'the', 'authentication', 'header', 'only', 'the', 'authentication', 'header', 'for', 'the', 'incoming', 'http', 'authentication', 'context', '.']
+['constructs', 'a', 'new', 'extractor', 'that', 'operates', 'against', 'the', 'http', 'headers', 'contained', 'as', 'part', 'of', 'the', 'request', '.']
+
+
+['remove', 'the', 'object', 'listener']
+['removes', 'attribute', 'with', 'given', 'name']
+
+
+['creates', 'a', 'abstractquerybuilder', 'instance', 'that', 'can', 'be', 'used', 'to', 'build', 'api', 'request', 'with', 'various', 'parameters']
+['creates', 'a', 'abstractquerybuilder', 'instance', 'that', 'can', 'be', 'used', 'to', 'build', 'api', 'request', 'with', 'various', 'parameters']
+
+
+['create', 'an', 'open', 'data', 'world', 'with', 'the', 'specified', 'workspace', '.']
+['create', 'a', 'coupling', 'list', 'with', 'the', 'specified', 'workspace', '.']
+
+
+['populates', 'the', 'region', 'with', 'the', 'objects', 'stores', 'in', 'the', 'data', 'object', 'array', '.']
+['populates', 'the', 'region', 'with', 'the', 'objects', 'stores', 'in', 'the', 'data', 'object', 'array', '.']
+
+
+['shorthand', 'method', 'for', 'wrapping', 'a', 'horizontal', 'component', 'group', 'layout', 'in', 'a', 'dialog']
+['shorthand', 'method', 'for', 'wrapping', 'the', 'given', 'components', 'in', 'a', 'horizontal', 'component', 'group']
+
+
+['rebuilds', 'partial', 'calling', 'state', 'for', 'all', 'tables', '.']
+['rebuilds', 'all', 'search', 'indexes', 'for', 'given', 'spi', '.']
+
+
+['return', 'an', 'oid', 'that', 'creates', 'a', 'branch', 'under', 'the', 'current', 'one', '.']
+['return', 'an', 'oid', 'that', 'creates', 'a', 'branch', 'under', 'the', 'current', 'one', '.']
+
+
+['returns', 'a', 'new', 'token', 'object', 'by', 'default', '.']
+['returns', 'a', 'new', 'token', 'object', 'by', 'default', '.']
+
+
+['the', 'default', 'object', 'is', 'a', 'special', 'method', 'that', 'handles', 'an', 'object', 'of', 'the', 'response', '.']
+['server', 'side', 'deserialize', 'does', 'not', 'match', 'server', 'side', 'serialize', 'so', 'we', 'can', 't', 'test', 'a', 'round', 'trip', '.']
+
+
+['log', 'a', 'message', 'at', 'the', 'warning', 'level', 'according', 'to', 'the', 'specified', 'format', 'and', 'arguments', '.']
+['log', 'a', 'message', 'at', 'the', 'warning', 'level', 'according', 'to', 'the', 'specified', 'format', 'and', 'argument', '.']
+
+
+['constructs', 'a', 'new', 'requestparams', 'instance', 'containing', 'the', 'key', 'value', 'string', 'params', 'from', 'the', 'specified', 'map', '.']
+['constructs', 'a', 'new', 'requestparams', 'instance', 'containing', 'the', 'key', 'value', 'string', 'params', 'from', 'the', 'specified', 'map', '.']
+
+
+['process', 'each', 'tuple', 'to', 'compute', 'new', 'value']
+['adds', 'tuple', 'with', 'result', 'so', 'far']
+
+
+['creates', 'an', 'instance', 'of', 'the', 'associated', 'element', 'type', '.']
+['creates', 'an', 'instance', 'of', 'the', 'associated', 'element', 'type', '.']
+
+
+['adds', 'semantic', 'checks', 'to', 'the', 'default', 'deserialization', 'method', '.']
+['adds', 'semantic', 'checks', 'to', 'the', 'default', 'deserialization', 'method', '.']
+
+
+['calculate', 'this', 'd', 'vector', 'd', 'with', 'another', 'd', 'vector']
+['subtract', 'another', 'd', 'vector', 'from', 'this', 'd', 'vector']
+
+
+['creates', 'the', 'underlying', 'database', 'table', '.']
+['creates', 'the', 'underlying', 'database', 'table', '.']
+
+
+['address', 'and', 'above', 'can', 'be', 'long']
+['address', 'and', 'above', 'can', 'be', 'a', 'long', 'address']
+
+
+['construct', 'a', 'collective', 'object', '.']
+['construct', 'a', 'collective', 'object', '.']
+
+
+['updates', 'the', 'realm', 'dn', 'returning', 'the', 'set', 'of', 'realm', 'specific', 'values', 'for', 'the', 'provided', 'realm', '.']
+['for', 'the', 'passed', 'in', 'entitlement', 'environment', 'update', 'the', 'value', 'associated', 'with', 'the', 'key', 'am', '.', 'policy', '.', 'realmdn', '.']
+
+
+['this', 'methods', 'is', 'called', 'before', 'the', 'tests', 'of', 'server', '.']
+['if', 'you', 'use', 'this', 'class', 'as', 'a', 'rule', 'the', 'default', 'startserver', 'will', 'be', 'called', 'in', 'the', 'before', '.']
+
+
+['adds', 'the', 'item', 'to', 'the', 'given', 'stack', '.']
+['push', 'an', 'element', 'onto', 'the', 'stack', '.']
+
+
+['creates', 'a', 'new', 'instance', '.']
+['creates', 'a', 'new', 'instance', '.']
+
+
+['publishes', 'an', 'event', 'to', 'token', 'list', 'of', 'audit', 'log', 'details', 'and', 'delete', 'the', 'config', 'topic', '.']
+['publishes', 'an', 'event', 'with', 'details', 'of', 'the', 'successfully', 'completed', 'configuration', 'deletion', 'operation', 'if', 'the', 'config', 'topic', 'is', 'audited', '.']
+
+
+['returns', 'true', 'if', 'the', 'rotational', 'limit', 'is', 'enabled', '.']
+['returns', 'true', 'if', 'the', 'limit', 'is', 'enabled', '.']
+
+
+['complete', 'the', 'document', 'and', 'close', 'the', 'underlying', 'writer']
+['complete', 'the', 'document', 'and', 'close', 'the', 'underlying', 'writer']
+
+
+['removes', 'the', 'given', 'mmi', 'from', 'the', 'pending', 'list', 'and', 'notifies', 'registrants', 'that', 'it', 'has', 'been', 'complete', '.']
+['removes', 'the', 'given', 'mmi', 'from', 'the', 'pending', 'list', 'and', 'notifies', 'registrants', 'that', 'it', 'is', 'complete', '.']
+
+
+['attempts', 'to', 'match', 'the', 'input', 'string', 'against', 'the', 'pattern', 'including', 'grok', 'predicates', '.']
+['attempts', 'to', 'match', 'the', 'entire', 'region', 'against', 'the', 'pattern', '.']
+
+
+['creates', 'a', 'request', 'for', 'observing', 'future', 'changes', 'of', 'a', 'particular', 'object', 'of', 'a', 'client', '.']
+['creates', 'a', 'request', 'for', 'observing', 'future', 'changes', 'of', 'all', 'instances', 'of', 'a', 'particular', 'object', 'of', 'a', 'client', '.']
+
+
+['we', 'only', 'rebuild', 'the', 'journal', 'when', 'it', 'will', 'halve', 'the', 'size', 'of', 'the', 'journal', 'and', 'eliminate', 'at', 'least', 'ops', '.']
+['we', 'only', 'rebuild', 'the', 'journal', 'when', 'it', 'will', 'halve', 'the', 'size', 'of', 'the', 'journal', 'and', 'eliminate', 'at', 'least', 'ops', '.']
+
+
+['creates', 'a', 'new', 'instance', '.']
+['creates', 'a', 'new', 'instance', '.']
+
+
+['creates', 'map', 'with', 'error', 'codes']
+['converts', 'the', 'exception', 'into', 'a', 'map', 'of', 'its', 'properties', '.']
+
+
+['checks', 'if', 'the', 'content', 'length', 'is', 'different', 'than', 'the', 'current', 'request', 'content', 'length', 'and', 'comparing', 'the', 'content', 'length', '.']
+['assures', 'that', 'the', 'browser', 'does', 'not', 'download', 'any', 'binary', 'files', 'in', 'textmode']
+
+
+['construct', 'an', 'instance', '.']
+['construct', 'an', 'instance', '.']
+
+
+['create', 'a', 'scroller', 'with', 'the', 'specified', 'interpolator', '.']
+['create', 'a', 'scroller', 'with', 'the', 'specified', 'interpolator', '.']
+
+
+['tests', 'this', 'tick', 'for', 'equality', 'with', 'an', 'arbitrary', 'object', '.']
+['tests', 'an', 'object', 'for', 'equality', 'with', 'this', 'instance', '.']
+
+
+['unlinks', 'cancelled', 'waiter', 'nodes', 'from', 'condition', 'queue', '.']
+['unlinks', 'cancelled', 'waiter', 'nodes', 'from', 'condition', 'queue', '.']
+
+
+['sets', 'whether', 'to', 'keep', 'the', 'generated', 'classes', 'in', 'the', 'stream', '.']
+['if', 'this', 'sets', 'to', 'true', 'and', 'the', 'log', 'printed', 'in', 'an', 'inner', 'class', 'then', 'this', 'inner', 'class', 'name', 'would', 'also', 'printed', 'before', 'method', 'name', '.']
+
+
+['internal', 'debug', 'method', 'that', 'outputs', 'the', 'registry', 'contents', '.']
+['internal', 'debug', 'method', 'that', 'outputs', 'the', 'registry', 'contents', '.']
+
+
+['tests', 'whether', 'item', 'is', 'contained', 'by', 'range']
+['tests', 'whether', 'item', 'is', 'contained', 'by', 'range']
+
+
+['creates', 'a', 'new', 'partition', 'of', 'the', 'given', 'size', 'for', 'the', 'given', 'font', '.']
+['returns', 'a', 'simple', 'non', 'shuffled', 'partition', 'for', 'an', 'example', 'set', '.']
+
+
+['returns', 'a', 'list', 'of', 'structural', 'property', 'descriptors', 'for', 'this', 'node', 'type', '.']
+['returns', 'a', 'list', 'of', 'structural', 'property', 'descriptors', 'for', 'this', 'node', 'type', '.']
+
+
+['returns', 'true', 'if', 'v', 'is', 'newer', 'than', 'v', '.']
+['determines', 'if', 'a', 'file', 'is', 'newer', 'than', 'another', 'by', 'comparing', 'the', 'timestamps', 'and', 'sizes', '.']
+
+
+['constructs', 'a', 'new', 'exception', 'with', 'null', 'as', 'its', 'detail', 'message', '.']
+['constructs', 'a', 'new', 'exception', 'with', 'null', 'as', 'its', 'detail', 'message', '.']
+
+
+['set', 'text', 'on', 'screen']
+['set', 'icon', 'on', 'icon', 'button']
+
+
+['flushes', 'this', 'output', 'stream', 'by', 'forcing', 'any', 'buffered', 'output', 'bytes', 'that', 'have', 'already', 'been', 'processed', 'by', 'the', 'encapsulated', 'cipher', 'object', 'to', 'be', 'written', 'out', '.']
+['flushes', 'this', 'output', 'stream', 'by', 'forcing', 'any', 'buffered', 'output', 'bytes', 'that', 'have', 'already', 'been', 'processed', 'by', 'the', 'encapsulated', 'cipher', 'object', 'to', 'be', 'written', 'out', '.']
+
+
+['issue', 'a', 'post', 'with', 'the', 'given', 'parameters', '.']
+['issue', 'a', 'post', 'with', 'the', 'given', 'parameters', 'and', 'waits', 'for', 'replication', '.']
+
+
+['get', 'an', 'iterator', 'over', 'all', 'items', 'in', 'the', 'given', 'group', 'which', 'match', 'the', 'given', 'predicate', 'filter', '.']
+['get', 'an', 'iterator', 'over', 'all', 'items', 'in', 'the', 'given', 'group', 'which', 'match', 'the', 'given', 'predicate', 'filter', '.']
+
+
+['this', 'method', 'uploads', 'a', 'file', 'to', 'the', 'remote', 'server', '.']
+['this', 'method', 'uploads', 'a', 'file', 'to', 'the', 'remote', 'server', '.']
+
+
+['create', 'a', 'wizard', 'builder', 'for', 'creating', 'a', 'wizard', '.']
+['convenience', 'construction', 'for', 'wizards', 'that', 'only', 'have', 'a', 'single', 'step', 'in', 'them', '.']
+
+
+['creates', 'a', 'jlabel', 'instance', 'with', 'the', 'specified', 'text', 'image', 'and', 'horizontal', 'alignment', '.']
+['creates', 'a', 'jlabel', 'instance', 'with', 'the', 'specified', 'text', 'image', 'and', 'horizontal', 'alignment', '.']
+
+
+['encodes', 'a', 'byte', 'array', 'into', 'web', 'safe', 'base', 'notation', '.']
+['encodes', 'a', 'byte', 'array', 'into', 'web', 'safe', 'base', 'notation', '.']
+
+
+['constructs', 'a', 'parameterized', 'instance', '.']
+['constructs', 'a', 'parameterized', 'instance', '.']
+
+
+['determine', 'structure', 'to', 'use', 'for', 'storing', 'closed', 'set', '.']
+['determine', 'structure', 'to', 'use', 'for', 'storing', 'closed', 'set', '.']
+
+
+['constructs', 'an', 'instance', 'of', 'this', 'class', '.']
+['constructs', 'an', 'instance', 'of', 'this', 'class', '.']
+
+
+['configures', 'the', '<unk>', 'job', '.']
+['configures', 'the', 'job', '.']
+
+
+['resumes', 'the', 'loader', '.']
+['resumes', 'the', 'noxitem', 'downloads', 'if', 'was', 'previously', 'paused', '.']
+
+
+['get', 'the', 'y', 'coordinate', 'of', 'the', 'block', '.']
+['get', 'the', 'y', 'co', 'ordinate', 'of', 'the', 'block', '.']
+
+
+['visits', 'a', 'type', 'instruction', '.']
+['visits', 'a', 'type', 'instruction', '.']
+
+
+['returns', 'whether', 'a', 'namespace', 'is', 'defined']
+['returns', 'whether', 'a', 'namespace', 'is', 'defined']
+
+
+['parse', 'the', 'data', 'in', 'the', 'packet', 'and', 'send', 'it', '.']
+['receive', 'packet', 'by', 'parser', 'notify', 'send', 'progress']
+
+
+['given', 'a', 'pair', 'of', 'addresses', 'and', 'a', 'single', 'line', 'returns', 'whether', 'or', 'not', 'the', 'given', 'percentage', 'is', 'equal', 'to', 'the', 'given', 'output', '.']
+['this', 'method', 'returns', 'true', 'if', 'the', 'host', 'addresses', 'are', 'equal', 'to', 'each', 'other', 'otherwise', 'false', '.']
+
+
+['ask', 'view', 'to', 'destroy', 'itself']
+['destroy', 'the', 'view', '.']
+
+
+['tests', 'the', 'functionality', 'of', 'the', 'getitemid', 'method', '.']
+['tests', 'the', 'functionality', 'of', 'the', 'getitem', 'method', '.']
+
+
+['find', 'the', 'ancestor', 'type', 'which', 'is', 'an', 'ancestor', 'of', 'type']
+['finds', 'a', 'class', 'or', 'interface', 'which', 'is', 'an', 'ancestor', 'of', 'this', 'type']
+
+
+['used', 'by', 'the', 'whitebox', 'gui', 'to', 'tell', 'if', 'this', 'plugin', 'is', 'still', 'running', '.']
+['used', 'by', 'the', 'whitebox', 'gui', 'to', 'tell', 'if', 'this', 'plugin', 'is', 'still', 'running', '.']
+
+
+['syncronize', 'pipeline', 'by', 'reading', 'through', 'the', 'client', '.']
+['syncronize', 'pipeline', 'by', 'reading', 'all', 'responses', '.']
+
+
+['inorder', 'traversal', 'from', 'the', 'root']
+['inorder', 'traversal', 'from', 'the', 'root']
+
+
+['returns', 'the', 'imaginary', 'value', '.']
+['returns', 'the', 'imaginary', 'value', '.']
+
+
+['create', 'a', 'unique', 'ip', 'address', '.']
+['creates', 'a', 'unique', 'identifier', 'with', 'the', 'pattern', '.']
+
+
+['clip', 'path', 'with', 'hardware', 'acceleration', 'only', 'working', 'properly', 'on', 'api', 'level', 'and', 'above', '.']
+['clip', 'path', 'with', 'hardware', 'acceleration', 'only', 'working', 'properly', 'on', 'api', 'level', 'and', 'above', '.']
+
+
+['performs', 'an', 'insert', 'adding', 'a', 'new', 'row', 'with', 'the', 'given', 'values', '.']
+['performs', 'an', 'insert', 'adding', 'a', 'new', 'row', 'with', 'the', 'given', 'values', '.']
+
+
+['searches', 'for', 'the', 'markov', 'blanket', 'of', 'the', 'node', 'by', 'the', 'given', 'name', '.']
+['searches', 'for', 'the', 'markov', 'blanket', 'of', 'the', 'node', 'by', 'the', 'given', 'name', '.']
+
+
+['build', 'a', 'midpoint', 'integrator', 'with', 'given', 'iteration', 'counts', '.']
+['build', 'a', 'midpoint', 'integrator', 'with', 'given', 'iteration', 'counts', '.']
+
+
+['start', 'an', 'download', 'for', 'the', 'default', 'address', '.']
+['start', 'ftp', 'download', 'with', 'specific', 'port', 'user', 'password', '.']
+
+
+['service', 'routine', 'to', 'look', 'through', 'parameter', 'child', 'elements', 'to', 'find', 'a', 'particular', 'parameter', 'value']
+['service', 'routine', 'to', 'look', 'through', 'parameter', 'child', 'elements', 'to', 'find', 'a', 'particular', 'parameter', 'value']
+
+
+['returns', 'an', 'encryptedassertion', 'object', '.']
+['returns', 'an', 'encryptedattribute', 'object', '.']
+
+
+['convert', 'handler', 'output', 'of', 'chart', 'data']
+['convert', 'to', 'chart', 'result', 'view']
+
+
+['write', 'bytes', 'to', 'output', 'or', 'random', 'access', 'file']
+['write', 'bytes', 'to', 'output', 'or', 'random', 'access', 'file', '.']
+
+
+['dump', 'the', 'contents', 'of', 'the', 'cursor', 'to', 'the', 'provided', 'builder', 'formatted', 'in', 'a', 'readable', 'way']
+['dump', 'the', 'contents', 'of', 'the', 'cursor', 'to', 'the', 'system', 'log', 'formatted', 'in', 'a', 'readable', 'way']
+
+
+['resets', 'the', 'scanner', 'to', 'read', 'from', 'a', 'new', 'input', 'stream', '.']
+['resets', 'the', 'scanner', 'to', 'read', 'from', 'a', 'new', 'input', 'stream', '.']
+
+
+['converts', 'high', 'byte', 'to', 'an', 'integer', 'setting', 'low', 'byte', 'of', 'each', 'byte', 'in', 'the', 'high', 'byte', 'of', '.']
+['convert', 'two', 'unsigned', 'bytes', 'to', 'one', 'signed', 'int', '.']
+
+
+['returns', 'extra', 'space', 'builder', 'for', 'removing', 'given', 'extra', 'space', 'that', 'doesn', 't', 'have', 'space', '.']
+['returns', 'a', 'size', 'factor', 'for', 'the', 'map', 'for', 'the', 'specific', 'eviction', 'strategy', 'of', 'this', 'cache', '.']
+
+
+['opens', 'a', 'connection', 'in', 'memory', 'and', 'returns', 'the', 'new', 'url', 'for', 'that', 'url', '.']
+['opens', 'a', 'new', 'or', 'recycled', 'connection', 'to', 'the', 'http', 'server', '.']
+
+
+['visitor', 'method', 'translate', 'a', 'list', 'of', 'case', 'blocks', 'of', 'switch', 'statements', '.']
+['visitor', 'method', 'translate', 'a', 'list', 'of', 'case', 'parts', 'of', 'switch', 'statements', '.']
+
+
+['retrieves', 'a', 'page', 'of', 'account', 'info', 'requests', 'from', 'the', 'given', 'start', 'date', '.']
+['retrieves', 'a', 'page', 'of', 'account', 'info', 'requests', 'from', 'the', 'given', 'optional', 'start', 'date', '.']
+
+
+['creates', 'a', 'new', 'request', 'session', '.']
+['creates', 'a', 'new', 'request', 'session', '.']
+
+
+['creates', 'a', 'refresh', 'for', 'a', 'new', 'lock', 'instance', '.']
+['a', 'heavy', 'weight', 'lock', 'to', 'handle', 'extreme', 'contention', 'and', 'wait', 'notify', 'synchronization', '.']
+
+
+['invokes', 'the', 'closure', 'for', 'each', 'descendant', 'file', 'in', 'this', 'directory', '.']
+['invokes', 'the', 'closure', 'for', 'each', 'descendant', 'file', 'in', 'this', 'directory', '.']
+
+
+['determines', 'the', 'height', 'of', 'this', 'view']
+['determines', 'the', 'height', 'of', 'this', 'view']
+
+
+['hash', 'code', 'only', 'implemented', 'in', 'some', 'performance', 'ensure', 'that', 's', 'not', 'computed', '.']
+['compute', 'the', 'hash', 'of', 'the', 'given', 'value', '.']
+
+
+['clear', 'the', 'header', 'view', '.']
+['clear', 'the', 'last', 'received', 'headers', '.']
+
+
+['returns', 'the', 'string', 'representing', 'the', 'object', '.']
+['returns', 'the', 'string', 'representing', 'the', 'object', '.']
+
+
+['returns', 'the', 'result', 'of', 'interpreting', 'the', 'object', 'as', 'an', 'instance', 'of', 'anonymous', 'parameter', 'list', '.']
+['returns', 'the', 'result', 'of', 'interpreting', 'the', 'object', 'as', 'an', 'instance', 'of', 'singleton', '.']
+
+
+['updatefunctionalitytest', 'testupdate', '.']
+['updatefunctionalitytest', 'testupdate', '.']
+
+
+['send', 'text', 'message', '.']
+['send', 'text', 'message', '.']
+
+
+['implement', 'the', 'parcelable', 'interface']
+['implement', 'the', 'parcelable', 'interface']
+
+
+['return', 'an', 'enumeration', 'of', 'the', 'nodes', 'in', 'the', 'tree', '.']
+['enumerate', 'the', 'nodes', 'in', 'no', 'particular', 'order']
+
+
+['util', 'method', 'to', 'write', 'an', 'attribute', 'with', 'the', 'ns', 'prefix']
+['util', 'method', 'to', 'write', 'an', 'attribute', 'with', 'the', 'ns', 'prefix']
+
+
+['description', 'of', 'the', 'method']
+['description', 'of', 'the', 'method']
+
+
+['remove', 'all', 'pool', 'state', 'from', 'pool']
+['clear', 'all', 'pool', '.']
+
+
+['initialize', 'the', 'engine', '.']
+['initialize', 'the', 'engine', '.']
+
+
+['validates', 'the', 'business', 'object', 'data', 'notification', 'actions', '.']
+['validates', 'the', 'storage', 'unit', 'notification', 'actions', '.']
+
+
+['write', 'the', 'contents', 'of', 'this', 'stream', 'as', 'an', 'outputstream', '.']
+['write', 'the', 'class', 'file', 'to', 'the', 'outputstream', '.']
+
+
+['setting', 'client', 'connections', 'to', 'upstream', 'servers', '.']
+['the', 'cipher', 'suites', 'allowed', 'on', 'client', 'connections', 'to', 'the', 'proxy', '.']
+
+
+['java', '.', 'security', '.', 'spec', '.', '<unk>', '<unk>', '<unk>', '<unk>', '<unk>', 'assertion', 'null', 'if', 'not', 'specified']
+['java', '.', 'security', '.', 'spec', '.', 'ellipticcurve', 'getseed', 'assertion', 'null', 'if', 'not', 'specified']
+
+
+['constructs', 'pspaccounthistory', 'from', 'a', 'pspaccount', 'domain', 'object']
+['constructs', 'pspsettinghistory', 'from', 'a', 'pspsetting', 'domain', 'object']
+
+
+['returns', 'the', 'size', 'in', 'bytes', 'of', 'the', 'header', '.']
+['get', 'the', 'size', 'of', 'the', 'header', 'of', 'this', 'list', '.']
+
+
+['compares', 'this', 'list', 'with', 'another', 'list', 'value', 'for', 'equality', '.']
+['compares', 'this', 'list', 'to', 'another', 'list', 'value', 'by', 'value', '.']
+
+
+['main', 'for', 'decoding', 'base', 'data', '.']
+['returns', 'base', 'encoded', 'source', 'id', 'based', 'on', 'the', 'input', 'hex', 'source', 'id', '.']
+
+
+['return', 'true', 'if', 'the', 'registry', 'service', 'is', 'registered', 'for', 'the', 'given', 'service', '.']
+['returns', 'whether', 'a', 'multiplexer', 'host', 'service', 'app', 'is', 'present', 'in', 'the', 'system', '.']
+
+
+['record', 'the', 'time', 'at', 'which', 'the', 'activity', 'started', '.']
+['record', 'the', 'time', 'at', 'which', 'the', 'activity', 'started', '.']
+
+
+['sets', 'the', 'security', 'profile', 'for', 'the', 'specified', 'security', 'profile', '.']
+['removes', 'the', 'security', 'profile', 'with', 'the', 'specified', 'name', '.']
+
+
+['remember', 'the', 'changes', 'to', 'the', 'current', 'screen', '.']
+['this', 'method', 'adds', 'all', 'the', 'grabpoints', 'associated', 'with', 'the', 'polygon', 'nodes', 'and', 'adds', 'them', 'to', 'the', 'offset', 'grabpoint', 'representing', 'the', 'lat', 'lon', 'anchor', 'point', '.']
+
+
+['updates', 'the', 'application', 's', '<unk>', '.']
+['allows', 'setting', 'the', 'server', 'uri', 'from', 'another', 'bundle', 'actually', 'it', 'is', 'the', 'oda', 'driver', 'which', 'does', 'that', '.']
+
+
+['convenience', 'method', 'to', 'launch', 'a', 'custom', 'tabs', 'activity', '.']
+['convenience', 'method', 'to', 'launch', 'a', 'custom', 'tabs', 'activity', '.']
+
+
+['notify', 'listeners', 'to', 'allow', 'user', 'input', 'listeners', 'to', 'exit']
+['notify', 'listeners', 'to', 'allow', 'user', 'input']
+
+
+['tests', 'the', 'filter', 'with', '.']
+['tests', 'the', 'case', 'insensitive', 'sorting', 'on', 'all', 'attributes', '.']
+
+
+['legacy', 'security', 'code', 'do', 'not', 'use', '.']
+['legacy', 'security', 'code', 'do', 'not', 'use', '.']
+
+
+['find', 'the', 'fields', 'constant', 'that', 'matches', 'fieldid', 'or', 'null', 'if', 'its', 'not', 'found', '.']
+['find', 'the', 'fields', 'constant', 'that', 'matches', 'fieldid', 'or', 'null', 'if', 'its', 'not', 'found', '.']
+
+
+['this', 'operation', 'is', 'not', 'supported', 'by', 'this', 'cipher', '.']
+['this', 'operation', 'is', 'not', 'supported', 'by', 'this', 'cipher', '.']
+
+
+['creates', 'a', 'new', '<unk>', '.']
+['creates', 'a', 'new', 'buyhousechataction', '.']
+
+
+['show', 'user', 'annotations', '.']
+['show', 'the', 'feed', 'of', 'user', 'annotations', '.']
+
+
+['runs', 'this', 'test', 'from', 'the', 'command', 'line', '.']
+['runs', 'this', 'test', 'from', 'the', 'command', 'line', '.']
+
+
+['returns', 'a', 'hash', 'code', 'value', 'for', 'this', 'type', '.']
+['returns', 'a', 'hash', 'code', 'value', 'for', 'this', 'type', '.']
+
+
+['optional', 'sets', 'the', 'inline', 'keyboard', 'attached', 'to', 'this', 'message', 'to', 'the', 'inlinereplymarkup', 'provided']
+['optional', 'sets', 'the', 'inline', 'keyboard', 'attached', 'to', 'this', 'message', 'to', 'the', 'inlinereplymarkup', 'provided']
+
+
+cbleu: 0.535605929960297 sbleu: 0.5705993316454332
+1-Gram BLEU: 0.659324
+2-Gram BLEU: 0.561460
+3-Gram BLEU: 0.522137
+4-Gram BLEU: 0.496863
+METEOR: 0.660412
+ROUGE-L F1 score: 0.670473
+ROUGE-L Presicion: 0.673370
+ROUGE-L Recall: 0.685832

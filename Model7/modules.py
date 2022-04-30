@@ -209,9 +209,11 @@ def ff(inputs, num_units, scope="positionwise_feedforward"):
     with tf.variable_scope(scope, reuse=tf.AUTO_REUSE):
         # Inner layer
         outputs = tf.layers.dense(inputs, num_units[0], activation=tf.nn.relu)
-
+        # print('inputs: ', inputs)   # shape=(?, 150, 1536)
+        # print('outputs: ', outputs) # shape=(?, 150, 2048)
         # Outer layer
         outputs = tf.layers.dense(outputs, num_units[1])
+        # print('outputs2: ', outputs)    # shape=(?, 150, 768)
 
         # Residual connection
         outputs += inputs

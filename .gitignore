@@ -135,6 +135,7 @@ All_Data/
 Model_Original/data_isbtcode/
 Model_Original/model/
 
+
 # Model1
 Model1/data/
 Model1/data_RQ1/
@@ -164,6 +165,9 @@ Model6/newsbt_data_camel/
 
 # Model7
 Model7/newsbt_data/
+Model7/nohup.txt
+Model7/result
+Model7/model
 
 # Model8
 Model8/newsbt_data/

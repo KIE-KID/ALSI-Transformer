@@ -9,7 +9,7 @@ import datetime
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
 
@@ -96,7 +96,7 @@ def train():
 
 def val(sess, model, data):
     smooth = SmoothingFunction()
-    NL = data[4]
+    NL = data[7]
     cbleu = 0
     count = 0
     refs = []
