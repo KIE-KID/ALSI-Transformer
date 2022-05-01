@@ -13,14 +13,6 @@ from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
 from nltk.translate.meteor_score import meteor_score
 from rouge import Rouge
-#import argparse
-
-#parser = argparse.ArgumentParser(description='parser') # 인자값을 받을 수 있는 인스턴스 생성
-
-#parser.add_argument('--cuda', required=False, default='0', elp='cuda device')
-#parser.add_argument('--model', required=True, help='model path')
-
-#args = parser.parse_args() # 입력받은 인자값을 args에 저장 (type: namespace)
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 REGULARIZER = 0.0001
