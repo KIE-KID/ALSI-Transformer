@@ -50,7 +50,6 @@ def train():
 
 def val(sess, model, data):
     smooth = SmoothingFunction()
-    CODE = data[0]
     NL = data[5]  # data[8]
     cbleu = 0
     bleu_1gram = 0
@@ -62,15 +61,9 @@ def val(sess, model, data):
     rouge_l_precision = 0 
     rouge_l_recall = 0 
 
-    bleu_code_leng = [0] * 301
-    meteor_code_leng = [0] * 301
-    rouge_code_leng = [0] * 301
-    code_leng_cnt = [0] * 301
-
-    bleu_nl_leng = [0] * 31
-    meteor_nl_leng = [0] * 31
-    rouge_nl_leng = [0] * 31
-    nl_leng_cnt = [0] * 31
+    all_bleu = []
+    all_meteor = []
+    all_rouge = []
     
     count = 0
     refs = []
@@ -103,13 +96,8 @@ def val(sess, model, data):
                     break
                 hpy.append(dic_word[k])
             if len(hpy) > 2:
-                code_idx = len(CODE[i][j])
-                nl_idx = len(NL[i][j])
-
                 cbleu += nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4)
-                bleu_code_leng[code_idx] += nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4)
-                bleu_nl_leng[nl_idx] += nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4)
-
+                all_bleu.append(nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4))
 
                 bleu_1gram += sentence_bleu([NL[i][j]], hpy, weights=(1, 0, 0, 0), smoothing_function=smooth.method4)
                 bleu_2gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 1, 0, 0), smoothing_function=smooth.method4)
@@ -117,20 +105,14 @@ def val(sess, model, data):
                 bleu_4gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 0, 0, 1), smoothing_function=smooth.method4)
 
                 meteor += meteor_score([NL[i][j]], hpy)
-                meteor_code_leng[code_idx] +=  meteor_score([NL[i][j]], hpy)
-                meteor_nl_leng[nl_idx] += meteor_score([NL[i][j]], hpy)
+                all_meteor.append(meteor_score([NL[i][j]], hpy))
 
                 rouge = Rouge()
                 temp_rouge = rouge.get_scores(' '.join(NL[i][j]), ' '.join(hpy), avg=True)['rouge-l']
                 rouge_l_f1 += temp_rouge['f']
                 rouge_l_precision += temp_rouge['p']
                 rouge_l_recall += temp_rouge['r']
-
-                rouge_code_leng[code_idx] += temp_rouge['f']
-                rouge_code_leng[nl_idx] += temp_rouge['f']
-
-                code_leng_cnt[code_idx] += 1
-                nl_leng_cnt[nl_idx] += 1
+                all_rouge.append(rouge_l_f1)
                 
                 count += 1
             if len(hpy) > -1:
@@ -151,33 +133,6 @@ def val(sess, model, data):
                 print('\n')
 
     if count > 1:
-        for i in range(len(bleu_code_leng)):
-            try:
-                bleu_code_leng [i] = bleu_code_leng[i]/code_leng_cnt[i]
-            except:
-                pass        
-            try:
-                meteor_code_leng[i] = meteor_code_leng[i]/code_leng_cnt[i]
-            except:
-                pass
-            try:
-                rouge_code_leng[i] = rouge_code_leng[i]/code_leng_cnt[i]
-            except:
-                pass
-        for i in range(len(bleu_nl_leng)):
-            try:
-                bleu_nl_leng [i] = bleu_nl_leng[i]/nl_leng_cnt[i]
-            except:
-                pass        
-            try:
-                meteor_nl_leng [i] = meteor_nl_leng[i]/nl_leng_cnt[i]
-            except:
-                pass        
-            try:                
-                rouge_nl_leng [i] = rouge_nl_leng[i]/nl_leng_cnt[i]
-            except:
-                pass
-
         cbleu = cbleu / count
         bleu_1gram = bleu_1gram / count
         bleu_2gram = bleu_2gram / count
@@ -211,28 +166,19 @@ def val(sess, model, data):
     f.write('ROUGE-L Precision: '+ str(rouge_l_precision)+'\n')
     f.write('ROUGE-L Recall: '+ str(rouge_l_recall)+'\n')
     f.close()
-    f = open(output_dir + '/code_lengths.txt', 'a')
-    col = list(range(301))
-    f.write(','.join(map(str,col)))
-    f.write('\n')
-    f.write(','.join(map(str,bleu_code_leng)))
-    f.write('\n')
-    f.write(','.join(map(str,meteor_code_leng)))
-    f.write('\n')
-    f.write(','.join(map(str,rouge_code_leng)))
-    f.write('\n')
+
+    f = open(output_dir + '/all_bleu.txt', 'a')
+    f.write(','.join(map(str,all_bleu)))
     f.close()
-    f = open(output_dir + '/nl_lengths.txt', 'a')
-    col = list(range(31))
-    f.write(','.join(map(str,col)))
-    f.write('\n')
-    f.write(','.join(map(str,bleu_nl_leng)))
-    f.write('\n')
-    f.write(','.join(map(str,meteor_nl_leng)))
-    f.write('\n')
-    f.write(','.join(map(str,rouge_nl_leng)))
-    f.write('\n')
+
+    f = open(output_dir + '/all_meteor.txt', 'a')
+    f.write(','.join(map(str,all_meteor)))
     f.close()
+    
+    f = open(output_dir + '/all_rouge.txt', 'a')
+    f.write(','.join(map(str,all_rouge)))
+    f.close()
+
 
     with open(output_dir + "/refs.json", "a", encoding='utf-8') as f:
         json.dump(refsjson, f)
