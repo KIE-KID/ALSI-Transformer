@@ -112,7 +112,7 @@ def val(sess, model, data):
                 rouge_l_f1 += temp_rouge['f']
                 rouge_l_precision += temp_rouge['p']
                 rouge_l_recall += temp_rouge['r']
-                all_rouge.append(rouge_l_f1)
+                all_rouge.append(temp_rouge['f'])
                 
                 count += 1
             if len(hpy) > -1:
