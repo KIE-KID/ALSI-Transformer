@@ -28,13 +28,20 @@ Use tf.cast instead.
 WARNING:tensorflow:From /home/ubuntu/youngmi/SeQubic-Transformer/Model9/Model.py:319: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use tf.cast instead.
-2022-05-04 02:13:59.901524: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2022-05-04 02:13:59.909419: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2992965000 Hz
-2022-05-04 02:13:59.909930: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x55e51e3053c0 executing computations on platform Host. Devices:
-2022-05-04 02:13:59.909961: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
-2022-05-04 02:13:59.928206: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
-2022-05-04 02:13:59.928280: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:161] retrieving CUDA diagnostic information for host: smwu11
-2022-05-04 02:13:59.928290: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:168] hostname: smwu11
-2022-05-04 02:13:59.928345: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:192] libcuda reported version is: 450.156.0
-2022-05-04 02:13:59.928374: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:196] kernel reported version is: 450.156.0
-2022-05-04 02:13:59.928380: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:303] kernel version seems to match DSO: 450.156.0
+2022-05-04 02:26:17.176644: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2022-05-04 02:26:17.209589: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2992965000 Hz
+2022-05-04 02:26:17.217343: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x559d53a36a40 executing computations on platform Host. Devices:
+2022-05-04 02:26:17.217419: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2022-05-04 02:26:17.539463: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-05-04 02:26:17.540582: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1433] Found device 0 with properties: 
+name: Tesla T4 major: 7 minor: 5 memoryClockRate(GHz): 1.59
+pciBusID: 0000:00:05.0
+totalMemory: 14.75GiB freeMemory: 14.66GiB
+2022-05-04 02:26:17.540611: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1512] Adding visible gpu devices: 0
+2022-05-04 02:26:17.541782: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-05-04 02:26:17.541805: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990]      0 
+2022-05-04 02:26:17.541812: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 0:   N 
+2022-05-04 02:26:17.541944: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 12888 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:00:05.0, compute capability: 7.5)
+2022-05-04 02:26:17.561229: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x559c9de0a330 executing computations on platform CUDA. Devices:
+2022-05-04 02:26:17.561292: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
+2022-05-04 02:26:38.707466: I tensorflow/stream_executor/dso_loader.cc:152] successfully opened CUDA library libcublas.so.10.0 locally
