@@ -13,14 +13,6 @@ from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
 from nltk.translate.bleu_score import SmoothingFunction
 from nltk.translate.meteor_score import meteor_score
 from rouge import Rouge
-#import argparse
-
-#parser = argparse.ArgumentParser(description='parser') # 인자값을 받을 수 있는 인스턴스 생성
-
-#parser.add_argument('--cuda', required=False, default='0', elp='cuda device')
-#parser.add_argument('--model', required=True, help='model path')
-
-#args = parser.parse_args() # 입력받은 인자값을 args에 저장 (type: namespace)
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 REGULARIZER = 0.0001
@@ -69,6 +61,10 @@ def val(sess, model, data):
     rouge_l_precision = 0 
     rouge_l_recall = 0 
 
+    all_bleu = []
+    all_meteor = []
+    all_rouge = []
+    
     count = 0
     refs = []
     hpys = []
@@ -100,18 +96,24 @@ def val(sess, model, data):
                     break
                 hpy.append(dic_word[k])
             if len(hpy) > 2:
-                cbleu += nltk.translate.bleu([NL[i][j]],
-                                             hpy, smoothing_function=smooth.method4)
+                cbleu += nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4)
+                all_bleu.append(nltk.translate.bleu([NL[i][j]], hpy, smoothing_function=smooth.method4))
+
                 bleu_1gram += sentence_bleu([NL[i][j]], hpy, weights=(1, 0, 0, 0), smoothing_function=smooth.method4)
                 bleu_2gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 1, 0, 0), smoothing_function=smooth.method4)
                 bleu_3gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 0, 1, 0), smoothing_function=smooth.method4)
                 bleu_4gram += sentence_bleu([NL[i][j]], hpy, weights=(0, 0, 0, 1), smoothing_function=smooth.method4)
+
                 meteor += meteor_score([NL[i][j]], hpy)
+                all_meteor.append(meteor_score([NL[i][j]], hpy))
+
                 rouge = Rouge()
                 temp_rouge = rouge.get_scores(' '.join(NL[i][j]), ' '.join(hpy), avg=True)['rouge-l']
                 rouge_l_f1 += temp_rouge['f']
                 rouge_l_precision += temp_rouge['p']
                 rouge_l_recall += temp_rouge['r']
+                all_rouge.append(temp_rouge['f'])
+                
                 count += 1
             if len(hpy) > -1:
                 s = ''
@@ -164,6 +166,19 @@ def val(sess, model, data):
     f.write('ROUGE-L Precision: '+ str(rouge_l_precision)+'\n')
     f.write('ROUGE-L Recall: '+ str(rouge_l_recall)+'\n')
     f.close()
+
+    f = open(output_dir + '/all_bleu.txt', 'a')
+    f.write(','.join(map(str,all_bleu)))
+    f.close()
+
+    f = open(output_dir + '/all_meteor.txt', 'a')
+    f.write(','.join(map(str,all_meteor)))
+    f.close()
+    
+    f = open(output_dir + '/all_rouge.txt', 'a')
+    f.write(','.join(map(str,all_rouge)))
+    f.close()
+
 
     with open(output_dir + "/refs.json", "a", encoding='utf-8') as f:
         json.dump(refsjson, f)
