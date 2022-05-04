@@ -168,9 +168,14 @@ Model7/newsbt_data/
 Model7/nohup.txt
 Model7/result
 Model7/model
+Model7/
 
 # Model8
 Model8/newsbt_data/
 
 # Test
 Model_Original_p/
+Model7_add/
+Model7_add(and)/
+Model7_avg/
+Model7_gru/
