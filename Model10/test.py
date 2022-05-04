@@ -14,7 +14,7 @@ from nltk.translate.bleu_score import SmoothingFunction
 from nltk.translate.meteor_score import meteor_score
 from rouge import Rouge
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 REGULARIZER = 0.0001
 BATCH_SIZE = 32
 
@@ -60,11 +60,11 @@ def val(sess, model, data):
     rouge_l_f1 = 0 
     rouge_l_precision = 0 
     rouge_l_recall = 0 
-
+    
     all_bleu = []
     all_meteor = []
-    all_rouge = []   
-
+    all_rouge = []  
+    
     count = 0
     refs = []
     hpys = []
@@ -179,7 +179,7 @@ def val(sess, model, data):
     f = open(output_dir + '/all_rouge.txt', 'a')
     f.write(','.join(map(str,all_rouge)))
     f.close()
-    
+
     with open(output_dir + "/refs.json", "a", encoding='utf-8') as f:
         json.dump(refsjson, f)
     with open(output_dir + "/hpy.json", "a", encoding='utf-8') as f:
