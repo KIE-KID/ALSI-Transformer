@@ -144,11 +144,17 @@ ALSI-Transformer(2-encoder)/nohup.txt
 ALSI-Transformer(2-encoder)/nohup_test.txt
 
 # Case1
-
+Case1/newsbt_data/
+Case1/model/
+Case1/nohup.txt
+Case1/nohup_test.txt
 
 
 # Case2
-
+Case2/newsbt_data/
+Case2/model/
+Case2/nohup.txt
+Case2/nohup_test.txt
 
 
 # Case3
