@@ -1,2 +1,0 @@
-After 100 steps, rate is 0.00010.  cost is 5.85605, In iterator: 0. nowCBleu: 0.00000, maxCBlue: 0.00000. nowSBleu: 0.00000, maxSBlue: 0.00000.
-After 200 steps, rate is 0.00010.  cost is 5.23965, In iterator: 0. nowCBleu: 0.00000, maxCBlue: 0.00000. nowSBleu: 0.00000, maxSBlue: 0.00000.

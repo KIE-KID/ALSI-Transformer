@@ -131,53 +131,52 @@ dmypy.json
 # data
 All_Data/
 
-# Model_Original
-Model_Original/data_isbtcode/
-Model_Original/model/
+# ALSI-Transformer
+ALSI-Transformer/newsbt_data/
+ALSI-Transformer/model/
+ALSI-Transformer/nohup.txt
+ALSI-Transformer/nohup_test2.txt
+
+# ALSI-Transformer(2-encoder)
+ALSI-Transformer(2-encoder)/newsbt_data/
+ALSI-Transformer(2-encoder)/model/
+ALSI-Transformer(2-encoder)/nohup.txt
+ALSI-Transformer(2-encoder)/nohup_test.txt
+
+# Case1
 
 
-# Model1
-Model1/data/
-Model1/data_RQ1/
-Model1/nohup*
-Model1/model/
-Model1/result/
 
-# Model2
-Model2/data/
-Model2/newsbt_data/
+# Case2
 
-# Model3
-Model3/data/
 
-# Model4
-Model4/data_newsbt_codeseq/
 
-# Model5
-Model5/data_ids/
-Model5/data_simids/
-Model5/model(ids)/
-Model5/model(simids)/
+# Case3
+Case3_Add/newsbt_data/
+Case3_Add/model/
+Case3_Add/nohup.txt
+Case3_Add/nohup_test.txt
 
-# Model6
-Model6/newsbt_data/
-Model6/newsbt_data_camel/
+# Case4
+Case4_Avg/newsbt_data/
+Case4_Avg/model/
+Case4_Avg/nohup.txt
+Case4_Avg/nohup_test.txt
 
-# Model7
-Model7/newsbt_data/
-Model7/nohup.txt
-Model7/result
-Model7/model
+# Case5
+Case5_Concat/newsbt_data/
+Case5_Concat/model/
+Case5_Concat/result/700_68/model/
+Case5_Concat/result/700_68/Model.py
+Case5_Concat/result/700_68/nohup.txt
+Case5_Concat/result/700_68/nohup_test.txt
 
-# Model8
-Model8/newsbt_data/
+Case5_Concat/result/750_18/model/
+Case5_Concat/result/750_18/Model.py
+Case5_Concat/result/750_18/nohup.txt
+Case5_Concat/result/750_18/nohup_test.txt
 
-# Model9
-Model9/newsbt_data/
-
-# Model10
-Model10/newsbt_data/
-
-# Test
-Model_Original_p/
-ß
+Case5_Concat/result/756_12/model/
+Case5_Concat/result/756_12/Model.py
+Case5_Concat/result/756_12/nohup.txt
+Case5_Concat/result/756_12/nohup_test.txt
