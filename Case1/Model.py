@@ -36,7 +36,6 @@ class Transformer:
     def __init__(self, bacth_num):
         self.nlLeng = 30
         self.codeLneg = 500 # 200+500
-        # self.sbtLneg = 300
         self.bacth_num = bacth_num
 
         self.nl_embedding = tf.get_variable('nl_emb', [NL_VOCAB_SIZE, HIDDEN_SIZE])
@@ -47,7 +46,6 @@ class Transformer:
             for pos in range(500)])
         position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
         position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1)
-        # self.position_enc1 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
         self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE],
                                              initializer=self.create_initializer(0.002))
 
@@ -63,7 +61,6 @@ class Transformer:
 
         self.index = tf.placeholder(tf.int32, [None, self.codeLneg])
         self.index1 = tf.placeholder(tf.int32, [None, self.nlLeng])
-        # self.index3 = tf.placeholder(tf.int32, [None, self.sbtLneg])
         self.nlsize = tf.placeholder(tf.int32, [None])
 
         self.nl_input = tf.placeholder(tf.int32, [None, self.nlLeng])
@@ -72,9 +69,6 @@ class Transformer:
         self.training = tf.placeholder(tf.bool)
 
         memory, tag_masks= self.encode_code(self.code_input, self.index, self.code_mask, training=self.training)
-
-        # self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder2(memory,
-        #                                                                                               self.code_size)
         self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder1(memory, tag_masks)
 
     def mydecoder1(self, memory, tag_masks):
