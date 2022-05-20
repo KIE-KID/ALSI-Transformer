@@ -5,6 +5,7 @@ Transformer-Based Code Comment Generation with Aligned Lexical and Syntactic Inf
 
 ## Details of each folder 
 - ALSI-Transformer
+
 Our proposed model
 
 - ALSI-Transformer(2-encoder)
@@ -21,8 +22,8 @@ Our proposed model
 
 
 ## Dataset and Outputs
-The original dataset is from [EMSE-DeepCom](https://github.com/xing-hu/EMSE-DeepCom) [Google Drive](https://drive.google.com/drive/folders/130liaynevaYo2AhNoFtadtc7uBS12_aW?usp=sharing)
-The processed dataset can be downloaded from [Google Drive](https://drive.google.com/drive/folders/130liaynevaYo2AhNoFtadtc7uBS12_aW?usp=sharing)
+The original dataset is from [EMSE-DeepCom](https://github.com/xing-hu/EMSE-DeepCom) [Google Drive](https://drive.google.com/drive/folders/130liaynevaYo2AhNoFtadtc7uBS12_aW?usp=sharing)<br/>
+The processed dataset can be downloaded from [Google Drive](https://drive.google.com/drive/folders/130liaynevaYo2AhNoFtadtc7uBS12_aW?usp=sharing)<br/>
 You can also check the train and test results in Google Drive.
 
 ## Training
