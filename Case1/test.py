@@ -29,7 +29,6 @@ MODEL_NAME = "nl"
 
 def train():
     print('load data......')
-    # trainData = dataset.get_Data(BATCH_SIZE, "train")
     validData = dataset.get_Data(BATCH_SIZE, "test")
     bacth_num = 1
     print('load finish')
