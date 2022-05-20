@@ -29,7 +29,6 @@ MODEL_NAME = "nl"
 
 def train():
     print('load data......')
-    # trainData = dataset.get_Data(BATCH_SIZE, "train")
     validData = dataset.get_Data(BATCH_SIZE, "test")
     bacth_num = 1
     print('load finish')
@@ -76,7 +75,6 @@ def val(sess, model, data):
         predic = sess.run(model.predict,
                           feed_dict={
                               model.ast_input: data[0][i],
-                              # model.father: data[1][i],
                               model.ast_size: data[1][i],
                               model.ast_mask: data[2][i],
                               model.code_input: data[3][i],

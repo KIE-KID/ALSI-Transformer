@@ -4,7 +4,6 @@ nl_leng = 30
 
 def get_Data(bath, path):
     types = []
-    # sbtposs = []
     typesizes = []
     typemasks = []
 
@@ -33,17 +32,6 @@ def get_Data(bath, path):
             sbt.append(0)
         types.append(sbt)
 
-    # f = open('newsbt_data/' + path + '/ids', 'r', encoding='utf-8')
-    # SBTs = f.readlines()
-    # f.close()
-    # for temp in SBTs:
-    #     sbt = [int(w) for w in temp.strip().split()]
-    #     sbt = [0] + sbt + [0]
-    #     if len(sbt) > sbt_leng:
-    #         sbt = sbt[0:sbt_leng]
-    #     while len(sbt) < sbt_leng:
-    #         sbt.append(0)
-    #     sbtposs.append(sbt)
 
     f = open('newsbt_data/' + path + '/code_bpe', 'r', encoding='utf-8')
     CODEs = f.readlines()
@@ -109,7 +97,6 @@ def get_Data(bath, path):
     while start < len(codes):
         end = min(start + bath, len(codes))
         bathsbt.append(types[start:end])
-        #bathsbtpos.append(sbtposs[start:end])
         bathsbtsize.append(typesizes[start:end])
         bathsbtmask.append(typemasks[start:end])
 

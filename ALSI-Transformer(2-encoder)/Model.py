@@ -48,7 +48,6 @@ class Transformer:
             for pos in range(500)])
         position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
         position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1)
-        # self.position_enc1 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
         self.position_enc1 = tf.get_variable('pos_emb', shape=[500, HIDDEN_SIZE // 2],
                                              initializer=self.create_initializer(0.002))
 
@@ -59,12 +58,10 @@ class Transformer:
         position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
         position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1
 
-        # self.position_enc2 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
         self.position_enc2 = tf.get_variable('pos_emb2', shape=[500, HIDDEN_SIZE],
                                              initializer=self.create_initializer(0.002))
 
         self.ast_input = tf.placeholder(tf.int32, [None, self.sbtLneg])
-        # self.father = tf.placeholder(tf.int32, [None, self.sbtLneg])
         self.ast_size = tf.placeholder(tf.int32, [None])
         self.ast_mask = tf.placeholder(tf.int32, [None, self.sbtLneg // 2])
 
@@ -86,8 +83,7 @@ class Transformer:
                                              self.ast_input, self.ast_mask, self.index3,
                                              training=self.training)
 
-        # self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder2(memory,
-        #                                                                                               self.code_size)
+
         self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder1(memory, tag_masks, enc_ast, src_masks)
 
     def mydecoder1(self, memory, tag_masks, enc_ast, src_masks):
@@ -198,17 +194,10 @@ class Transformer:
                 input_emb1 = tf.nn.max_pool(input_emb1, ksize=[1, 2, 1, 1], strides=[1, 2, 1, 1], padding='VALID')
                 enc_code = tf.reshape(input_emb1, [-1, self.codeLneg // 2, HIDDEN_SIZE])
 
-            # code_rnn_cell = tf.nn.rnn_cell.MultiRNNCell(
-            #     [tf.nn.rnn_cell.GRUCell(HIDDEN_SIZE) for _ in range(NUM_LAYERS)])
-            # with tf.variable_scope('code_rnn'):
-            #     outputs, state = tf.nn.dynamic_rnn(code_rnn_cell, enc_code, size, dtype=tf.float32)
-            #
-            # enc_code = outputs
 
             enc_ast = tf.nn.embedding_lookup(self.ast_embedding, ast_input)
             src_masks = tf.math.equal(mask3, 0)  # (N, T1)
-            # posin = tf.nn.embedding_lookup(self.position_enc2, father)
-            # enc_ast += posin
+
             enc_ast = tf.layers.dropout(enc_ast, 0.2, training=training)
 
             enc_ast = tf.reshape(enc_ast, [-1, self.sbtLneg, HIDDEN_SIZE, 1])
@@ -274,7 +263,6 @@ class Transformer:
 
             # embedding
             dec = tf.nn.embedding_lookup(self.nl_embedding, nl_input)  # (N, T2, d_model)
-            # dec *= HIDDEN_SIZE ** 0.5  # scale
 
             dec += tf.nn.embedding_lookup(self.position_enc2, index)
             dec = tf.layers.dropout(dec, 0.2, training=training)

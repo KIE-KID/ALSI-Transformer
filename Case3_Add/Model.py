@@ -38,38 +38,25 @@ class Transformer:
         self.nlLeng = 30
         self.codeLneg = 300 #200
         self.sbtLneg = 300
-        # self.bothLneg = 600
         self.bacth_num = bacth_num
 
         self.nl_embedding = tf.get_variable('nl_emb', [NL_VOCAB_SIZE, HIDDEN_SIZE])
         self.code_embedding = tf.get_variable('code_emb', [CODE_VOCAB_SIZE, HIDDEN_SIZE])
         self.ast_embedding = tf.get_variable('sbt_emb', [SBT_VOCAB_SIZE, HIDDEN_SIZE])
-        # self.training = tf.placeholder(tf.bool)
+
         E = HIDDEN_SIZE
         position_enc = np.array([
             [pos / np.power(10000, (i - i % 2) / E) for i in range(E)]
             for pos in range(600)]) #500
         position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
         position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1)
-        # self.position_enc1 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
+
         self.position_enc1 = tf.get_variable('pos_emb', shape=[600, HIDDEN_SIZE],
                                              initializer=self.create_initializer(0.002))
-        # self.position_enc1 = tf.get_variable('pos_emb', shape=[600, HIDDEN_SIZE],
-        #                                      initializer=tf.constant_initializer(position_enc))
 
-        # E = HIDDEN_SIZE
-        # position_enc = np.array([
-        #     [pos / np.power(10000, (i - i % 2) / E) for i in range(E)]
-        #     for pos in range(500)])
-        # position_enc[:, 0::2] = np.sin(position_enc[:, 0::2]) / 1000.0  # dim 2i
-        # position_enc[:, 1::2] = np.cos(position_enc[:, 1::2]) / 1000.0  # dim 2i+1
 
-        # # self.position_enc2 = tf.convert_to_tensor(position_enc, tf.float32)  # (maxlen, E)
-        # self.position_enc2 = tf.get_variable('pos_emb2', shape=[500, HIDDEN_SIZE],
-        #                                      initializer=self.create_initializer(0.002))
 
         self.ast_input = tf.placeholder(tf.int32, [None, self.sbtLneg])
-        # self.father = tf.placeholder(tf.int32, [None, self.sbtLneg])
         self.ast_size = tf.placeholder(tf.int32, [None])
         self.ast_mask = tf.placeholder(tf.int32, [None, self.sbtLneg // 2])
     
@@ -77,7 +64,6 @@ class Transformer:
         self.code_size = tf.placeholder(tf.int32, [None])
         self.code_mask = tf.placeholder(tf.int32, [None, self.codeLneg // 2])
 
-        # self.both_mask = tf.placeholder(tf.int32, [None, self.bothLneg // 4])
 
         self.index = tf.placeholder(tf.int32, [None, self.codeLneg])
         self.index1 = tf.placeholder(tf.int32, [None, self.nlLeng])
@@ -89,27 +75,24 @@ class Transformer:
         self.mask_size = tf.placeholder(tf.int32, [None])
         self.training = tf.placeholder(tf.bool)
 
-        # memory, tag_masks= self.encode_code(self.code_input, self.index, self.code_mask, training=self.training)
         memory, tag_masks = self.encode_code(self.code_input, self.index, self.code_mask,
                                              self.ast_input, self.index3, self.ast_mask,
                                              training=self.training)
 
-        # self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder2(memory,
-        #                                                                                               self.code_size)
+
         self.cost, self.train_op, self.predict, self.learning_rate, self.add_global = self.mydecoder1(memory, tag_masks)
 
     def mydecoder1(self, memory, tag_masks):
         with tf.variable_scope('decoder1'):
             logits, preds = self.decode(self.nl_input, self.index1, memory, tag_masks, training=self.training)
-            # print('logits: ', logits)
-            # print('preds', preds)
+
             cost = tf.contrib.seq2seq.sequence_loss(logits=logits, targets=self.nl_output,
                                                     weights=tf.sequence_mask(self.mask_size,
                                                                              maxlen=tf.shape(self.nl_output)[1],
                                                                              dtype=tf.float32))
-            # print('cost: ', cost)
+
             global_step = tf.Variable(0, trainable=False)
-            # print('global_step: ', global_step)
+
             learning_rate = tf.train.exponential_decay(1e-4,
                                                        global_step=global_step,
                                                        decay_steps=self.bacth_num,
@@ -129,7 +112,6 @@ class Transformer:
             predict = preds
             return cost, train_op, predict, learning_rate, add_global
 
-       # delete my_decoder2 function
 
     def encode_code(self, code_input, index, mask, ast_input, index3, mask3, training=True):
         '''
@@ -151,17 +133,10 @@ class Transformer:
                 input_emb1 = tf.nn.max_pool(input_emb1, ksize=[1, 2, 1, 1], strides=[1, 2, 1, 1], padding='VALID')
                 enc_code = tf.reshape(input_emb1, [-1, self.codeLneg // 2, HIDDEN_SIZE])
                 
-            # code_rnn_cell = tf.nn.rnn_cell.MultiRNNCell(
-            #     [tf.nn.rnn_cell.GRUCell(HIDDEN_SIZE) for _ in range(NUM_LAYERS)])
-            # with tf.variable_scope('code_rnn'):
-            #     outputs, state = tf.nn.dynamic_rnn(code_rnn_cell, enc_code, size, dtype=tf.float32)
-            #
-            # enc_code = outputs
 
             enc_ast = tf.nn.embedding_lookup(self.ast_embedding, ast_input)
             src_masks = tf.math.equal(mask3, 0)  # (N, T1)
-            # posin = tf.nn.embedding_lookup(self.position_enc1, index3)
-            # enc_ast += posin
+
             enc_ast = tf.layers.dropout(enc_ast, 0.2, training=training)
 
             enc_ast = tf.reshape(enc_ast, [-1, self.sbtLneg, HIDDEN_SIZE, 1])
@@ -170,14 +145,10 @@ class Transformer:
             input_emb1 = tf.nn.max_pool(input_emb1, ksize=[1, 2, 1, 1], strides=[1, 2, 1, 1], padding='VALID')
             enc_ast = tf.reshape(input_emb1, [-1, self.sbtLneg // 2, HIDDEN_SIZE])
 
-            # enc_both = tf.concat([enc_code, enc_ast], axis=2)
             enc_both = tf.add(enc_code, enc_ast)
-            # enc_code: shape(?, 150, 768)
-            # enc_ast: shape(?, 150, 768)
 
-            # mask_both = tf.logical_or(tgt_masks, src_masks)
+
             mask_both = tf.logical_or(tgt_masks, src_masks)
-            # mask_both = tf.math.equal(mask4, 0)
 
             for i in range(num_blocks):
                 with tf.variable_scope("num_blocks2_{}".format(i), reuse=tf.AUTO_REUSE):
@@ -191,29 +162,8 @@ class Transformer:
                                                    causality=False,
                                                    scope="self_attention_code")
                     
-                    # enc_code = multihead_attention(queries=enc_code,
-                    #                                keys=enc_code,
-                    #                                values=enc_code,
-                    #                                key_masks=tgt_masks,
-                    #                                num_heads=head_num,
-                    #                                dropout_rate=0.2,
-                    #                                training=training,
-                    #                                causality=False,
-                    #                                scope="self_attention_code")
-
-                    # enc_ast = multihead_attention(queries=enc_ast,
-                    #                               keys=enc_ast,
-                    #                               values=enc_ast,
-                    #                               key_masks=src_masks,
-                    #                               num_heads=head_num,
-                    #                               dropout_rate=0.2,
-                    #                               training=training,
-                    #                               causality=False,
-                    #                               scope="self_attention_ast")
 
                     temp_both = enc_both
-                    # temp_code = enc_code
-                    # temp_ast = enc_ast
 
                     enc_both = multihead_attention(queries=enc_both,
                                                    keys=temp_both,
@@ -225,29 +175,10 @@ class Transformer:
                                                    causality=False,
                                                    scope="vanilla_attention_code")
 
-                    # enc_code = multihead_attention(queries=enc_code,
-                    #                                keys=temp_code,
-                    #                                values=temp_code,
-                    #                                key_masks=tgt_masks,
-                    #                                num_heads=head_num,
-                    #                                dropout_rate=0.2,
-                    #                                training=training,
-                    #                                causality=False,
-                    #                                scope="vanilla_attention_code")
 
-                    # enc_ast = multihead_attention(queries=enc_ast,
-                    #                               keys=temp_code,
-                    #                               values=temp_code,
-                    #                               key_masks=tgt_masks,
-                    #                               num_heads=head_num,
-                    #                               dropout_rate=0.2,
-                    #                               training=training,
-                    #                               causality=False,
-                    #                               scope="vanilla_attention_ast")
                     enc_both = ff(enc_both, num_units=[d_ff, HIDDEN_SIZE])
-                    # enc_code = ff(enc_code, num_units=[d_ff, HIDDEN_SIZE])
-                    # enc_ast = ff(enc_ast, num_units=[d_ff, HIDDEN_SIZE])
-            return enc_both, mask_both #, enc_ast, src_masks
+
+            return enc_both, mask_both
 
     def decode(self, nl_input, index, memory, tag_masks, training=True):
     # (self, nl_input, index, memory, tag_masks, enc_ast, src_masks, training=True):
@@ -258,7 +189,6 @@ class Transformer:
 
             # embedding
             dec = tf.nn.embedding_lookup(self.nl_embedding, nl_input)  # (N, T2, d_model)
-            # dec *= HIDDEN_SIZE ** 0.5  # scale
 
             dec += tf.nn.embedding_lookup(self.position_enc1, index)
             dec = tf.layers.dropout(dec, 0.2, training=training)
@@ -287,15 +217,7 @@ class Transformer:
                                               training=training,
                                               causality=False,
                                               scope="vanilla_attention_code")
-                    # dec = multihead_attention(queries=dec,
-                    #                           keys=enc_ast,
-                    #                           values=enc_ast,
-                    #                           key_masks=src_masks,
-                    #                           num_heads=head_num,
-                    #                           dropout_rate=0.2,
-                    #                           training=training,
-                    #                           causality=False,
-                    #                           scope="vanilla_attention_ast")
+                                              
                     dec = ff(dec, num_units=[d_ff, HIDDEN_SIZE])
 
         weights = tf.transpose(self.nl_embedding)  # (d_model, vocab_size)

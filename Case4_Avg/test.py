@@ -29,7 +29,6 @@ MODEL_NAME = "nl"
 
 def train():
     print('load data......')
-    # trainData = dataset.get_Data(BATCH_SIZE, "train")
     validData = dataset.get_Data(BATCH_SIZE, "test")
     bacth_num = 1
     print('load finish')
@@ -50,7 +49,7 @@ def train():
 
 def val(sess, model, data):
     smooth = SmoothingFunction()
-    NL = data[4]
+    NL = data[7]
     cbleu = 0
     bleu_1gram = 0
     bleu_2gram = 0
@@ -71,17 +70,16 @@ def val(sess, model, data):
         batch = len(data[0][i])
         predic = sess.run(model.predict,
                           feed_dict={
-                              # model.ast_input: data[0][i],
-                              # model.father: data[1][i],
-                              # model.ast_size: data[2][i],
-                              # model.ast_mask: data[3][i],
-                              model.code_input: data[0][i],
-                              model.code_size: data[1][i],
-                              model.code_mask: data[2][i],
-                              model.nl_input: data[3][i],
-                              model.index: [list(range(1, 501))] * batch,
+                              model.ast_input: data[0][i],
+                              model.ast_size: data[1][i],
+                              model.ast_mask: data[2][i],
+                              model.code_input: data[3][i],
+                              model.code_size: data[4][i],
+                              model.code_mask: data[5][i],
+                              model.nl_input: data[6][i],
+                              model.index: [list(range(1, 301))] * batch,
                               model.index1: [list(range(1, 31))] * batch,
-                              # model.index3: [list(range(1, 301))] * batch,
+                              model.index3: [list(range(1, 301))] * batch,
                               model.nlsize: [30] * batch,
                               model.training: False
                           })

@@ -47,7 +47,6 @@ def train():
                 gstep, rate, cost, _ = sess.run([model.add_global, model.learning_rate, model.cost, model.train_op],
                                                 feed_dict={
                                                     model.ast_input: trainData[0][j],
-                                                    # model.father: trainData[1][j],
                                                     model.ast_size: trainData[1][j],
                                                     model.ast_mask: trainData[2][j],
                                                     model.code_input: trainData[3][j],
@@ -100,7 +99,6 @@ def val(sess, model, data):
         predic = sess.run(model.predict,
                           feed_dict={
                               model.ast_input: data[0][i],
-                              # model.father: data[1][i],
                               model.ast_size: data[1][i],
                               model.ast_mask: data[2][i],
                               model.code_input: data[3][i],
