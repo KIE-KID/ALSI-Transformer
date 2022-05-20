@@ -3,10 +3,6 @@ code_leng = 500#200+300
 nl_leng = 30
 
 def get_Data(bath, path):
-    # sbts = []
-    # sbtposs = []
-    # sbtsizes = []
-    # sbtmasks = []
     codes = []
     codesizes = []
     codemasks = []
@@ -14,35 +10,6 @@ def get_Data(bath, path):
     inputNL = []
     outputNL = []
     nlopuputLeng = []
-    # f = open('newsbt_data/' + path + '/newsbtcode', 'r', encoding='utf-8')
-    # SBTs = f.readlines()
-    # f.close()
-    # for temp in SBTs:
-    #     sbt = [int(w) for w in temp.strip().split()]
-    #     sbt = [2] + sbt + [3]
-    #     if len(sbt) > sbt_leng:
-    #         sbt = sbt[0:sbt_leng]
-    #     if len(sbt) % 2 == 0:
-    #         ls = len(sbt) // 2
-    #     else:
-    #         ls = len(sbt) // 2 + 1
-    #     sbtsizes.append(ls)
-    #     sbtmasks.append([1] * ls + [0] * (sbt_leng//2 - ls))
-    #     while len(sbt) < sbt_leng:
-    #         sbt.append(0)
-    #     sbts.append(sbt)
-
-    # f = open('data_isbtcode/' + path + '/ids', 'r', encoding='utf-8')
-    # SBTs = f.readlines()
-    # f.close()
-    # for temp in SBTs:
-    #     sbt = [int(w) for w in temp.strip().split()]
-    #     sbt = [0] + sbt + [0]
-    #     if len(sbt) > sbt_leng:
-    #         sbt = sbt[0:sbt_leng]
-    #     while len(sbt) < sbt_leng:
-    #         sbt.append(0)
-    #     sbtposs.append(sbt)
 
     f = open('newsbt_data/' + path + '/newsbtcode_camel_bpe', 'r', encoding='utf-8')
     CODEs = f.readlines()
@@ -95,10 +62,6 @@ def get_Data(bath, path):
                 nl.append(0)
             inputNL.append(nl)
 
-    # bathsbt = []
-    # bathsbtpos = []
-    # bathsbtsize = []
-    # bathsbtmask = []
     bathcode = []
     bathcodesize = []
     bathcodemask = []
@@ -108,11 +71,6 @@ def get_Data(bath, path):
     start = 0
     while start < len(codes):
         end = min(start + bath, len(codes))
-        # bathsbt.append(sbts[start:end])
-        # bathsbtpos.append(sbtposs[start:end])
-        # bathsbtsize.append(sbtsizes[start:end])
-        # bathsbtmask.append(sbtmasks[start:end])
-
         bathcode.append(codes[start:end])
         bathcodesize.append(codesizes[start:end])
         bathcodemask.append(codemasks[start:end])

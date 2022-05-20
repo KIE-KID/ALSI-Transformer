@@ -75,17 +75,12 @@ def val(sess, model, data):
         batch = len(data[0][i])
         predic = sess.run(model.predict,
                           feed_dict={
-                              # model.ast_input: data[0][i],
-                              # model.father: data[1][i],
-                              # model.ast_size: data[2][i],
-                              # model.ast_mask: data[3][i],
                               model.code_input: data[0][i],
                               model.code_size: data[1][i],
                               model.code_mask: data[2][i],
                               model.nl_input: data[3][i],
                               model.index: [list(range(1, 501))] * batch,
                               model.index1: [list(range(1, 31))] * batch,
-                              # model.index3: [list(range(1, 301))] * batch,
                               model.nlsize: [30] * batch,
                               model.training: False
                           })
